@@ -3,9 +3,9 @@
     <div class="content-container">
       <h1>Hisham Salameh</h1>
       <nav class="nav-items-container">
-        <li>About Me</li>
-        <li>Work Experience</li>
-        <li>Projects</li>
+        <li><a href="">About Me</a></li>
+        <li><a href="">Work Experience</a></li>
+        <li><a href="">Projects</a></li>
       </nav>
     </div>
   </div>
@@ -17,13 +17,22 @@
 .nav {
   width: 100%;
   background-color: #333533;
+  position: fixed;
   .content-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 50px;
+    height: 80px;
     margin: 0 2rem;
     color: white;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(
+      0.25turn,
+      rgba(34, 152, 255, 0.793),
+      rgba(255, 0, 128),
+      rgba(34, 152, 255, 0.793)
+    );
+    border-image-slice: 1;
     h1 {
       font-family: "Source Code Pro";
       margin: 0;
@@ -34,6 +43,15 @@
         list-style-type: none;
         margin: 0 1rem;
         font-family: "Source Sans Pro";
+        transition: 0.2s ease;
+        a {
+          text-decoration: none;
+          color: white;
+          font-size: 1.2rem;
+        }
+        :hover {
+          color: rgba(255, 255, 255, 0.724);
+        }
       }
     }
   }
