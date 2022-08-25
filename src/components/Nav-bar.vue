@@ -24,6 +24,14 @@
   width: 100%;
   background-color: #333533;
   position: fixed;
+  border-bottom: 3px solid transparent;
+  border-image: linear-gradient(
+    0.25turn,
+    rgba(34, 152, 255, 0.793),
+    rgba(255, 0, 128),
+    rgba(34, 152, 255, 0.793)
+  );
+  border-image-slice: 1;
   .content-container {
     display: flex;
     align-items: center;
@@ -31,14 +39,6 @@
     height: 80px;
     margin: 0 2rem;
     color: white;
-    border-bottom: 3px solid transparent;
-    border-image: linear-gradient(
-      0.25turn,
-      rgba(34, 152, 255, 0.793),
-      rgba(255, 0, 128),
-      rgba(34, 152, 255, 0.793)
-    );
-    border-image-slice: 1;
     h1 {
       font-family: "Source Code Pro";
       margin: 0;
