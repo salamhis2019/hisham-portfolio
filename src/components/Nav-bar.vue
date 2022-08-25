@@ -33,6 +33,7 @@
       li {
         list-style-type: none;
         margin: 0 1rem;
+        font-family: "Source Sans Pro";
       }
     }
   }
