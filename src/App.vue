@@ -1,7 +1,7 @@
 <template>
   <div class="parent-container">
     <NavBar />
-    <component :is="currentComponent"></component>
+    <component :is="currentComponent" />
   </div>
 </template>
 
