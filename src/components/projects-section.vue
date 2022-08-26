@@ -86,6 +86,7 @@ import ButtonLinks from '@/components/button-links.vue';
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 110%;
     min-height: 300px;
     margin-bottom: 3rem;
     .stock-icon {
@@ -98,7 +99,7 @@ import ButtonLinks from '@/components/button-links.vue';
     }
     .card-container {
       height: 100%;
-      width: 600px;
+      width: 650px;
       h3 {
         margin: 0;
         color: white;
@@ -114,7 +115,7 @@ import ButtonLinks from '@/components/button-links.vue';
         color: rgba(255, 255, 255, 0.739);
         li {
           list-style-type: none;
-          margin-bottom: 0.5rem;
+          margin-bottom: 1.2rem;
         }
       }
     }
