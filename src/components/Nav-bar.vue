@@ -3,11 +3,11 @@
     <div class="content-container">
       <h1>Hisham Salameh</h1>
       <nav class="nav-items-container">
-        <li @click="setComponent(WorkExperience)">
-          <a href="#">Work Experience</a>
-        </li>
         <li @click="setComponent(ProjectsSection)">
           <a href="#">Projects</a>
+        </li>
+        <li @click="setComponent(WorkExperience)">
+          <a href="#">Work Experience</a>
         </li>
         <li @click="setComponent(AboutMe)">
           <a href="#">About Me</a>
@@ -28,6 +28,8 @@ import usePortfolioStore from "@/stores/portfolio.store";
 const portfolioStore = usePortfolioStore();
 
 const { currentComponent } = storeToRefs(portfolioStore);
+
+currentComponent.value = ProjectsSection;
 
 function setComponent(component: any) {
   currentComponent.value = shallowRef(component);
