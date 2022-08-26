@@ -2,12 +2,33 @@
   <div class="work-experience-container">
     <div class="work-experience-content">
       <div class="header-container">
-        <h2 class="section-header">
-          Projects
-        </h2>
+        <div class="header-content">
+          <h2 class="section-header">
+            Projects<span class="period"> .</span>
+          </h2>
+          <p class="description">Here are some of the awesome projects that I have created in my time doing web development.</p>          
+        </div>
       </div>
+      <hr>
       <div class="content-container">
         <img class="stock-icon" src="@/assets/stock-icon.png" alt="">
+        <div class="card-container">
+          <h3>Stock Project with Vantage API</h3>
+          <ul class="description-container">
+            <li>
+              Developed a stock app that displays recent closing data from various stocks/cryptos from a public API. 
+            </li>
+            <li>
+              The UI was created using Vue 3 and SASS, and the data was fetched using axios and the fetch API.
+            </li>
+            <li>
+              Utilized the most recent vue features and rendered the components dynamically between the two apps. Reusability concepts were implemented for readability and the chart.js library was used to render the stock chart.
+            </li>
+            <li>
+              Used Pinia to maintain the state of the app and utilized the composition API.
+            </li>
+          </ul>
+        </div>
       </div>      
     </div>
   </div>
@@ -20,20 +41,68 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  .section-header {
-    font-size: 4rem;
-    font-family: 'Source Code Pro';
-    color: white;
-    .period {
-      height: 20px;
-      font-size: 7rem;
-      font-family: 'Oswald';
+  .work-experience-content {
+    width: 900px;
+    .header-container {
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      height: 300px;
+      padding-bottom: 2rem;
+      .description {
+        font-family: 'Source Sans Pro';
+        font-size: 1.2rem;
+        color: white;
+      }
+      .section-header {
+        margin-bottom: 3rem;
+        font-size: 4rem;
+        font-family: 'Source Code Pro';
+        color: white;
+        .period {
+          font-size: 5rem;
+          font-family: 'Oswald';
+          background: -webkit-linear-gradient(#004cff, #ff0080);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+    }
+    hr {
+      border: 0;
+      height: 2.5px;
+      background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
     }
   }
   .content-container {
-    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 300px;
+    margin: 5rem 0;
     .stock-icon {
-      width: 15rem;
+      width: 240px;
+      height: 240px;
+    }
+    .card-container {
+      width: 600px;
+      h3 {
+        margin: 0;
+        color: white;
+        font-family: 'Source Sans Pro';
+        font-size: 2rem;
+      }
+      .description-container {
+        padding: 0;
+        font-size: 1.2rem;
+        font-family: 'Source Sans Pro';
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.739);
+        li {
+          list-style-type: none;
+          margin-bottom: 0.5rem;
+        }
+      }
     }
   }
 }
