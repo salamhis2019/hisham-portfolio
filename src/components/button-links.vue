@@ -29,6 +29,7 @@ defineProps(['text', 'link'])
   transition: 0.2s ease;
   &:hover {
     background: rgba(255, 255, 255, 0.27);
+    text-decoration: underline;
   }
 }
 </style>
