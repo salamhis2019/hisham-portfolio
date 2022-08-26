@@ -3,21 +3,32 @@
     <div class="content-container">
       <h1>Hisham Salameh</h1>
       <nav class="nav-items-container">
-        <li>
-          <a href="">Work Experience</a>
+        <li @click="setComponent('WorkExperience')">
+          <a href="#">Work Experience</a>
         </li>
-        <li>
-          <a href="">Projects</a>
+        <li @click="setComponent('ProjectsSection')">
+          <a href="#">Projects</a>
         </li>
-        <li>
-          <a href="">About Me</a>
+        <li @click="setComponent('AboutMe')">
+          <a href="#">About Me</a>
         </li>
       </nav>
     </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { storeToRefs } from "pinia";
+import usePortfolioStore from "@/stores/portfolio.store";
+
+const portfolioStore = usePortfolioStore();
+
+const { currentComponent } = storeToRefs(portfolioStore);
+
+function setComponent(component: string) {
+  currentComponent.value = component;
+}
+</script>
 
 <style lang="scss" scoped>
 .nav {
