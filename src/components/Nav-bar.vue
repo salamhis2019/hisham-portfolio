@@ -3,14 +3,15 @@
     <div class="content-container">
       <h1>Hisham Salameh</h1>
       <nav class="nav-items-container">
-        <li
-          v-for="({navText, param}) in navItems"
+        <router-link
+          v-for="({navText, param, link}) in navItems"
+          :to="`/${link}`"
           :key="navText"
           @click="setComponent(param)"
           :class="{}"
         >
           <a href="#">{{ navText }}</a>
-        </li>
+        </router-link>
       </nav>
     </div>
   </div>
@@ -32,14 +33,17 @@ const navItems = [
   {
     "navText": 'Projects',
     "param": ProjectsSection,
+    "link": 'projects'
   },
   {
     "navText": 'Work Experience',
     "param": WorkExperience,
+    "link": "work-experience"
   },
   {
     "navText": 'About Me',
     "param": AboutMe,
+    "link": "about-me"
   }
 ];
 
