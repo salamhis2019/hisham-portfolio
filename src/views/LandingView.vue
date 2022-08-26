@@ -2,7 +2,9 @@
   <div class="parent-container">
     <NavBar />
     <div class="page-container">
-      <component :is="currentComponent" />
+      <Transition>
+        <component :is="currentComponent" />
+      </Transition>
     </div>
   </div>
 </template>
@@ -24,5 +26,14 @@ const { currentComponent } = storeToRefs(portfolioStore);
     height: 100%;
     background-color: #1c202b;
   }
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 </style>
