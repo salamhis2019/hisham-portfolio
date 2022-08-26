@@ -7,11 +7,13 @@
       </Transition>
     </div>
   </div>
+  <Footer />
 </template>
 
 <script lang="ts" setup>
 import { storeToRefs } from "pinia";
 import NavBar from "@/components/Nav-bar.vue";
+import Footer from "@/components/footer-section.vue";
 import usePortfolioStore from "@/stores/portfolio.store";
 
 const portfolioStore = usePortfolioStore();
@@ -21,7 +23,7 @@ const { currentComponent } = storeToRefs(portfolioStore);
 
 <style lang="scss">
 .parent-container {
-  height: 100%;
+  min-height: 100%;
   .page-container {
     height: 100%;
     background-color: #1c202b;
