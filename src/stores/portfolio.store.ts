@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 interface State {
-  currentComponent: string,
+  currentComponent: string;
 }
 
 const usePortfolioStore = defineStore("portfolio", {
