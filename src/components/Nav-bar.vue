@@ -6,10 +6,10 @@
         <li @click="setComponent(WorkExperience)">
           <a href="#">Work Experience</a>
         </li>
-        <li @click="setComponent('ProjectsSection')">
+        <li @click="setComponent(ProjectsSection)">
           <a href="#">Projects</a>
         </li>
-        <li @click="setComponent('AboutMe')">
+        <li @click="setComponent(AboutMe)">
           <a href="#">About Me</a>
         </li>
       </nav>
@@ -21,6 +21,8 @@
 import { shallowRef } from "vue";
 import { storeToRefs } from "pinia";
 import WorkExperience from "@/components/Work-experience.vue";
+import ProjectsSection from "@/components/projects-section.vue";
+import AboutMe from "@/components/about-me.vue";
 import usePortfolioStore from "@/stores/portfolio.store";
 
 const portfolioStore = usePortfolioStore();
