@@ -3,14 +3,13 @@
     <div class="content-container">
       <h1>Hisham Salameh</h1>
       <nav class="nav-items-container">
-        <li @click="setComponent(ProjectsSection)">
-          <a href="#">Projects</a>
-        </li>
-        <li @click="setComponent(WorkExperience)">
-          <a href="#">Work Experience</a>
-        </li>
-        <li @click="setComponent(AboutMe)">
-          <a href="#">About Me</a>
+        <li
+          v-for="({navText, param}) in navItems"
+          :key="navText"
+          @click="setComponent(param)"
+          :class="{}"
+        >
+          <a href="#">{{ navText }}</a>
         </li>
       </nav>
     </div>
@@ -28,6 +27,21 @@ import usePortfolioStore from "@/stores/portfolio.store";
 const portfolioStore = usePortfolioStore();
 
 const { currentComponent } = storeToRefs(portfolioStore);
+
+const navItems = [
+  {
+    "navText": 'Projects',
+    "param": ProjectsSection,
+  },
+  {
+    "navText": 'Work Experience',
+    "param": WorkExperience,
+  },
+  {
+    "navText": 'About Me',
+    "param": AboutMe,
+  }
+];
 
 currentComponent.value = ProjectsSection;
 
