@@ -1,7 +1,9 @@
 <template>
   <div class="parent-container">
     <NavBar />
-    <component :is="currentComponent" />
+    <div class="page-container">
+      <component :is="currentComponent" />
+    </div>
   </div>
 </template>
 
@@ -15,4 +17,12 @@ const portfolioStore = usePortfolioStore();
 const { currentComponent } = storeToRefs(portfolioStore);
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.parent-container {
+  height: 100%;
+  .page-container {
+    height: 100%;
+    background-color: #1c202b;
+  }
+}
+</style>
