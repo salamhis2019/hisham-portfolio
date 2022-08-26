@@ -8,6 +8,7 @@ import LandingView from '@/views/LandingView.vue';
 
 <style lang="scss">
 html,
+#app,
 body {
   height: 100%;
   margin: 0;
