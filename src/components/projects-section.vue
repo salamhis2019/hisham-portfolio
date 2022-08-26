@@ -79,7 +79,7 @@ import ButtonLinks from '@/components/button-links.vue';
       border: 0;
       height: 2.5px;
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-      margin-bottom: 5rem;
+      margin-bottom: 4rem;
     }
   }
   .content-container {
@@ -97,6 +97,7 @@ import ButtonLinks from '@/components/button-links.vue';
       }
     }
     .card-container {
+      height: 100%;
       width: 600px;
       h3 {
         margin: 0;
@@ -106,6 +107,7 @@ import ButtonLinks from '@/components/button-links.vue';
       }
       .description-container {
         padding: 0;
+        margin-bottom: 2rem;
         font-size: 1.2rem;
         font-family: 'Source Sans Pro';
         font-weight: 600;
