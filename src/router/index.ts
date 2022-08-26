@@ -3,7 +3,7 @@ import LandingView from '../views/LandingView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/:currentPage?',
+    path: '/:currentPage',
     name: 'LandingView',
     component: LandingView,
   }

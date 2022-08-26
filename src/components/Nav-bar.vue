@@ -8,9 +8,10 @@
           :to="`/${link}`"
           :key="navText"
           @click="setComponent(param)"
-          :class="{}"
+          class="nav-item"
+          :class="{'active': route.params.currentPage === link}"
         >
-          <a href="#">{{ navText }}</a>
+          <li>{{ navText }}</li>
         </router-link>
       </nav>
     </div>
@@ -20,12 +21,14 @@
 <script lang="ts" setup>
 import { shallowRef } from "vue";
 import { storeToRefs } from "pinia";
+import { useRoute } from "vue-router";
 import WorkExperience from "@/components/Work-experience.vue";
 import ProjectsSection from "@/components/projects-section.vue";
 import AboutMe from "@/components/about-me.vue";
 import usePortfolioStore from "@/stores/portfolio.store";
 
 const portfolioStore = usePortfolioStore();
+const route = useRoute();
 
 const { currentComponent } = storeToRefs(portfolioStore);
 
@@ -79,19 +82,28 @@ function setComponent(component: any) {
     }
     .nav-items-container {
       display: flex;
-      li {
-        list-style-type: none;
-        margin: 0 1rem;
-        font-family: "Source Sans Pro";
+      align-items: center;
+      .nav-item {
+        text-decoration: none;
+        color: white;
+        font-size: 1.2rem;
         transition: 0.2s ease;
-        a {
-          text-decoration: none;
-          color: white;
-          font-size: 1.2rem;
+        li {
+          list-style-type: none;
+          margin: 0 1rem;
+          font-family: "Source Sans Pro";
+          transition: 0.2s ease;
         }
         :hover {
           color: rgba(255, 255, 255, 0.724);
         }
+      }
+      .active {
+        background-color: rgba(255, 255, 255, 0.10);
+        padding: 0.5rem 0;
+        border: 0.5px solid rgba(255, 255, 255, 0.498);
+        border-radius: 12px;
+        box-shadow: 2px 2px 0px white;
       }
     }
   }
