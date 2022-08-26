@@ -64,9 +64,9 @@ function setComponent(component: any) {
   border-bottom: 3px solid transparent;
   border-image: linear-gradient(
     0.25turn,
-    rgba(34, 152, 255, 0.793),
-    rgba(255, 0, 128),
-    rgba(34, 152, 255, 0.793)
+    #004cff,
+    #ff0080,
+    #004cff
   );
   border-image-slice: 1;
   .content-container {
