@@ -28,19 +28,26 @@
               Used Pinia to maintain the state of the app and utilized the composition API.
             </li>
           </ul>
+          <ButtonLinks 
+            :text="'Vue Stock App'"
+            :link="'https://vuestockapp.firebaseapp.com/'"
+          />
         </div>
       </div>      
     </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import ButtonLinks from '@/components/button-links.vue';
+</script>
 
 <style lang="scss" scoped>
 .work-experience-container {
   display: flex;
   justify-content: center;
   width: 100%;
+  background: #1c202b;
   .work-experience-content {
     width: 900px;
     .header-container {
@@ -72,17 +79,22 @@
       border: 0;
       height: 2.5px;
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+      margin-bottom: 5rem;
     }
   }
   .content-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 300px;
-    margin: 5rem 0;
+    min-height: 300px;
+    margin-bottom: 3rem;
     .stock-icon {
       width: 240px;
       height: 240px;
+      transition: 0.2s ease;
+      &:hover {
+        transform: scale(1.1);
+      }
     }
     .card-container {
       width: 600px;
