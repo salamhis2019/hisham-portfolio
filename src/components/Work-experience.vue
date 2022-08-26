@@ -6,4 +6,8 @@
 
 <script lang="ts" setup></script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+h1 {
+  margin: 0;
+}
+</style>
