@@ -3,7 +3,7 @@
     <div class="content-container">
       <h1>Hisham Salameh</h1>
       <nav class="nav-items-container">
-        <li @click="setComponent('WorkExperience')">
+        <li @click="setComponent(WorkExperience)">
           <a href="#">Work Experience</a>
         </li>
         <li @click="setComponent('ProjectsSection')">
@@ -18,15 +18,17 @@
 </template>
 
 <script lang="ts" setup>
+import { shallowRef } from "vue";
 import { storeToRefs } from "pinia";
+import WorkExperience from "@/components/Work-experience.vue";
 import usePortfolioStore from "@/stores/portfolio.store";
 
 const portfolioStore = usePortfolioStore();
 
 const { currentComponent } = storeToRefs(portfolioStore);
 
-function setComponent(component: string) {
-  currentComponent.value = component;
+function setComponent(component: any) {
+  currentComponent.value = shallowRef(component);
 }
 </script>
 
@@ -34,7 +36,6 @@ function setComponent(component: string) {
 .nav {
   width: 100%;
   background-color: #333533;
-  position: fixed;
   border-bottom: 3px solid transparent;
   border-image: linear-gradient(
     0.25turn,
