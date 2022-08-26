@@ -84,6 +84,7 @@ function setComponent(component: any) {
       display: flex;
       align-items: center;
       .nav-item {
+        margin: 0 0.5rem;
         text-decoration: none;
         color: white;
         font-size: 1.2rem;
