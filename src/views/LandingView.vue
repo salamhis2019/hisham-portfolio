@@ -27,9 +27,12 @@ const { currentComponent } = storeToRefs(portfolioStore);
     background-color: #1c202b;
   }
 }
-.v-enter-active,
-.v-leave-active {
+.v-enter-active {
   transition: opacity 0.5s ease;
+}
+
+.v-leave-from {
+  display: none;
 }
 
 .v-enter-from,
