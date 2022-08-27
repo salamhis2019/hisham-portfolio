@@ -55,7 +55,7 @@
             </li>
           </ul>
           <ButtonLinks 
-            :text="'Vue Stock App'"
+            :text="'Personal Portfolio Project'"
             :link="'https://vuestockapp.firebaseapp.com/'"
           />
         </div>
