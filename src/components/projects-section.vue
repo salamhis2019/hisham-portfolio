@@ -10,6 +10,7 @@
         </div>
       </div>
       <hr>
+      <div class="banner stock-banner"></div>
       <div class="content-container">
         <img class="stock-icon" src="@/assets/stock-icon.png" alt="">
         <div class="card-container">
@@ -34,6 +35,31 @@
           />
         </div>
       </div>      
+      <div class="banner portfolio-banner"></div>
+      <div class="content-container">
+        <img class="stock-icon" src="@/assets/portfolio-icon.png" alt="">
+        <div class="card-container">
+          <h3>Portfolio Project with Vue</h3>
+          <ul class="description-container">
+            <li>
+              Developed a stock app that displays recent closing data from various stocks/cryptos from a public API. 
+            </li>
+            <li>
+              The UI was created using Vue 3 and SASS, and the data was fetched using axios and the fetch API.
+            </li>
+            <li>
+              Utilized the most recent vue features and rendered the components dynamically between the two apps. Reusability concepts were implemented for readability and the chart.js library was used to render the stock chart.
+            </li>
+            <li>
+              Used Pinia to maintain the state of the app and utilized the composition API.
+            </li>
+          </ul>
+          <ButtonLinks 
+            :text="'Vue Stock App'"
+            :link="'https://vuestockapp.firebaseapp.com/'"
+          />
+        </div>
+      </div>     
     </div>
   </div>
 </template>
@@ -82,13 +108,28 @@ import ButtonLinks from '@/components/button-links.vue';
       margin-bottom: 4rem;
     }
   }
+  .stock-banner {
+    background: linear-gradient(to right, #004cff4b, #ff008081), url('@/assets/project-section/stock.png');
+  }
+  .portfolio-banner {
+    background: linear-gradient(to right, #004cff4b, #ff008081), url('@/assets/project-section/portfolio.png');
+  }
+  .banner {
+    height: 200px;
+    width: 100%;
+    margin-bottom: 3rem;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 4px 4px 0px white;
+  }
   .content-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 110%;
     min-height: 300px;
-    margin-bottom: 3rem;
+    margin-bottom: 5rem;
     .stock-icon {
       width: 240px;
       height: 240px;
