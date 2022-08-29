@@ -1,7 +1,6 @@
 <template>
   <div class="nav">
     <div class="content-container">
-      <h1>Hisham Salameh</h1>
       <nav class="nav-items-container">
         <router-link
           v-for="({navText, param, link}) in navItems"
@@ -33,6 +32,10 @@ const route = useRoute();
 const { currentComponent } = storeToRefs(portfolioStore);
 
 const navItems = [
+  {
+    "navText": 'Home',
+    "link": 'home'
+  },
   {
     "navText": 'Projects',
     "param": ProjectsSection,
@@ -72,7 +75,7 @@ function setComponent(component: any) {
   .content-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     height: 80px;
     margin: 0 2rem;
     color: white;
