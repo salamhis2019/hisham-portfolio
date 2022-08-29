@@ -5,7 +5,7 @@
     <div class="loading-text-container">
       <div class="primary-text">
         <p>
-          Hello, my name is <span class="name">Hisham.</span>
+          Hello, my name is <span class="name">Hisham</span>.
         </p>
       </div>
       <br>
@@ -24,8 +24,7 @@
   min-height: 100%;
   margin-left: 10rem;
   .loading-text-container {
-    .primary-text {
-      width: 610px;
+    .primary-text, .secondary-text {
       p {
         opacity: 0;
         font-size: 2rem;
@@ -39,27 +38,21 @@
         animation: 
           typing 2s steps(30, end),
           blink-caret .75s step-end infinite;
-        animation-delay: 1s;
         .name {
           font-weight: 700;
         }
       }
     }
+    .primary-text {
+      width: 610px;
+      p {
+        margin: 0 auto;
+        animation-delay: 1s;
+      }
+    }
     .secondary-text {
       min-width: 300px;
       p {
-        opacity: 0;
-        font-size: 2rem;
-        color: white;
-        font-family: 'Source Code Pro';
-        overflow: hidden;
-        border-right: .15em solid #ff0080;
-        white-space: nowrap;
-        margin: 0 auto;
-        letter-spacing: .15em;
-        animation: 
-          typing 2s steps(30, end),
-          blink-caret .75s step-end infinite;
         animation-delay: 3s;
       }
     }
