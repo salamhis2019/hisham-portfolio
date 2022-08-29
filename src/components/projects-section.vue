@@ -42,16 +42,16 @@
           <h3>Portfolio Project with Vue</h3>
           <ul class="description-container">
             <li>
-              Developed a stock app that displays recent closing data from various stocks/cryptos from a public API. 
+              Developed a personal portfolio site using Vue 3 and the script setup with Vite, Pinia and SASS
             </li>
             <li>
-              The UI was created using Vue 3 and SASS, and the data was fetched using axios and the fetch API.
+              Tested the application using vue test utils and jest, includes unit and store testing
             </li>
             <li>
-              Utilized the most recent vue features and rendered the components dynamically between the two apps. Reusability concepts were implemented for readability and the chart.js library was used to render the stock chart.
+              Utilized the most recent vue features and created the portfolio by making it route driven
             </li>
             <li>
-              Used Pinia to maintain the state of the app and utilized the composition API.
+              Implemented good github hygeine by creating semantic commits and working on different branches for features
             </li>
           </ul>
           <ButtonLinks 
