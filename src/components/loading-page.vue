@@ -3,9 +3,17 @@
     class="loading-container"
   >
     <div class="loading-text-container">
-      <h1>Hello, my name is <span class="name">Hisham!</span></h1>
+      <div class="primary-text">
+        <p>
+          Hello, my name is <span class="name">Hisham.</span>
+        </p>
+      </div>
+      <br>
+      <div class="secondary-text">
+        <p>Welcome to my portolio site!</p>
+      </div>
     </div>
-  </div>  
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -16,31 +24,64 @@
   min-height: 100%;
   margin-left: 10rem;
   .loading-text-container {
-    width: 630px;
-    h1 {
-      color: #fff;
-      font-family: 'Source Code Pro';
-      overflow: hidden;
-      border-right: .15em solid #ff0080;
-      white-space: nowrap;
-      margin: 0 auto;
-      letter-spacing: .15em;
-      animation: 
-        typing 1.8s steps(30, end),
-        blink-caret .75s step-end infinite;
-      .name {
-        font-size: 2.5rem;
-        font-style: bold;
+    .primary-text {
+      width: 610px;
+      p {
+        opacity: 0;
+        font-size: 2rem;
+        color: #fff;
+        font-family: 'Source Code Pro';
+        overflow: hidden;
+        border-right: .15em solid #ff0080;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: .15em;
+        animation: 
+          typing 2s steps(30, end),
+          blink-caret .75s step-end infinite;
+        animation-delay: 1s;
+        .name {
+          font-weight: 700;
+        }
+      }
+    }
+    .secondary-text {
+      min-width: 300px;
+      p {
+        opacity: 0;
+        font-size: 2rem;
+        color: white;
+        font-family: 'Source Code Pro';
+        overflow: hidden;
+        border-right: .15em solid #ff0080;
+        white-space: nowrap;
+        margin: 0 auto;
+        letter-spacing: .15em;
+        animation: 
+          typing 2s steps(30, end),
+          blink-caret .75s step-end infinite;
+        animation-delay: 3s;
       }
     }
 
     @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
+      from {
+        display: block;
+        width: 0 
+      }
+      to { 
+        display: block;
+        opacity: 1;
+        width: 100%;
+      }
     }
 
     @keyframes blink-caret {
-      from, to { border-color: transparent }
+      from, to { 
+        display: block;
+        opacity: 1;
+        border-color: transparent 
+      }
       50% { border-color: #ff0080 }
     }
   }
