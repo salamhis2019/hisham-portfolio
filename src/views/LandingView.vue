@@ -23,7 +23,7 @@ const contentReady = ref<boolean>(false);
 
 setTimeout(() => {
   contentReady.value = true;
-}, 6200)
+}, 6000)
 </script>
 
 <style lang="scss" scoped>
