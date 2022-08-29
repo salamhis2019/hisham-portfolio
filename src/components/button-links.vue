@@ -5,7 +5,7 @@
     class="button-link"
   >
     {{ text }}
-    <i class='fas fa-external-link-alt' style='font-size:24px'></i>
+    <i class="fa fa-external-link"></i>
   </a>
 </template>
 
@@ -30,6 +30,9 @@ defineProps(['text', 'link'])
   &:hover {
     background: rgba(255, 255, 255, 0.27);
     text-decoration: underline;
+  }
+  .fa-external-link {
+    font-size: 24px;
   }
 }
 </style>
