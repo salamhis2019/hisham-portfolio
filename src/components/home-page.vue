@@ -38,7 +38,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 5rem;
+    padding: 4rem 0;
     width: 100%;
     .hero-content {
       display: flex;
