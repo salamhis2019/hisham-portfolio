@@ -22,6 +22,7 @@ import { shallowRef } from "vue";
 import { storeToRefs } from "pinia";
 import { useRoute } from "vue-router";
 import WorkExperience from "@/components/Work-experience.vue";
+import HomePage from "@/components/home-page.vue";
 import ProjectsSection from "@/components/projects-section.vue";
 import AboutMe from "@/components/about-me.vue";
 import usePortfolioStore from "@/stores/portfolio.store";
@@ -34,6 +35,7 @@ const { currentComponent } = storeToRefs(portfolioStore);
 const navItems = [
   {
     "navText": 'Home',
+    "param": HomePage,
     "link": 'home'
   },
   {
@@ -53,7 +55,7 @@ const navItems = [
   }
 ];
 
-currentComponent.value = ProjectsSection;
+currentComponent.value = HomePage;
 
 function setComponent(component: any) {
   currentComponent.value = shallowRef(component);
