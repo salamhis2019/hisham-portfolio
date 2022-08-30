@@ -9,10 +9,18 @@
           <p class="description">UI Engineer and UX Designer with a focus on creating modern web applications</p>
           <ul class="content-container">
             <li>
-              <i class="fa fa-linkedin"></i>
+              <a href="https://www.linkedin.com/in/hishamsalameh"
+                target="blank"
+              >
+                <i class="fa fa-linkedin"></i>
+              </a>
             </li>
             <li>
-              <i class="fa fa-github"></i>      
+              <a href="https://github.com/salamhis2019"
+                target="blank"
+              >
+                <i class="fa fa-github"></i>
+              </a>
             </li>
           </ul>
         </div>
@@ -38,7 +46,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 4rem 0;
+    padding-top: 4rem;
     width: 100%;
     .hero-content {
       display: flex;
@@ -64,12 +72,10 @@
           color: white;
         }
         .description {
-          color: white;
+          color: rgb(239, 239, 239);
           font-size: 2rem;
           font-weight: 600;
-          background: -webkit-linear-gradient(#004cff, #ff0080);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          text-shadow: 2px 2px 0px #ff0080c0;
         }
         .content-container {
           display: flex;
@@ -77,20 +83,33 @@
           gap: 3rem;
           padding: 0;
           list-style-type: none;
-          .fa-linkedin {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #1c202b;
-            background: white;
-            font-size: 3rem;
-            height: 69px;
-            width: 69px;
-            border-radius: 50%;
-          }
-          .fa-github {
-            color: white;
-            font-size: 5rem;
+          a {
+            text-decoration: none;
+            .fa-linkedin {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              color: #1c202b;
+              background: white;
+              font-size: 3rem;
+              height: 69px;
+              width: 69px;
+              border-radius: 50%;
+              transition: 0.3s;
+              &:hover {
+                background: -webkit-linear-gradient(#004cff, #ff0080);
+              }
+            }
+            .fa-github {
+              color: white;
+              font-size: 5rem;
+              transition: 0.3s;
+              &:hover {
+                background: -webkit-linear-gradient(#004cff, #ff0080);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+              }
+            }
           }
         }
       }
