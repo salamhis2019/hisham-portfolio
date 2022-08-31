@@ -40,16 +40,37 @@
             <p class="skill">Testing</p>
           </div>
           <div class="row">
-            <div class="skill">GIT</div>
-            <div class="skill">GitHub</div>
-            <div class="skill">Agile</div>
-            <div class="skill">Code Review</div>
+            <p class="skill">GIT</p>
+            <p class="skill">GitHub</p>
+            <p class="skill">Agile</p>
+            <p class="skill">Code Review</p>
           </div>
           <div class="row">
-            <div class="skill">Figma</div>
-            <div class="skill">PhotoShop</div>
-            <div class="skill">Figma</div>
-            <div class="skill">Node.js</div>
+            <p class="skill">Figma</p>
+            <p class="skill">PhotoShop</p>
+            <p class="skill">Figma</p>
+            <p class="skill">Node.js</p>
+          </div>
+          <h3 class="skills-header">Soft Skills</h3>
+          <div class="row">
+            <p class="skill soft">Personable</p>
+            <p class="skill soft">Passionate</p>
+            <p class="skill soft">Ambitious</p>
+          </div>
+          <div class="row">
+            <p class="skill soft">Collaboration</p>
+            <p class="skill soft">Accountable</p>
+            <p class="skill soft">Efficient</p>
+          </div>
+          <div class="row">
+            <p class="skill soft">Outgoing</p>
+            <p class="skill soft">Self-aware</p>
+            <p class="skill soft">Self-learning</p>
+          </div>
+          <div class="row">
+            <p class="skill soft">Accountability</p>
+            <p class="skill soft">Communication</p>
+            <p class="skill soft">Adaptable</p>
           </div>
         </div>
       </div>
@@ -152,6 +173,9 @@ import ButtonLinks from '@/components/button-links.vue';
           margin: 0;
           padding: 0.5rem 1.5rem;
           border-radius: 5px;
+        }
+        .soft {
+          background: #ff0080ba;
         }
       }
     }
