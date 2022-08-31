@@ -14,6 +14,7 @@
       </div>
       <div class="about-content-container">
         <div class="about-content-text">
+          <h3 class="bio-header">My Bio</h3>
           <p class="about-item">
             I'm a <span class="key-word">Frontend Web Developer</span> building the easy to use and high performing web applications. Check out some of my work in the Projects section, and my previous experience in the work section!
           </p>
@@ -25,6 +26,7 @@
           </p>
         </div>
         <div class="skills-container">
+          <h3 class="skills-header">Skills</h3>
           <div class="row">
             <p class="skill">JavaScript</p>
             <p class="skill">HTML</p>
@@ -103,7 +105,15 @@ import ButtonLinks from '@/components/button-links.vue';
   .about-content-container {
     width: 1000px;
     display: flex;
+    gap: 2rem;
     .about-content-text {
+      .bio-header {
+        margin: 0;
+        font-family: 'Source Sans Pro';
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+      }
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -123,6 +133,13 @@ import ButtonLinks from '@/components/button-links.vue';
       flex-direction: column;
       gap: 1rem;
       width: 50%;
+      .skills-header {
+        margin: 0;
+        font-family: 'Source Sans Pro';
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+      }
       .row {
         display: flex;
         gap: 1rem;
@@ -131,7 +148,9 @@ import ButtonLinks from '@/components/button-links.vue';
         .skill {
           color: white;
           background: #323f61;
-          padding: 0.2rem 0.5rem;
+          margin: 0;
+          padding: 0.5rem 1.5rem;
+          border-radius: 5px;
         }
       }
     }
