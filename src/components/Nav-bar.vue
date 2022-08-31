@@ -21,7 +21,7 @@
 import { shallowRef } from "vue";
 import { storeToRefs } from "pinia";
 import { useRoute } from "vue-router";
-import WorkExperience from "@/components/Work-experience.vue";
+import WorkExperience from "@/components/Work-section.vue";
 import HomePage from "@/components/home-page.vue";
 import ProjectsSection from "@/components/projects-section.vue";
 import AboutMe from "@/components/about-me.vue";
