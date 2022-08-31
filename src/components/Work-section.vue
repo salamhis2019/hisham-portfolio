@@ -10,15 +10,7 @@
         </div>
       </div>
       <hr>
-      <WorkExperience 
-        :company-title="'Apple'"
-        :logo="''"
-        :job-title="'UI Engineering Intern'"
-        :date="'05/31/2022 - 08/26/2022'"
-        :bullet-one="'Own and drive UI assigned tasks for all phases from development to production'"
-        :bullet-two="'Become subject matter expert for intern project while working with technical leaders'"
-        :bullet-three="'Adhere to various processes defined within team such as Agile, code review, or Git.'"
-      />
+      <WorkExperience />
     </div>
   </div>
 </template>
