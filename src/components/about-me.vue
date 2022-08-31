@@ -106,6 +106,7 @@ import ButtonLinks from '@/components/button-links.vue';
     width: 1000px;
     display: flex;
     gap: 2rem;
+    margin-bottom: 3rem;
     .about-content-text {
       .bio-header {
         margin: 0;
