@@ -10,6 +10,29 @@
         </div>
       </div>
       <hr>
+      <div class="experience-container">
+        <div class="job-overview">
+          <h3>Apple</h3>
+          <p class="logo"></p>
+        </div>
+        <div class="job-description">
+          <div class="title-container">
+            <p class="title">UI Engineering Intern</p>
+            <p class="date">05/31/2022 - 08/26/2022</p>
+          </div>
+          <ul>
+            <li>
+              Own and drive UI assigned tasks for all phases from development to production
+            </li>
+            <li>
+              Become subject matter expert for intern project while working with technical leaders
+            </li>
+            <li>
+              Adhere to various processes defined within team such as Agile, code review, or Git.
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -56,40 +79,55 @@
       margin-bottom: 4rem;
     }
   }
-  .content-container {
+
+  .experience-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 110%;
-    min-height: 300px;
-    margin-bottom: 3rem;
-    .stock-icon {
-      width: 240px;
-      height: 240px;
-      transition: 0.2s ease;
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-    .card-container {
-      height: 100%;
-      width: 650px;
+    gap: 2rem;
+    font-family: 'Source Sans Pro';
+    color: white;
+    .job-description, .job-overview {
       h3 {
         margin: 0;
-        color: white;
-        font-family: 'Source Sans Pro';
+      }
+      p {
+        margin: 0;
+      }
+    }
+    .job-overview {
+      h3 {
         font-size: 2rem;
       }
-      .description-container {
+      .logo {
+        font-size: 7rem;
+      }
+    }
+    .job-description {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      .title-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        .title {
+          font-size: 2rem;
+          font-weight: 500;
+        }
+        .date {
+          font-size: 1.2rem;
+          font-style: italic;
+        }
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
         padding: 0;
-        margin-bottom: 2rem;
-        font-size: 1.2rem;
-        font-family: 'Source Sans Pro';
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.739);
+        margin: 0;
+        list-style-type: none;
         li {
-          list-style-type: none;
-          margin-bottom: 1.2rem;
+          font-size: 1.2rem;
         }
       }
     }
