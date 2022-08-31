@@ -7,7 +7,7 @@
             <h2 class="section-header">
               About Me<span class="period"> .</span>
             </h2>
-            <p class="description">Get to learn more about me and background, and what I do in my free time.</p>          
+            <p class="description">Learn more about what technologies I have experience in and why I love to do what I do!</p>          
           </div>
         </div>
         <hr>
