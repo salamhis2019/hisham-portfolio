@@ -8,7 +8,7 @@
         {{ workplace.company }}
       </p>
       <div
-        v-for="{ title, date, responsibilities } in workplace.positions"
+        v-for="({ title, date, responsibilities }, index) in workplace.positions"
         :key="title"
         class="positions-container"
       >
@@ -16,14 +16,17 @@
           <p class="job-title">{{ title }}</p>
           <p class="date">{{ date }}</p>
         </div>
-        <ul
-          v-for="description in responsibilities"
-          :key="description"
-        >
-          <li>
+        <ul>
+          <li
+            v-for="(description) in responsibilities"
+            :key="description"
+          >
             {{ description }}
           </li>
         </ul>
+        <hr
+          v-if="index === 0 && workplace.positions.length == 2"
+        >
       </div>
     </div>
   </div>
@@ -39,7 +42,7 @@ const workExperience = Jobs
 .experience-container {
   display: flex;
   width: 700px;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   padding: 2rem;
   gap: 3rem;
   font-family: 'Source Sans Pro';
@@ -73,33 +76,44 @@ const workExperience = Jobs
       font-weight: 700;
       text-shadow: 3px 3px 0px #ff0080b7;
     }
-    .title-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      .title {
-        font-size: 1.5rem;
-        font-weight: 500;
+    .positions-container {
+      .title-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 1rem;
+        .title {
+          font-size: 1.5rem;
+          font-weight: 500;
+        }
+        .date {
+          font-size: 1.2rem;
+          font-style: italic;
+        }
+        .job-title {
+          font-size: 1.5rem;
+        }
       }
-      .date {
-        font-size: 1.2rem;
-        font-style: italic;
-      }
-    }
-    .job-title {
-      font-size: 1.5rem;
-    }
-    ul {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      padding: 0;
-      margin: 0;
-      list-style-type: none;
-      li {
-        font-size: 1.2rem;
-        font-weight: 300;
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        li {
+          font-size: 1.2rem;
+          font-weight: 300;
+        }
+      } 
+      hr {
+        border: 0;
+        height: 5px;
+        width: 75%;
+        margin-top: 2rem;
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.475), white, rgba(255, 255, 255, 0.503));
+        border-radius: 15px;
       }
     }
   }
