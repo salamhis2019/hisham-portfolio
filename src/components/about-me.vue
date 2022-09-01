@@ -65,7 +65,7 @@ const softSkills = ['Personable', 'Passionate', 'Ambitious', 'Collaboration', 'A
   display: flex;
   justify-content: center;
   width: 100%;
-  background: #1c202b;
+  background: #13141a;
   .about-header {
     width: 900px;
     .header-container {

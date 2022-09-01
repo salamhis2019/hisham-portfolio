@@ -73,7 +73,7 @@ import ButtonLinks from '@/components/button-links.vue';
   display: flex;
   justify-content: center;
   width: 100%;
-  background: #1c202b;
+  background: #13141a;
   .work-experience-content {
     width: 900px;
     .header-container {

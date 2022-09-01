@@ -41,7 +41,7 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-  background: #1c202b;
+  background: #13141a;
   .homepage-content {
     display: flex;
     justify-content: center;
@@ -99,7 +99,7 @@
               display: flex;
               justify-content: center;
               align-items: center;
-              color: #1c202b;
+              color: #13141a;
               background: white;
               font-size: 3rem;
               height: 69px;

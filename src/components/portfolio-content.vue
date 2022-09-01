@@ -22,7 +22,7 @@ const { currentComponent } = storeToRefs(portfolioStore);
 <style lang="scss" scoped>
 .page-container {
   min-height: 100%;
-  background-color: #1c202b;
+  background-color: #13141a;
 }
 
 .v-leave-from {
