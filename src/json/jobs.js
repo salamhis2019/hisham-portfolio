@@ -9,6 +9,9 @@ export const test = [
           'Own and drive UI assigned tasks for all phases from development to production',
           'Become subject matter expert for intern project while working with technical leaders',
           'Adhere to various processes defined within team such as Agile, code review, or Git.',
+        ],
+        skills: [
+          'Vue', 'JavaScript', 'SASS', 'HTML', 'Jest', 'Vue Test Utils', 'Sketch', 'Photoshop'
         ]
       },
       {
@@ -18,7 +21,7 @@ export const test = [
           'Provide exemplary professional customer service and technical support on Apple products and software while under pressure',
           'Assembled team to assist manager in optimizing advisor role and improve mental and physical well- being on the job (project in progress)',
           'Consistently performed highly with customer satisfaction and resolving issues with efficiency'
-        ]
+        ],
       }
     ]
   },
@@ -31,6 +34,9 @@ export const test = [
         responsibilities: [
           'Met one on one with students to guide them through understanding the fundamentals of website creation with HTML and CSS',
           'Graded student assignments and provided additional feedback on how to improve their projects and website format'
+        ],
+        skills: [
+          'HTML', 'CSS',
         ]
       },
       {
@@ -40,6 +46,9 @@ export const test = [
           'Created prototypes and wireframes to present to project manager to determine which approach best fits the needs of the project',
           'Created interface elements using JavaScript to keep students engaged while maintaining a well formatted HTML structure',
           'Created an image carousel with bootstrap and manipulated DOM elements throug JavaScript to create logic for the interface',
+        ],
+        skills: [
+          'JavaScript', 'CSS', 'HTML', 'Photoshop', 'Figma'
         ]
       }
     ]
@@ -54,6 +63,9 @@ export const test = [
           'Implemented a focused, user-friendly interface with new HTML and CSS elements',
           'Implemented scheduling and news solution by embedding external documents into the website to allow for updateable info, saving the school $5000 annually',
           'Collaborated with peers and set meetings with departments and leadership across the school district to ensure each area was well represented'
+        ], 
+        skills: [
+          'HTML', 'SCSS', 'Wordpress', 'Photoshop'
         ]
       }
     ]

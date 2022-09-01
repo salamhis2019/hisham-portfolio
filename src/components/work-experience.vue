@@ -8,7 +8,7 @@
         {{ workplace.company }}
       </p>
       <div
-        v-for="({ title, date, responsibilities }, index) in workplace.positions"
+        v-for="({ title, date, responsibilities, skills }, index) in workplace.positions"
         :key="title"
         class="positions-container"
       >
@@ -16,12 +16,26 @@
           <p class="job-title">{{ title }}</p>
           <p class="date">{{ date }}</p>
         </div>
-        <ul>
+        <ul
+          class="description-container"
+        >
           <li
             v-for="(description) in responsibilities"
             :key="description"
           >
             {{ description }}
+          </li>
+        </ul>
+        <ul
+          class="skill-badges-container"
+          v-if="skills"
+        >
+          <li
+            v-for="item in skills"
+            :key="item"
+            class="skill-badge"
+          >
+            {{ item }}
           </li>
         </ul>
         <hr
@@ -41,7 +55,6 @@ const workExperience = Jobs
 <style lang="scss" scoped>
 .experience-container {
   display: flex;
-  width: 700px;
   margin-bottom: 4rem;
   padding: 2rem;
   gap: 3rem;
@@ -95,7 +108,7 @@ const workExperience = Jobs
           font-size: 1.5rem;
         }
       }
-      ul {
+      .description-container {
         display: flex;
         flex-direction: column;
         gap: 0.8rem;
@@ -106,7 +119,22 @@ const workExperience = Jobs
           font-size: 1.2rem;
           font-weight: 300;
         }
-      } 
+      }
+      .skill-badges-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin: 1.5rem 0 0 0;
+        padding: 0;
+        li {
+          list-style-type: none;
+          font-family: 'Source Code Pro';
+          padding: 0.5rem 1.5rem;
+          background: #323f61;
+          border-radius: 5px;
+          box-shadow: 1px 1px 0px white;
+        }
+      }
       hr {
         border: 0;
         height: 5px;
