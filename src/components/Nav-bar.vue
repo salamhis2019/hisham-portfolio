@@ -71,7 +71,10 @@ const param = computed(() => route.params.currentPage)
 
 function setComponentOnPageLoad(param: any) {
   components.forEach((component: any) => {
+    console.log(component);
     const keys = Object.keys(component);
+    console.log(keys[0]);
+    console.log(param);
     if (keys[0] === param) {
       currentComponent.value = component[param];
     }
@@ -81,6 +84,8 @@ function setComponentOnPageLoad(param: any) {
 watch(param, (current) => {
   setComponentOnPageLoad(current);
 })
+
+setComponentOnPageLoad(param.value)
 </script>
 
 <style lang="scss" scoped>
