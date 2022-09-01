@@ -81,8 +81,6 @@ function setComponentOnPageLoad(param: any) {
 watch(param, (current) => {
   setComponentOnPageLoad(current);
 })
-
-// setComponentOnPageLoad();
 </script>
 
 <style lang="scss" scoped>
