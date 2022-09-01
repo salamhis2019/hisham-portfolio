@@ -28,49 +28,23 @@
         <div class="skills-container">
           <h3 class="skills-header">Skills</h3>
           <div class="row">
-            <p class="skill">JavaScript</p>
-            <p class="skill">HTML</p>
-            <p class="skill">CSS</p>
-            <p class="skill">SASS</p>
-          </div>
-          <div class="row">
-            <p class="skill">Vue.js</p>
-            <p class="skill">React.js</p>
-            <p class="skill">Jest</p>
-            <p class="skill">Testing</p>
-          </div>
-          <div class="row">
-            <p class="skill">GIT</p>
-            <p class="skill">GitHub</p>
-            <p class="skill">Agile</p>
-            <p class="skill">Code Review</p>
-          </div>
-          <div class="row">
-            <p class="skill">Figma</p>
-            <p class="skill">PhotoShop</p>
-            <p class="skill">Figma</p>
-            <p class="skill">Node.js</p>
+            <p
+              v-for="skill in technicalSkills"
+              :key="skill"
+              class="skill"
+            >
+              {{ skill }}
+            </p>
           </div>
           <h3 class="skills-header">Soft Skills</h3>
           <div class="row">
-            <p class="skill soft">Personable</p>
-            <p class="skill soft">Passionate</p>
-            <p class="skill soft">Ambitious</p>
-          </div>
-          <div class="row">
-            <p class="skill soft">Collaboration</p>
-            <p class="skill soft">Accountable</p>
-            <p class="skill soft">Efficient</p>
-          </div>
-          <div class="row">
-            <p class="skill soft">Outgoing</p>
-            <p class="skill soft">Self-aware</p>
-            <p class="skill soft">Self-learning</p>
-          </div>
-          <div class="row">
-            <p class="skill soft">Accountability</p>
-            <p class="skill soft">Communication</p>
-            <p class="skill soft">Adaptable</p>
+            <p
+              v-for="skill in softSkills"
+              :key="skill"
+              class="skill soft"
+            >
+              {{ skill }}
+            </p>
           </div>
         </div>
       </div>
@@ -80,6 +54,10 @@
 
 <script lang="ts" setup>
 import ButtonLinks from '@/components/button-links.vue';
+
+const technicalSkills = ['JavaScript', 'HTML', 'CSS', 'SASS', 'Vue.js', 'React.js', 'Jest', 'Testing', 'Git', 'GitHub', 'Agile', 'Code Review', 'Figma', 'PhotoShop', 'Figma', 'Node.js'];
+
+const softSkills = ['Personable', 'Passionate', 'Ambitious', 'Collaboration', 'Accountable', 'Efficient', 'Outgoing', 'Self-aware', 'Self-learning', 'Accountability', 'Communication', 'Adaptable']
 </script>
 
 <style lang="scss" scoped>
@@ -129,6 +107,7 @@ import ButtonLinks from '@/components/button-links.vue';
     gap: 2rem;
     margin-bottom: 4rem;
     .about-content-text {
+      width: 40%;
       .bio-header {
         margin: 0;
         font-family: 'Source Sans Pro';
@@ -154,7 +133,7 @@ import ButtonLinks from '@/components/button-links.vue';
       display: flex;
       flex-direction: column;
       gap: 1rem;
-      width: 50%;
+      width: 60%;
       .skills-header {
         margin: 0;
         font-family: 'Source Sans Pro';
@@ -164,6 +143,7 @@ import ButtonLinks from '@/components/button-links.vue';
       }
       .row {
         display: flex;
+        flex-wrap: wrap;
         gap: 1rem;
         margin: 0;
         font-family: 'Source Code Pro';
