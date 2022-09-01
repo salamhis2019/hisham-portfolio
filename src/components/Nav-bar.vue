@@ -85,7 +85,7 @@ watch(param, (current) => {
   setComponentOnPageLoad(current);
 })
 
-setComponentOnPageLoad(param.value)
+setComponentOnPageLoad(param.value);
 </script>
 
 <style lang="scss" scoped>
