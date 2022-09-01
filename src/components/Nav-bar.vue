@@ -3,10 +3,9 @@
     <div class="content-container">
       <nav class="nav-items-container">
         <router-link
-          v-for="({navText, param, link}) in navItems"
+          v-for="({navText, link}) in navItems"
           :to="`/${link}`"
           :key="navText"
-          @click="setComponent(param)"
           class="nav-item"
           :class="{'active': route.params.currentPage === link}"
         >
@@ -18,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { shallowRef } from "vue";
+import { computed, watch, ref } from "vue";
 import { storeToRefs } from "pinia";
 import { useRoute } from "vue-router";
 import WorkExperience from "@/components/Work-section.vue";
@@ -32,34 +31,58 @@ const route = useRoute();
 
 const { currentComponent } = storeToRefs(portfolioStore);
 
-const navItems = [
+const navItems: any = [
   {
     "navText": 'Home',
-    "param": HomePage,
     "link": 'home'
   },
   {
     "navText": 'Projects',
-    "param": ProjectsSection,
     "link": 'projects'
   },
   {
     "navText": 'Work Experience',
-    "param": WorkExperience,
     "link": "work-experience"
   },
   {
     "navText": 'About Me',
-    "param": AboutMe,
     "link": "about-me"
   }
 ];
 
+const components: any = [
+  {
+    "home": HomePage,
+  },
+  {
+    "projects": ProjectsSection
+  },
+  {
+    "work-experience": WorkExperience,
+  },
+  {
+    "about-me": AboutMe
+  }
+]
+
 currentComponent.value = HomePage;
 
-function setComponent(component: any) {
-  currentComponent.value = shallowRef(component);
+const param = computed(() => route.params.currentPage)
+
+function setComponentOnPageLoad(param: any) {
+  components.forEach((component: any) => {
+    const keys = Object.keys(component);
+    if (keys[0] === param) {
+      currentComponent.value = component[param];
+    }
+  })
 }
+
+watch(param, (current) => {
+  setComponentOnPageLoad(current);
+})
+
+// setComponentOnPageLoad();
 </script>
 
 <style lang="scss" scoped>
