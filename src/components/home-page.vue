@@ -97,6 +97,7 @@
               border-radius: 50%;
               transition: 0.3s;
               &:hover {
+                transform: scale(1.1);
                 background: -webkit-linear-gradient(#004cff, #ff0080);
               }
             }
@@ -105,6 +106,7 @@
               font-size: 5rem;
               transition: 0.3s;
               &:hover {
+                transform: scale(1.1);
                 background: -webkit-linear-gradient(#004cff, #ff0080);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
