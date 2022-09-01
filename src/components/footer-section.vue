@@ -18,7 +18,7 @@
   max-height: 400px;
   padding: 1.5rem 0;
   background: #333533;
-  border-top: 1px solid white;
+  border-top: 3px solid white;
   .content-container {
     display: flex;
     justify-content: center;
@@ -64,7 +64,7 @@
   .last-updated {
     margin: 0;
     font-family: 'Source Sans Pro';
-    color: white;
+    color: #ffffffa5;
   }
 }
 </style>
