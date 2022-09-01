@@ -41,7 +41,6 @@ const workExperience = Jobs
 <style lang="scss" scoped>
 .experience-container {
   display: flex;
-  width: 700px;
   margin-bottom: 4rem;
   padding: 2rem;
   gap: 3rem;
