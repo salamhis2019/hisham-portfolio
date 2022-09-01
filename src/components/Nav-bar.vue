@@ -1,6 +1,12 @@
 <template>
   <div class="nav">
     <div class="content-container">
+      <i
+        class="material-icons menu-button" style="font-size:36px"
+        @click="renderMenu"
+      >
+        menu
+      </i>
       <nav class="nav-items-container">
         <router-link
           v-for="({navText, link}) in navItems"
@@ -78,6 +84,13 @@ function setComponentOnPageLoad(param: any) {
   })
 }
 
+const showMenu = ref(true);
+
+function renderMenu() {
+  showMenu.value = !showMenu.value;
+  console.log('button is working')
+}
+
 watch(param, (current) => {
   setComponentOnPageLoad(current);
 })
@@ -104,6 +117,9 @@ setComponentOnPageLoad(param.value);
     height: 80px;
     margin: 0 2rem;
     color: white;
+    .menu-button {
+      display: none;
+    }
     h1 {
       font-family: "Source Code Pro";
       margin: 0;
@@ -133,6 +149,23 @@ setComponentOnPageLoad(param.value);
         border: 0.5px solid rgba(255, 255, 255, 0.498);
         border-radius: 12px;
         box-shadow: 2px 2px 0px white;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .nav {
+    .content-container {
+      justify-content: left;
+      margin: 0;
+      padding-left: 1rem;
+      cursor: pointer;
+      .menu-button {
+        display: block;
+      }
+      .nav-items-container {
+        display: none;
       }
     }
   }
