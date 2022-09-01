@@ -13,7 +13,7 @@
   justify-content: center;
   gap: 1.5rem;
   width: 100%;
-  min-height: 150px;
+  min-height: 100px;
   max-height: 400px;
   padding: 1.5rem 0;
   background: #333533;
