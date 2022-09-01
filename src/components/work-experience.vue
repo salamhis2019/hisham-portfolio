@@ -124,6 +124,7 @@ const workExperience = Jobs
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
+        margin: 1.5rem 0 0 0;
         padding: 0;
         li {
           list-style-type: none;
