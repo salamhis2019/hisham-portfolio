@@ -1,6 +1,5 @@
 <template>
   <div class="footer-parent-container">
-    <p class="contact">Contact me at at salamehh@msu.edu</p>
     <p class="created-by">Created By <span class="name">Hisham Salameh</span></p>
     <p class="last-updated">Last Updated: 08/29/2022</p>
   </div>
