@@ -18,7 +18,6 @@
   max-height: 400px;
   padding: 1.5rem 0;
   background: #333533;
-  border-top: 3px solid white;
   .content-container {
     display: flex;
     justify-content: center;
