@@ -58,10 +58,9 @@
         width: 20rem;
         background: linear-gradient(to right, #004cff7e, #ff00807d);
         border-radius: 50%;
-        border-bottom: 3px dashed white;
-        border-right: 3px dashed white;
-        border-left: 3px dashed white;
-        border-top: 3px solid white;
+        border-bottom: 4px solid white;
+        border-right: 2px dashed white;
+        border-left: 2px dashed white;
         box-shadow: 6px 3px 0px #004cff;
       }
       .home-description {
