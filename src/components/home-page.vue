@@ -63,6 +63,11 @@
         border-left: 2px dashed white;
         box-shadow: 6px 3px 0px #004cff;
       }
+      @media only screen and (max-width: 450px) {
+        .my-image {
+          width: 16rem;
+        }
+      }
       .home-description {
         max-width: 650px;
         text-align: center;
@@ -80,6 +85,21 @@
             -webkit-text-fill-color: transparent;
           }
         }
+        @media only screen and (max-width: 450px) {
+            .section-header {
+              margin: 4rem 0;
+              font-size: 4rem;
+              .period {
+                display: none;
+              }
+            }
+            .description {
+              margin: 1rem;
+            }
+            .links-container {
+              margin-top: 3rem;
+            }
+          }
         .description {
           color: rgb(239, 239, 239);
           font-size: 2rem;
