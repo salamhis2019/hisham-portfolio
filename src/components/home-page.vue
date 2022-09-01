@@ -2,12 +2,17 @@
   <div class="homepage-container">
     <div class="homepage-content">
       <div class="hero-content">
+        <img
+          class="my-image"
+          src="@/assets/homepage/headshot.png"
+          alt="about me image"
+        >
         <div class="home-description">
           <h2 class="section-header">
-            Hisham Salameh<span class="period"> .</span>
+            Hisham Salameh<span class="period">.</span>
           </h2>
           <p class="description">UI Engineer and UX Designer with a focus on creating modern web applications</p>
-          <ul class="content-container">
+          <ul class="links-container">
             <li>
               <a href="https://www.linkedin.com/in/hishamsalameh"
                 target="blank"
@@ -24,11 +29,6 @@
             </li>
           </ul>
         </div>
-        <img
-          class="my-image"
-          src="@/assets/homepage/headshot.png"
-          alt="about me image"
-        >
       </div>
     </div>
     <hr>
@@ -51,8 +51,8 @@
     .hero-content {
       display: flex;
       justify-content: center;
+      flex-direction: column;
       align-items: center;
-      gap: 3rem;
       width: 100%;
       .my-image {
         width: 20rem;
@@ -65,11 +65,20 @@
       }
       .home-description {
         max-width: 650px;
+        text-align: center;
         font-family: 'Source Sans Pro';
         .section-header {
           font-family: 'Source Code Pro';
           font-size: 4rem;
           color: white;
+          margin: 0;
+          .period {
+            font-family: 'Oswald';
+            font-size: 6rem;
+            background: -webkit-linear-gradient(#0088ff, #ff00bb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
         }
         .description {
           color: rgb(239, 239, 239);
@@ -77,8 +86,9 @@
           font-weight: 600;
           text-shadow: 2px 2px 0px #ff0080c0;
         }
-        .content-container {
+        .links-container {
           display: flex;
+          justify-content: center;
           align-items: center;
           gap: 3rem;
           padding: 0;
