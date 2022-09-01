@@ -62,6 +62,7 @@
         border-right: 3px dashed white;
         border-left: 3px dashed white;
         border-top: 3px solid white;
+        box-shadow: 6px 3px 0px #004cff;
       }
       .home-description {
         max-width: 650px;
