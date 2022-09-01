@@ -21,7 +21,7 @@ const { currentComponent } = storeToRefs(portfolioStore);
 
 <style lang="scss" scoped>
 .page-container {
-  height: 100%;
+  min-height: 100%;
   background-color: #1c202b;
 }
 

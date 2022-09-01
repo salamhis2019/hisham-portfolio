@@ -15,6 +15,7 @@
   gap: 1.5rem;
   width: 100%;
   min-height: 150px;
+  max-height: 400px;
   padding: 1.5rem 0;
   background: #333533;
   border-top: 1px solid white;
@@ -42,7 +43,6 @@
   }
   .contact {
     margin: 0;
-    margin-top: 1.5rem;
     font-family: 'Source Sans Pro';
     color: white;
     font-size: 1.2rem;
