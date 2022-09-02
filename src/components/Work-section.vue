@@ -51,6 +51,19 @@ import WorkExperience from "@/components/work-experience.vue";
           -webkit-text-fill-color: transparent;
         }
       }
+      @media only screen and (max-width: 450px) {
+        .section-header {
+          font-size: 2.5rem;
+          .period {
+            display: none;
+          }
+        }
+      }
+    }
+    @media only screen and (max-width: 450px) {
+      .header-container {
+        padding: 0 1rem;        
+      }
     }
     hr {
       border: 0;

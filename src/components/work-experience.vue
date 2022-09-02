@@ -146,4 +146,9 @@ const workExperience = Jobs
     }
   }
 }
+@media only screen and (max-width: 450px) {
+  .experience-container {
+    margin: 2rem 1rem;
+  }
+}
 </style>
