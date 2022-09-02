@@ -1,13 +1,19 @@
 <template>
   <div class="nav">
-    <div class="content-container">
+    <div 
+      class="content-container"
+    >
       <i
-        class="material-icons menu-button" style="font-size:36px"
+        class="material-icons menu-button"
+        style="font-size:36px"
         @click="renderMenu"
       >
         menu
       </i>
-      <nav class="nav-items-container">
+      <nav 
+        class="nav-items-container"
+        :class="showMenu ? 'open-menu' : 'closed-menu'"
+      >
         <router-link
           v-for="({navText, link}) in navItems"
           :to="`/${link}`"
@@ -88,7 +94,6 @@ const showMenu = ref(true);
 
 function renderMenu() {
   showMenu.value = !showMenu.value;
-  console.log('button is working')
 }
 
 watch(param, (current) => {
@@ -157,15 +162,36 @@ setComponentOnPageLoad(param.value);
 @media only screen and (max-width: 450px) {
   .nav {
     .content-container {
+      display: block;
+      flex-direction: column;
       justify-content: left;
+      height: 100%;
+      width: 100%;
       margin: 0;
-      padding-left: 1rem;
+      padding: 1rem 0;
       cursor: pointer;
       .menu-button {
         display: block;
+        padding-left: 1rem;
+      }
+      .closed-menu {
+        display: none;
+      }
+      .open-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding-bottom: 2rem;
       }
       .nav-items-container {
-        display: none;
+        transition: 0.3s ease;
+        // .nav-item {
+        //   background-color: none;
+        //   padding: 0;
+        //   border: none;
+        //   border-radius: none;
+        //   box-shadow: none;
+        // }
       }
     }
   }
