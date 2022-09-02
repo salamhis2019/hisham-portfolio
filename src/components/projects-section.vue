@@ -108,6 +108,11 @@ import ButtonLinks from '@/components/button-links.vue';
       margin-bottom: 4rem;
     }
   }
+  @media only screen and (max-width: 450px) {
+    .work-experience-content {
+      margin: 1rem;
+    }
+  }
   .stock-banner {
     background: linear-gradient(to right, #004cff4b, #ff008081), url('@/assets/project-section/stock.png');
   }
@@ -157,6 +162,26 @@ import ButtonLinks from '@/components/button-links.vue';
         li {
           list-style-type: none;
           margin-bottom: 1.2rem;
+        }
+      }
+    }
+  }
+  @media only screen and (max-width: 450px) {
+    .content-container {
+      display: block;
+      width: 100%;
+      .card-container {
+        width: 100%;
+      }
+      .stock-icon {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 3rem auto;
+      }
+      .card-container {
+        h3 {
+          text-align: center;
+          margin-bottom: 2rem;
         }
       }
     }

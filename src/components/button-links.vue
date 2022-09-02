@@ -35,4 +35,10 @@ defineProps(['text', 'link'])
     font-size: 24px;
   }
 }
+
+@media only screen and (max-width: 450px) {
+  .button-link {
+    font-size: 18px;
+  }
+}
 </style>
