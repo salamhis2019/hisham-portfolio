@@ -3,13 +3,24 @@
     <div 
       class="content-container"
     >
-      <i
-        class="material-icons menu-button"
-        style="font-size:36px"
-        @click="renderMenu"
-      >
-        menu
-      </i>
+      <Transition>
+        <i
+          v-if="!showMenu"
+          class="material-icons menu-button"
+          style="font-size:36px"
+          @click="renderMenu"
+        >
+          menu
+        </i>
+        <i
+          v-else
+          class="material-icons menu-button" 
+          style="font-size:36px"
+          @click="renderMenu"
+        >
+          close
+        </i>
+      </Transition>
       <nav 
         class="nav-items-container"
         :class="showMenu ? 'open-menu' : 'closed-menu'"
@@ -90,7 +101,7 @@ function setComponentOnPageLoad(param: any) {
   })
 }
 
-const showMenu = ref(true);
+const showMenu = ref(false);
 
 function renderMenu() {
   showMenu.value = !showMenu.value;
@@ -185,15 +196,19 @@ setComponentOnPageLoad(param.value);
       }
       .nav-items-container {
         transition: 0.3s ease;
-        // .nav-item {
-        //   background-color: none;
-        //   padding: 0;
-        //   border: none;
-        //   border-radius: none;
-        //   box-shadow: none;
-        // }
       }
     }
   }
+}
+.v-leave-from {
+  display: none;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+.v-enter-active {
+  transition: opacity 0.5s ease-in;
 }
 </style>
