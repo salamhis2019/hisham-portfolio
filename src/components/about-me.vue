@@ -101,6 +101,14 @@ const softSkills = ['Personable', 'Passionate', 'Ambitious', 'Collaboration', 'A
       margin-bottom: 4rem;
     }
   }
+  @media only screen and (max-width: 450px) {
+    .about-header {
+      width: 100%;
+      .header-container {
+        width: 100%;
+      }
+    }
+  }
   .about-content-container {
     width: 1000px;
     display: flex;
@@ -160,5 +168,27 @@ const softSkills = ['Personable', 'Passionate', 'Ambitious', 'Collaboration', 'A
       }
     }
   }
+  @media only screen and (max-width: 450px) {
+    .about-content-container {
+      display: block;
+      width: 100%;
+      .about-content-text {
+        width: 100%;
+        margin-bottom: 2rem
+      }
+      .skills-container {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .about-parent-container {
+    .about-container {
+      padding: 1rem;
+    }
+  }
+  
 }
 </style>
