@@ -158,6 +158,13 @@ setComponentOnPageLoad(param.value);
         :hover {
           color: rgba(255, 255, 255, 0.724);
         }
+        &:focus {
+          background-color: rgba(255, 255, 255, 0.10);
+          padding: 0.5rem 0;
+          border: white;
+          border-radius: 12px;
+          outline: 0;
+        }
       }
       .active {
         background-color: rgba(255, 255, 255, 0.10);
