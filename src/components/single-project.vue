@@ -1,22 +1,27 @@
 <template>
   <div
-    v-for="{ title, description } in Projects"
-    :key="title"
     class="card-container">
-    <h3>{{ title }}</h3>
+    <h3>{{ project.title }}</h3>
     <ul class="description-container">
       <li
-        v-for="item in description"
+        v-for="item in project.description"
         :key="item"
       >
         {{ item }}
       </li>
     </ul>
+    <ButtonLinks 
+      :text="'Personal Portfolio Project'"
+      :link="'https://vuestockapp.firebaseapp.com/'"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
-import Projects from '@/json/projects.js'
+import { defineProps } from 'vue';
+import ButtonLinks from '@/components/button-links.vue';
+
+defineProps(['project'])
 </script>
 
 <style lang="scss" scoped>
