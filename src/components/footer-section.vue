@@ -1,15 +1,7 @@
 <template>
   <div class="footer-parent-container">
-    <ul class="content-container">
-      <li>
-        <i class="fa fa-linkedin"></i>
-      </li>
-      <li>
-        <i class="fa fa-github"></i>      
-      </li>
-    </ul>
-    <p class="contact">Contact me at at salamehh@msu.edu</p>
     <p class="created-by">Created By <span class="name">Hisham Salameh</span></p>
+    <p class="last-updated">Last Updated: 08/29/2022</p>
   </div>
 </template>
 
@@ -19,11 +11,12 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1.5rem;
   width: 100%;
-  min-height: 150px;
+  min-height: 100px;
+  max-height: 400px;
   padding: 1.5rem 0;
   background: #333533;
-  border-top: 1px solid white;
   .content-container {
     display: flex;
     justify-content: center;
@@ -48,14 +41,12 @@
   }
   .contact {
     margin: 0;
-    margin-top: 1.5rem;
     font-family: 'Source Sans Pro';
     color: white;
     font-size: 1.2rem;
   }
   .created-by {
     margin: 0;
-    margin-top: 1.5rem;
     font-family: 'Source Sans Pro';
     color: rgba(255, 255, 255, 0.595);
     font-size: 1.2rem;
@@ -67,6 +58,11 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+  }
+  .last-updated {
+    margin: 0;
+    font-family: 'Source Sans Pro';
+    color: #ffffffa5;
   }
 }
 </style>

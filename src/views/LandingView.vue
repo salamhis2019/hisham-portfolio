@@ -29,9 +29,8 @@ setTimeout(() => {
 <style lang="scss" scoped>
 .landing-view-container {
   height: 100%;
-  .page-container {
-    height: 100%;
-    background-color: #1c202b;
+  .portfolio-content-container {
+    height: calc(100% - 200px);
   }
 }
 

@@ -1,12 +1,34 @@
 <template>
   <div class="nav">
-    <div class="content-container">
-      <nav class="nav-items-container">
+    <div 
+      class="content-container"
+    >
+      <Transition>
+        <i
+          v-if="!showMenu"
+          class="material-icons menu-button"
+          style="font-size:36px"
+          @click="renderMenu"
+        >
+          menu
+        </i>
+        <i
+          v-else
+          class="material-icons menu-button" 
+          style="font-size:36px"
+          @click="renderMenu"
+        >
+          close
+        </i>
+      </Transition>
+      <nav 
+        class="nav-items-container"
+        :class="showMenu ? 'open-menu' : 'closed-menu'"
+      >
         <router-link
-          v-for="({navText, param, link}) in navItems"
+          v-for="({navText, link}) in navItems"
           :to="`/${link}`"
           :key="navText"
-          @click="setComponent(param)"
           class="nav-item"
           :class="{'active': route.params.currentPage === link}"
         >
@@ -21,7 +43,7 @@
 import { computed, watch, ref, shallowRef } from "vue";
 import { storeToRefs } from "pinia";
 import { useRoute } from "vue-router";
-import WorkExperience from "@/components/Work-experience.vue";
+import WorkExperience from "@/components/Work-section.vue";
 import HomePage from "@/components/home-page.vue";
 import ProjectsSection from "@/components/projects-section.vue";
 import AboutMe from "@/components/about-me.vue";
@@ -32,25 +54,21 @@ const route = useRoute();
 
 const { currentComponent } = storeToRefs(portfolioStore);
 
-const navItems = [
+const navItems: any = [
   {
     "navText": 'Home',
-    "param": HomePage,
     "link": 'home'
   },
   {
     "navText": 'Projects',
-    "param": ProjectsSection,
     "link": 'projects'
   },
   {
     "navText": 'Work Experience',
-    "param": WorkExperience,
     "link": "work-experience"
   },
   {
     "navText": 'About Me',
-    "param": AboutMe,
     "link": "about-me"
   }
 ];
@@ -72,9 +90,28 @@ const components: any = [
 
 currentComponent.value = HomePage;
 
-function setComponent(component: any) {
-  currentComponent.value = shallowRef(component);
+const param = computed(() => route.params.currentPage)
+
+function setComponentOnPageLoad(param: any) {
+  components.forEach((component: any) => {
+    const keys = Object.keys(component);
+    if (keys[0] === param) {
+      currentComponent.value = component[param];
+    }
+  })
 }
+
+const showMenu = ref(false);
+
+function renderMenu() {
+  showMenu.value = !showMenu.value;
+}
+
+watch(param, (current) => {
+  setComponentOnPageLoad(current);
+})
+
+setComponentOnPageLoad(param.value);
 </script>
 
 <style lang="scss" scoped>
@@ -96,6 +133,9 @@ function setComponent(component: any) {
     height: 80px;
     margin: 0 2rem;
     color: white;
+    .menu-button {
+      display: none;
+    }
     h1 {
       font-family: "Source Code Pro";
       margin: 0;
@@ -128,5 +168,47 @@ function setComponent(component: any) {
       }
     }
   }
+}
+
+@media only screen and (max-width: 450px) {
+  .nav {
+    .content-container {
+      display: block;
+      flex-direction: column;
+      justify-content: left;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 1rem 0;
+      cursor: pointer;
+      .menu-button {
+        display: block;
+        padding-left: 1rem;
+      }
+      .closed-menu {
+        display: none;
+      }
+      .open-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        padding-bottom: 2rem;
+      }
+      .nav-items-container {
+        transition: 0.3s ease;
+      }
+    }
+  }
+}
+.v-leave-from {
+  display: none;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+.v-enter-active {
+  transition: opacity 0.5s ease-in;
 }
 </style>

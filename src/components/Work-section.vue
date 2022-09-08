@@ -10,18 +10,21 @@
         </div>
       </div>
       <hr>
+      <WorkExperience />
     </div>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import WorkExperience from "@/components/work-experience.vue";
+</script>
 
 <style lang="scss" scoped>
 .work-experience-container {
   display: flex;
   justify-content: center;
   width: 100%;
-  background: #1c202b;
+  background: #13141a;
   .work-experience-content {
     width: 900px;
     .header-container {
@@ -48,50 +51,25 @@
           -webkit-text-fill-color: transparent;
         }
       }
+      @media only screen and (max-width: 450px) {
+        .section-header {
+          font-size: 2.5rem;
+          .period {
+            display: none;
+          }
+        }
+      }
+    }
+    @media only screen and (max-width: 450px) {
+      .header-container {
+        padding: 0 1rem;        
+      }
     }
     hr {
       border: 0;
       height: 2.5px;
       background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
       margin-bottom: 4rem;
-    }
-  }
-  .content-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 110%;
-    min-height: 300px;
-    margin-bottom: 3rem;
-    .stock-icon {
-      width: 240px;
-      height: 240px;
-      transition: 0.2s ease;
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-    .card-container {
-      height: 100%;
-      width: 650px;
-      h3 {
-        margin: 0;
-        color: white;
-        font-family: 'Source Sans Pro';
-        font-size: 2rem;
-      }
-      .description-container {
-        padding: 0;
-        margin-bottom: 2rem;
-        font-size: 1.2rem;
-        font-family: 'Source Sans Pro';
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.739);
-        li {
-          list-style-type: none;
-          margin-bottom: 1.2rem;
-        }
-      }
     }
   }
 }

@@ -79,4 +79,25 @@
     }
   }
 }
+
+@media only screen and (max-width: 450px) {
+  .loading-container {
+    margin: 0;
+    .loading-text-container {
+      margin: 1rem;
+      .primary-text {
+        width: 100%;
+        p {
+          font-size: 1rem;
+        }
+      }
+      .secondary-text {
+        width: 100%;
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}
 </style>
