@@ -13,59 +13,27 @@
       <div class="banner stock-banner"></div>
       <div class="content-container">
         <img class="stock-icon" src="@/assets/stock-icon.png" alt="">
-        <div class="card-container">
-          <h3>Stock Project with Vantage API</h3>
-          <ul class="description-container">
-            <li>
-              Developed a stock app that displays recent closing data from various stocks/cryptos from a public API. 
-            </li>
-            <li>
-              The UI was created using Vue 3 and SASS, and the data was fetched using axios and the fetch API.
-            </li>
-            <li>
-              Utilized the most recent vue features and rendered the components dynamically between the two apps. Reusability concepts were implemented for readability and the chart.js library was used to render the stock chart.
-            </li>
-            <li>
-              Used Pinia to maintain the state of the app and utilized the composition API.
-            </li>
-          </ul>
-          <ButtonLinks 
-            :text="'Vue Stock App'"
-            :link="'https://vuestockapp.firebaseapp.com/'"
-          />
-        </div>
+        <SingleProject 
+          :project="project1"
+        />
       </div>      
       <div class="banner portfolio-banner"></div>
       <div class="content-container">
         <img class="stock-icon" src="@/assets/portfolio-icon.png" alt="">
-        <div class="card-container">
-          <h3>Portfolio Project with Vue</h3>
-          <ul class="description-container">
-            <li>
-              Developed a personal portfolio site using Vue 3 and the script setup with Vite, Pinia and SASS
-            </li>
-            <li>
-              Tested the application using vue test utils and jest, includes unit and store testing
-            </li>
-            <li>
-              Utilized the most recent vue features and created the portfolio by making it route driven
-            </li>
-            <li>
-              Implemented good github hygeine by creating semantic commits and working on different branches for features
-            </li>
-          </ul>
-          <ButtonLinks 
-            :text="'Personal Portfolio Project'"
-            :link="'https://vuestockapp.firebaseapp.com/'"
-          />
-        </div>
+        <SingleProject 
+          :project="project2"
+        />
       </div>     
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import ButtonLinks from '@/components/button-links.vue';
+import Project from '@/json/projects';
+import SingleProject from '@/components/single-project.vue'
+
+const project1 = Project[0]
+const project2 = Project[1]
 </script>
 
 <style lang="scss" scoped>
@@ -143,46 +111,15 @@ import ButtonLinks from '@/components/button-links.vue';
         transform: scale(1.1);
       }
     }
-    .card-container {
-      height: 100%;
-      width: 650px;
-      h3 {
-        margin: 0;
-        color: white;
-        font-family: 'Source Sans Pro';
-        font-size: 2rem;
-      }
-      .description-container {
-        padding: 0;
-        margin-bottom: 2rem;
-        font-size: 1.2rem;
-        font-family: 'Source Sans Pro';
-        font-weight: 600;
-        color: rgba(255, 255, 255, 0.739);
-        li {
-          list-style-type: none;
-          margin-bottom: 1.2rem;
-        }
-      }
-    }
   }
   @media only screen and (max-width: 450px) {
     .content-container {
       display: block;
       width: 100%;
-      .card-container {
-        width: 100%;
-      }
       .stock-icon {
         display: flex;
         justify-content: center;
         margin: 0 auto 3rem auto;
-      }
-      .card-container {
-        h3 {
-          text-align: center;
-          margin-bottom: 2rem;
-        }
       }
     }
   }
