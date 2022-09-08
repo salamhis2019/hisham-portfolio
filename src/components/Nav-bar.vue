@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import { shallowRef } from "vue";
+import { computed, watch, ref, shallowRef } from "vue";
 import { storeToRefs } from "pinia";
 import { useRoute } from "vue-router";
 import WorkExperience from "@/components/Work-experience.vue";
@@ -54,6 +54,21 @@ const navItems = [
     "link": "about-me"
   }
 ];
+
+const components: any = [
+  {
+    "home": shallowRef(HomePage),
+  },
+  {
+    "projects": shallowRef(ProjectsSection)
+  },
+  {
+    "work-experience": shallowRef(WorkExperience),
+  },
+  {
+    "about-me": shallowRef(AboutMe)
+  }
+]
 
 currentComponent.value = HomePage;
 
