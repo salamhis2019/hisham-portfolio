@@ -12,7 +12,7 @@
     </ul>
     <ButtonLinks 
       :text="'Personal Portfolio Project'"
-      :link="'https://vuestockapp.firebaseapp.com/'"
+      :link="project.link"
     />
   </div>
 </template>
