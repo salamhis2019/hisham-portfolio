@@ -55,7 +55,7 @@
 <script lang="ts" setup>
 import ButtonLinks from '@/components/button-links.vue';
 
-const technicalSkills = ['JavaScript', 'HTML', 'CSS', 'SASS', 'Vue.js', 'React.js', 'Jest', 'Testing', 'Git', 'GitHub', 'Agile', 'Code Review', 'Figma', 'PhotoShop', 'Figma', 'Node.js'];
+const technicalSkills = ['Web Development', 'UX/UI Development', 'JavaScript', 'HTML', 'CSS', 'SASS', 'Vue.js', 'React.js', 'Jest', 'Testing', 'Git', 'GitHub', 'Agile', 'Code Review', 'Figma', 'PhotoShop', 'Figma', 'Node.js'];
 
 const softSkills = ['Personable', 'Passionate', 'Ambitious', 'Collaboration', 'Accountable', 'Efficient', 'Outgoing', 'Self-aware', 'Self-learning', 'Accountability', 'Communication', 'Adaptable']
 </script>
