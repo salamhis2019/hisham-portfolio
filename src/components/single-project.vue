@@ -1,19 +1,26 @@
 <template>
-  <div
-    class="card-container">
-    <h3>{{ project.title }}</h3>
-    <ul class="description-container">
-      <li
-        v-for="item in project.description"
-        :key="item"
-      >
-        {{ item }}
-      </li>
-    </ul>
-    <ButtonLinks 
-      :text="'Personal Portfolio Project'"
-      :link="project.link"
-    />
+  <div 
+    class="banner"
+    :class="currentProject === 'stock-project' ? 'stock-banner' : 'portfolio-banner'"
+  >
+  </div>
+  <div class="content-container">
+    <div
+      class="card-container">
+      <h3>{{ project.title }}</h3>
+      <ul class="description-container">
+        <li
+          v-for="item in project.description"
+          :key="item"
+        >
+          {{ item }}
+        </li>
+      </ul>
+      <ButtonLinks 
+        :text="'Personal Portfolio Project'"
+        :link="project.link"
+      />
+    </div>
   </div>
 </template>
 
@@ -21,11 +28,43 @@
 import { defineProps } from 'vue';
 import ButtonLinks from '@/components/button-links.vue';
 
-defineProps(['project'])
+defineProps(['project', 'currentProject', 'image'])
 </script>
 
 <style lang="scss" scoped>
-.card-container {
+.banner {
+  height: 200px;
+  width: 100%;
+  margin-bottom: 3rem;
+  border-radius: 15px;
+  box-shadow: 4px 4px 0px white;
+}
+.stock-banner {
+  background: linear-gradient(to right, #0048184b, #00ff1e81), url('@/assets/project-section/stock.png');
+  background-size: cover;
+  background-position: center;
+}
+.portfolio-banner {
+  background: linear-gradient(to right, #004cff4b, #ff008081), url('@/assets/project-section/portfolio.png');
+  background-size: cover;
+  background-position: center;
+}
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 110%;
+  min-height: 300px;
+  margin-bottom: 5rem;
+  .stock-icon {
+    width: 240px;
+    height: 240px;
+    transition: 0.2s ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  .card-container {
   height: 100%;
   width: 650px;
   h3 {
@@ -46,6 +85,7 @@ defineProps(['project'])
       margin-bottom: 1.2rem;
     }
   }
+}
 }
 
 @media only screen and (max-width: 450px) {

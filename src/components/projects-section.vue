@@ -40,6 +40,18 @@
           Personal Portfolio Project
         </button>
       </div>
+        <SingleProject
+          v-if="currentProject === 'stock-project'"
+          :current-project="currentProject"
+          :project="project1"
+          :image="currentImage"
+        />
+        <SingleProject
+          v-if="currentProject === 'portfolio-project'"
+          :current-project="currentProject"
+          :project="project2"
+          :image="currentImage"
+        />
     </div>
   </div>
 </template>
@@ -50,6 +62,10 @@ import Project from '@/json/projects';
 import SingleProject from '@/components/single-project.vue'
 
 const currentProject = ref();
+const currentImage = ref();
+
+const project1 = Project[0]
+const project2 = Project[1]
 
 function setProject(project: string) {
   currentProject.value = project;
@@ -102,25 +118,11 @@ function setProject(project: string) {
       margin: 1rem;
     }
   }
-  .stock-banner {
-    background: linear-gradient(to right, #004cff4b, #ff008081), url('@/assets/project-section/stock.png');
-  }
-  .portfolio-banner {
-    background: linear-gradient(to right, #004cff4b, #ff008081), url('@/assets/project-section/portfolio.png');
-  }
-  .banner {
-    height: 200px;
-    width: 100%;
-    margin-bottom: 3rem;
-    border-radius: 15px;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 4px 4px 0px white;
-  }
   .project-buttons-container {
     display: flex;
     justify-content: space-evenly;
     width: 100%;
+    margin-bottom: 4rem;
     .button-class {
       padding: 0.5rem 1rem;
       color: rgba(255, 255, 255, 0.957);
@@ -138,22 +140,6 @@ function setProject(project: string) {
       box-shadow: 2px 2px 0px white;
     }
   }
-  // .content-container {
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   width: 110%;
-  //   min-height: 300px;
-  //   margin-bottom: 5rem;
-  //   .stock-icon {
-  //     width: 240px;
-  //     height: 240px;
-  //     transition: 0.2s ease;
-  //     &:hover {
-  //       transform: scale(1.1);
-  //     }
-  //   }
-  // }
   @media only screen and (max-width: 450px) {
     .content-container {
       display: block;
