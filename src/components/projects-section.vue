@@ -10,7 +10,7 @@
         </div>
       </div>
       <hr>
-      <div class="banner stock-banner"></div>
+      <!-- <div class="banner stock-banner"></div>
       <div class="content-container">
         <img class="stock-icon" src="@/assets/stock-icon.png" alt="">
         <SingleProject 
@@ -23,17 +23,37 @@
         <SingleProject 
           :project="project2"
         />
-      </div>     
+      </div>     -->
+      <div class="project-buttons-container">
+        <button 
+          class="button-class stock-project"
+          :class="{'active': currentProject === 'stock-project'}"
+          @click="setProject('stock-project')"
+        >
+          Vantage API Stock Project
+        </button>
+        <button 
+          class="button-class portfolio-project"
+          :class="{'active': currentProject === 'portfolio-project'}"
+          @click="setProject('portfolio-project')"
+        >
+          Personal Portfolio Project
+        </button>
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue';
 import Project from '@/json/projects';
 import SingleProject from '@/components/single-project.vue'
 
-const project1 = Project[0]
-const project2 = Project[1]
+const currentProject = ref();
+
+function setProject(project: string) {
+  currentProject.value = project;
+}
 </script>
 
 <style lang="scss" scoped>
@@ -41,6 +61,7 @@ const project2 = Project[1]
   display: flex;
   justify-content: center;
   width: 100%;
+  min-height: 650px;
   background: #13141a;
   .work-experience-content {
     width: 900px;
@@ -96,22 +117,43 @@ const project2 = Project[1]
     background-position: center;
     box-shadow: 4px 4px 0px white;
   }
-  .content-container {
+  .project-buttons-container {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 110%;
-    min-height: 300px;
-    margin-bottom: 5rem;
-    .stock-icon {
-      width: 240px;
-      height: 240px;
+    justify-content: space-evenly;
+    width: 100%;
+    .button-class {
+      padding: 0.5rem 1rem;
+      color: rgba(255, 255, 255, 0.957);
+      background: #004cff9b;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
       transition: 0.2s ease;
       &:hover {
-        transform: scale(1.1);
+        color: #ffffffb6
       }
     }
+    .active {
+      box-shadow: 2px 2px 0px white;
+    }
   }
+  // .content-container {
+  //   display: flex;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   width: 110%;
+  //   min-height: 300px;
+  //   margin-bottom: 5rem;
+  //   .stock-icon {
+  //     width: 240px;
+  //     height: 240px;
+  //     transition: 0.2s ease;
+  //     &:hover {
+  //       transform: scale(1.1);
+  //     }
+  //   }
+  // }
   @media only screen and (max-width: 450px) {
     .content-container {
       display: block;
