@@ -8,6 +8,7 @@ export const projects = [
       'Used Pinia to maintain the state of the app and utilized the composition API.'
     ],
     link: 'https://vuestockapp.firebaseapp.com/',
+    skills: ['Vue.js', 'JavaScript', 'HTML', 'CSS', 'Vue Router', 'chart.js']
   },
   {
     title: 'Portfolio Project with Vue',
@@ -18,6 +19,7 @@ export const projects = [
       'Implemented good github hygeine by creating semantic commits and working on different branches for features',
     ],
     link: 'https://github.com/salamhis2019/hisham-portfolio',
+    skills: ['Vue.js', 'TypeScript', 'JavaScript', 'HTML', 'SASS', 'jest.js', 'UX Design', 'Acessibility', 'Reusability', 'Verison Control']
   },
 ]
 
