@@ -10,20 +10,6 @@
         </div>
       </div>
       <hr>
-      <!-- <div class="banner stock-banner"></div>
-      <div class="content-container">
-        <img class="stock-icon" src="@/assets/stock-icon.png" alt="">
-        <SingleProject 
-          :project="project1"
-        />
-      </div>      
-      <div class="banner portfolio-banner"></div>
-      <div class="content-container">
-        <img class="stock-icon" src="@/assets/portfolio-icon.png" alt="">
-        <SingleProject 
-          :project="project2"
-        />
-      </div>     -->
       <div class="project-buttons-container">
         <button 
           class="button-class stock-project"
@@ -126,8 +112,9 @@ function setProject(project: string) {
     .button-class {
       padding: 0.5rem 1rem;
       color: rgba(255, 255, 255, 0.957);
-      background: #004cff9b;
+      background: #ff0080;
       font-size: 1.2rem;
+      font-weight: 600;
       border: none;
       border-radius: 12px;
       cursor: pointer;

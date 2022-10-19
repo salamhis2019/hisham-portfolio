@@ -16,10 +16,16 @@
           {{ item }}
         </li>
       </ul>
-      <ButtonLinks 
-        :text="'Personal Portfolio Project'"
-        :link="project.link"
-      />
+      <h3>Skills</h3>
+      <div class="row">
+        <p
+          v-for="skill in project.skills"
+          :key="skill"
+          class="skill soft"
+        >
+          {{ skill }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
@@ -40,7 +46,7 @@ defineProps(['project', 'currentProject', 'image'])
   box-shadow: 4px 4px 0px white;
 }
 .stock-banner {
-  background: linear-gradient(to right, #0048184b, #00ff1e81), url('@/assets/project-section/stock.png');
+  background: linear-gradient(to right, #0026484b, #00a2ff81), url('@/assets/project-section/stock.png');
   background-size: cover;
   background-position: center;
 }
@@ -65,13 +71,29 @@ defineProps(['project', 'currentProject', 'image'])
     }
   }
   .card-container {
-  height: 100%;
-  width: 650px;
-  h3 {
-    margin: 0;
-    color: white;
-    font-family: 'Source Sans Pro';
-    font-size: 2rem;
+    height: 100%;
+    h3 {
+      margin: 0;
+      color: white;
+      font-family: 'Source Sans Pro';
+      font-size: 2rem;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 2rem;
+      font-family: 'Source Code Pro';
+    .skill {
+      color: white;
+      background: #323f61;
+      margin: 0;
+      padding: 0.5rem 1.5rem;
+      border-radius: 5px;
+    }
+    .soft {
+      background: #ff0080ba;
+    }
   }
   .description-container {
     padding: 0;
