@@ -17,14 +17,14 @@
               <a href="https://www.linkedin.com/in/hishamsalameh"
                 target="blank"
               >
-                <i class="fa fa-linkedin"></i>
+                <i class="fa fa-linkedin" alt="linkedin-icon"></i>
               </a>
             </li>
             <li>
               <a href="https://github.com/salamhis2019"
                 target="blank"
               >
-                <i class="fa fa-github"></i>
+                <i class="fa fa-github" alt="github-icon"></i>
               </a>
             </li>
           </ul>
