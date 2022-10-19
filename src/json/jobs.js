@@ -11,7 +11,7 @@ export const test = [
           'Adhere to various processes defined within team such as Agile, code review, or Git.',
         ],
         skills: [
-          'Vue', 'JavaScript', 'SASS', 'HTML', 'Jest', 'Vue Test Utils', 'Sketch', 'Photoshop'
+          'Vue', 'UX/UI Development', 'JavaScript', 'SASS', 'HTML', 'Jest', 'Vue Test Utils', 'Sketch', 'Photoshop'
         ]
       },
       {
