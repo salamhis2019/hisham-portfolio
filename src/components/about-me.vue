@@ -27,25 +27,25 @@
         </div>
         <div class="skills-container">
           <h3 class="skills-header">Skills</h3>
-          <div class="row">
-            <p
+          <ul class="row">
+            <li
               v-for="skill in technicalSkills"
               :key="skill"
               class="skill"
             >
               {{ skill }}
-            </p>
-          </div>
+            </li>
+          </ul>
           <h3 class="skills-header">Soft Skills</h3>
-          <div class="row">
-            <p
+          <ul class="row">
+            <li
               v-for="skill in softSkills"
               :key="skill"
               class="skill soft"
             >
               {{ skill }}
-            </p>
-          </div>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -156,6 +156,7 @@ const softSkills = ['Personable', 'Passionate', 'Ambitious', 'Collaboration', 'A
         margin: 0;
         font-family: 'Source Code Pro';
         .skill {
+          list-style-type: none;
           color: white;
           background: #323f61;
           margin: 0;
