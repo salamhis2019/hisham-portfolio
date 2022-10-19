@@ -113,11 +113,19 @@ defineProps(['project', 'currentProject', 'image'])
 }
 
 @media only screen and (max-width: 450px) {
-  .card-container {
+  .content-container {
     width: 100%;
-    h3 {
-      text-align: center;
-      margin-bottom: 2rem;
+    .card-container {
+      width: 100%;
+      h3 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .description-container {
+        li {
+          text-align: center;
+        }
+      }
     }
   }
 }
