@@ -11,14 +11,20 @@
       </div>
       <hr>
       <div class="project-buttons-container">
-        <button 
+        <button
+          id="stock-button"
+          aria-expanded="false"
+          aria-controls="stock-project"
           class="button-class stock-project"
           :class="{'active': currentProject === 'stock-project'}"
           @click="setProject('stock-project')"
         >
           Vantage API Stock Project
         </button>
-        <button 
+        <button
+          id="portfolio-button"
+          aria-expanded="false"
+          aria-controls="portfolio-project"
           class="button-class portfolio-project"
           :class="{'active': currentProject === 'portfolio-project'}"
           @click="setProject('portfolio-project')"
@@ -27,12 +33,18 @@
         </button>
       </div>
         <SingleProject
+          id="stock-project"
+          role="region"
+          aria-labelledby="stock-button"
           v-if="currentProject === 'stock-project'"
           :current-project="currentProject"
           :project="project1"
           :image="currentImage"
         />
         <SingleProject
+          id="portfolio-project"
+          role="region"
+          aria-labelledby="portfolio-button"
           v-if="currentProject === 'portfolio-project'"
           :current-project="currentProject"
           :project="project2"
@@ -107,13 +119,14 @@ function setProject(project: string) {
   .project-buttons-container {
     display: flex;
     justify-content: space-evenly;
+    gap: 1rem;
     width: 100%;
     margin-bottom: 4rem;
     .button-class {
       padding: 0.5rem 1rem;
       color: rgba(255, 255, 255, 0.957);
       background: #ff0080;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: 600;
       border: none;
       border-radius: 12px;
