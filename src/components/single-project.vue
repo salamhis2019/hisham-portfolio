@@ -17,15 +17,15 @@
         </li>
       </ul>
       <h3>Skills</h3>
-      <div class="row">
-        <p
+      <ul class="row">
+        <li
           v-for="skill in project.skills"
           :key="skill"
           class="skill soft"
         >
           {{ skill }}
-        </p>
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -83,8 +83,10 @@ defineProps(['project', 'currentProject', 'image'])
       flex-wrap: wrap;
       gap: 1rem;
       margin-top: 2rem;
+      padding: 0;
       font-family: 'Source Code Pro';
     .skill {
+      list-style-type: none;
       color: white;
       background: #323f61;
       margin: 0;
