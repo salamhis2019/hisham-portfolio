@@ -154,6 +154,7 @@ const softSkills = ['Personable', 'Passionate', 'Ambitious', 'Collaboration', 'A
         flex-wrap: wrap;
         gap: 1rem;
         margin: 0;
+        padding: 0;
         font-family: 'Source Code Pro';
         .skill {
           list-style-type: none;
