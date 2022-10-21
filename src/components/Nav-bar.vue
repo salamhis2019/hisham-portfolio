@@ -16,6 +16,7 @@
           v-else
           class="material-icons menu-button" 
           style="font-size:36px"
+          role="button"
           @click="renderMenu"
         >
           close
@@ -31,6 +32,7 @@
           :key="navText"
           class="nav-item"
           :class="{'active': route.params.currentPage === link}"
+          role="button"
         >
           <li>{{ navText }}</li>
         </router-link>
