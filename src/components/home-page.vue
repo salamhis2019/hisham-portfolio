@@ -8,9 +8,9 @@
           alt="about me image"
         >
         <div class="home-description">
-          <h2 class="section-header">
+          <h1 class="section-header">
             Hisham Salameh<span class="period">.</span>
-          </h2>
+          </h1>
           <p class="description">UI Engineer and UX Designer with a focus on creating modern web applications</p>
           <ul class="links-container">
             <li>

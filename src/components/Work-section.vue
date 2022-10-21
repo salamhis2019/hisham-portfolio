@@ -3,9 +3,9 @@
     <div class="work-experience-content">
       <div class="header-container">
         <div class="header-content">
-          <h2 class="section-header">
+          <h1 class="section-header">
             Work Experience<span class="period"> .</span>
-          </h2>
+          </h1>
           <p class="description">Here are all of my most recent experiences with web development and what I have learned.</p>          
         </div>
       </div>

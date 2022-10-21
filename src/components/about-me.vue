@@ -4,9 +4,9 @@
       <div class="about-header">
         <div class="header-container">
           <div class="header-content">
-            <h2 class="section-header">
+            <h1 class="section-header">
               About Me<span class="period"> .</span>
-            </h2>
+            </h1>
             <p class="description">Learn more about what technologies I have experience in and why I love to do what I do!</p>          
           </div>
         </div>
