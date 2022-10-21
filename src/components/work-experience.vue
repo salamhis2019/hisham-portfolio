@@ -1,5 +1,5 @@
 <template>
-  <div
+  <section
     v-for="workplace in workExperience"
     :key="workplace.company"
     class="experience-container">
@@ -43,7 +43,7 @@
         >
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
