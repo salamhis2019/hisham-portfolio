@@ -5,12 +5,14 @@
         <img
           class="my-image"
           src="@/assets/homepage/headshot.png"
-          alt="about me image"
+          alt="About me image"
         >
-        <div class="home-description">
-          <h1 class="section-header">
-            Hisham Salameh<span class="period">.</span>
-          </h1>
+        <section class="home-description">
+          <header>
+            <h1 class="section-header">
+              Hisham Salameh<span class="period">.</span>
+            </h1>
+          </header>
           <p class="description">UI Engineer and UX Designer with a focus on creating modern web applications</p>
           <ul class="links-container">
             <li>
@@ -28,7 +30,7 @@
               </a>
             </li>
           </ul>
-        </div>
+        </section>
       </div>
     </div>
     <hr>
