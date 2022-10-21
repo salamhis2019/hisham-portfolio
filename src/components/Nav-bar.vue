@@ -22,7 +22,9 @@
           close
         </i>
       </Transition>
-      <nav 
+      <nav
+        role="navigation"
+        aria-label="Main"
         class="nav-items-container"
         :class="showMenu ? 'open-menu' : 'closed-menu'"
       >
