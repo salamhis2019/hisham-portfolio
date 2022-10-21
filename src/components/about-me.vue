@@ -13,7 +13,7 @@
         <hr>
       </header>
       <div class="about-content-container">
-        <section class="about-content-text">
+        <section class="about-content-text" role="contentinfo" aria-label="personal bio">
           <h2 class="bio-header">My Bio</h2>
           <p class="about-item">
             I'm a <span class="key-word">Frontend Web Developer</span> building the easy to use and high performing web applications. Check out some of my work in the Projects section, and my previous experience in the work section!
@@ -25,7 +25,7 @@
             I'm always one to <span class="key-word">say "yes" to opportunities</span> that can provide me a chance to learn something new, so please do not hesitate to reach out regarding and business or job opportunities! I attached my LinkedIn and GitHub on my home page, and my email in the footer :)
           </p>
         </section>
-        <section class="skills-container">
+        <section class="skills-container" role="contentinfo" aria-label="skills">
           <h2 class="skills-header">Skills</h2>
           <ul class="row">
             <li
