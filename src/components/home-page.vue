@@ -3,6 +3,8 @@
     <div class="homepage-content">
       <div class="hero-content">
         <img
+          role="img"
+          aria-label="Portfolio picture of Hisham"
           class="my-image"
           src="@/assets/homepage/headshot.png"
           alt="About me image"
