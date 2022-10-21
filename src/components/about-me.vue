@@ -1,7 +1,7 @@
 <template>
   <div class="about-parent-container">
     <div class="about-container">
-      <div class="about-header">
+      <header class="about-header">
         <div class="header-container">
           <div class="header-content">
             <h1 class="section-header">
@@ -11,10 +11,10 @@
           </div>
         </div>
         <hr>
-      </div>
+      </header>
       <div class="about-content-container">
-        <div class="about-content-text">
-          <h3 class="bio-header">My Bio</h3>
+        <section class="about-content-text">
+          <h2 class="bio-header">My Bio</h2>
           <p class="about-item">
             I'm a <span class="key-word">Frontend Web Developer</span> building the easy to use and high performing web applications. Check out some of my work in the Projects section, and my previous experience in the work section!
           </p>
@@ -24,9 +24,9 @@
           <p class="about-item">
             I'm always one to <span class="key-word">say "yes" to opportunities</span> that can provide me a chance to learn something new, so please do not hesitate to reach out regarding and business or job opportunities! I attached my LinkedIn and GitHub on my home page, and my email in the footer :)
           </p>
-        </div>
-        <div class="skills-container">
-          <h3 class="skills-header">Skills</h3>
+        </section>
+        <section class="skills-container">
+          <h2 class="skills-header">Skills</h2>
           <ul class="row">
             <li
               v-for="skill in technicalSkills"
@@ -36,7 +36,7 @@
               {{ skill }}
             </li>
           </ul>
-          <h3 class="skills-header">Soft Skills</h3>
+          <h2 class="skills-header">Soft Skills</h2>
           <ul class="row">
             <li
               v-for="skill in softSkills"
@@ -46,7 +46,7 @@
               {{ skill }}
             </li>
           </ul>
-        </div>
+        </section>
       </div>
     </div>
   </div>
