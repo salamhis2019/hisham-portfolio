@@ -1,8 +1,8 @@
 <template>
-  <div class="footer-parent-container">
+  <section class="footer-parent-container" role="contentinfo" aria-label="footer">
     <p class="created-by">Created By <span class="name">Hisham Salameh</span></p>
     <p class="last-updated">Last Updated: 10/21/2022</p>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
