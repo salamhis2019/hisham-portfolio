@@ -7,7 +7,7 @@
   <section class="content-container" role="contentinfo" aria-label="individual project">
     <div
       class="card-container">
-      <h3>{{ project.title }}</h3>
+      <h3 role="heading">{{ project.title }}</h3>
       <ul class="description-container">
         <li
           v-for="item in project.description"
