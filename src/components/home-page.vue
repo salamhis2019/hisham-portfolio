@@ -8,8 +8,8 @@
           alt="About me image"
         >
         <section class="home-description" role="contentinfo" aria-label="Name and Links">
-          <header>
-            <h1 class="section-header">
+          <header role="header">
+            <h1 class="section-header" role="heading">
               Hisham Salameh<span class="period">.</span>
             </h1>
           </header>
