@@ -4,7 +4,7 @@
     :class="currentProject === 'stock-project' ? 'stock-banner' : 'portfolio-banner'"
   >
   </div>
-  <div class="content-container">
+  <section class="content-container" role="contentinfo" aria-label="individual project">
     <div
       class="card-container">
       <h3>{{ project.title }}</h3>
@@ -27,7 +27,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>
