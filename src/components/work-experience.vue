@@ -2,9 +2,11 @@
   <section
     v-for="workplace in workExperience"
     :key="workplace.company"
+    role="contentinfo"
+    aria-label="individual work experience"
     class="experience-container">
     <div class="job-description">
-      <p class="title company-title">
+      <p class="title company-title" role="heading">
         {{ workplace.company }}
       </p>
       <div
