@@ -1,7 +1,7 @@
 <template>
   <div class="footer-parent-container">
     <p class="created-by">Created By <span class="name">Hisham Salameh</span></p>
-    <p class="last-updated">Last Updated: 08/29/2022</p>
+    <p class="last-updated">Last Updated: 10/21/2022</p>
   </div>
 </template>
 
