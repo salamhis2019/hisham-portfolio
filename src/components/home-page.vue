@@ -7,7 +7,7 @@
           src="@/assets/homepage/headshot.png"
           alt="About me image"
         >
-        <section class="home-description">
+        <section class="home-description" role="contentinfo" aria-label="Name and Links">
           <header>
             <h1 class="section-header">
               Hisham Salameh<span class="period">.</span>
