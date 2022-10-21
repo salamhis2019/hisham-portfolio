@@ -136,10 +136,6 @@ setComponentOnPageLoad(param.value);
     .menu-button {
       display: none;
     }
-    h1 {
-      font-family: "Source Code Pro";
-      margin: 0;
-    }
     .nav-items-container {
       display: flex;
       align-items: center;
