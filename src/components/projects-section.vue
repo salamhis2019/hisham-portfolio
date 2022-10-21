@@ -13,6 +13,7 @@
       <div class="project-buttons-container">
         <button
           id="stock-button"
+          role="button"
           aria-expanded="false"
           aria-controls="stock-project"
           class="button-class stock-project"
@@ -23,6 +24,7 @@
         </button>
         <button
           id="portfolio-button"
+          role="button"
           aria-expanded="false"
           aria-controls="portfolio-project"
           class="button-class portfolio-project"
