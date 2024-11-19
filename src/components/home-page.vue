@@ -60,12 +60,15 @@
       width: 100%;
       .my-image {
         width: 20rem;
+        height: 20rem;
         background: linear-gradient(to right, #004cff7e, #ff00807d);
-        border-radius: 50%;
+        border-radius: 100%;
         border-bottom: 4px solid white;
         border-right: 2px dashed white;
         border-left: 2px dashed white;
         box-shadow: 6px 3px 0px #004cff;
+        object-fit: cover;
+        object-position: top;
       }
       @media only screen and (max-width: 450px) {
         .my-image {

@@ -123,12 +123,6 @@ setComponentOnPageLoad(param.value);
   width: 100%;
   background-color: #333533;
   border-bottom: 3px solid transparent;
-  border-image: linear-gradient(
-    0.25turn,
-    #004cff,
-    #ff0080,
-    #004cff
-  );
   border-image-slice: 1;
   .content-container {
     display: flex;
