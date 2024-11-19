@@ -1,29 +1,15 @@
 <template>
   <div class="landing-view-container">
     <Transition>
-      <div
-        v-if="contentReady"
-        class="portfolio-content-container"
-      >
+      <div class="portfolio-content-container">
         <component :is="PortfolioContent" />
       </div>
-      <LoadingPage 
-        v-else
-      />
     </Transition>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from "vue";
 import PortfolioContent from "@/components/portfolio-content.vue";
-import LoadingPage from "@/components/loading-page.vue";
-
-const contentReady = ref<boolean>(false);
-
-setTimeout(() => {
-  contentReady.value = true;
-}, 6000)
 </script>
 
 <style lang="scss" scoped>
