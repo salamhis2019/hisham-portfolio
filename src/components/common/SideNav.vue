@@ -1,26 +1,5 @@
 <template>
   <div class="side-nav">
-
-    <Transition>
-      <i
-        v-if="!showMenu"
-        class="material-icons menu-button"
-        style="font-size:36px"
-        @click="renderMenu"
-      >
-        menu
-      </i>
-      <i
-        v-else
-        class="material-icons menu-button" 
-        style="font-size:36px"
-        role="button"
-        @click="renderMenu"
-      >
-        close
-      </i>
-    </Transition>
-
     <nav
       role="navigation"
       aria-label="Nav bar"
@@ -118,47 +97,5 @@ function renderMenu() {
       background-color: var(--interactive-blue);
     }
   }
-}
-
-@media only screen and (max-width: 450px) {
-  .nav {
-    .content-container {
-      display: block;
-      flex-direction: column;
-      justify-content: left;
-      height: 100%;
-      width: 100%;
-      margin: 0;
-      padding: 1rem 0;
-      cursor: pointer;
-      .menu-button {
-        display: block;
-        padding-left: 1rem;
-      }
-      .closed-menu {
-        display: none;
-      }
-      .open-menu {
-        display: flex;
-        flex-direction: column;
-        gap: 3rem;
-        padding-bottom: 2rem;
-      }
-      .nav-items-container {
-        transition: 0.3s ease;
-      }
-    }
-  }
-}
-.v-leave-from {
-  display: none;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-.v-enter-active {
-  transition: opacity 0.5s ease-in;
 }
 </style>
