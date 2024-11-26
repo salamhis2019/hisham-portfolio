@@ -1,19 +1,30 @@
 <template>
   <div class="landing-view">
-    <nav-bar />
-    <portfolio-content />
-    <page-footer />
+    <side-nav :items="NAV_ITEMS" />
+
+    <div class="content-container">
+      <portfolio-content />
+      <page-footer />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import NavBar from "@/components/common/NavBar.vue";
+import SideNav from "@/components/common/SideNav.vue";
 import PageFooter from "@/components/common/PageFooter.vue";
 import PortfolioContent from "@/components/portfolio-content.vue";
+import { NAV_ITEMS } from '@/constants/NavItems.const';
 </script>
 
 <style lang="scss" scoped>
 .landing-view {
-  height: calc(100% - 200px);
+  min-height: 100%;
+  display: flex;
+  margin-left: 250px;
+
+  .content-container {
+    height: 100%;
+    width: 100%;
+  }
 }
 </style>
