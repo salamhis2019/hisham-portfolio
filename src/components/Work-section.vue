@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import WorkExperience from "@/components/work-experience.vue";
+import WorkExperience from "@/components/WorkExperience.vue";
 </script>
 
 <style lang="scss" scoped>

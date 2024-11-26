@@ -1,9 +1,9 @@
 <template>
-  <LandingView />
+  <MainView />
 </template>
 
 <script lang="ts" setup>
-import LandingView from '@/views/LandingView.vue';
+import MainView from '@/views/MainView.vue';
 </script>
 
 <style lang="scss">
