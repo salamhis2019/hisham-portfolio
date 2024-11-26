@@ -1,8 +1,8 @@
 import { shallowRef } from 'vue';
-import ProjectsSection from "@/components/projects-section.vue";
-import AboutMe from "@/components/about-me.vue";
+import ProjectsSection from "@/components/ProjectsSection.vue";
+import AboutMeSection from "@/components/AboutMeSection.vue";
 import WorkExperience from "@/components/Work-section.vue";
-import HomePage from "@/components/home-page.vue";
+import IntroContent from "@/components/IntroContent.vue";
 import type { NavItems } from '@/types/nav-items.types';
 
 const NAV_ITEMS: NavItems[] = [
@@ -26,7 +26,7 @@ const NAV_ITEMS: NavItems[] = [
 
 const NAV_COMPONENTS = {
   "home": {
-    "home": shallowRef(HomePage),
+    "home": shallowRef(IntroContent),
   },
   "projects": {
     "projects": shallowRef(ProjectsSection)
@@ -35,7 +35,7 @@ const NAV_COMPONENTS = {
     "work-experience": shallowRef(WorkExperience),
   },
   "about-me": {
-    "about-me": shallowRef(AboutMe)
+    "about-me": shallowRef(AboutMeSection)
   }
 }
 

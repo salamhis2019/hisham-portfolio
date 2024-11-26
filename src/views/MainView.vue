@@ -1,9 +1,12 @@
 <template>
-  <div class="landing-view">
+  <div class="main-view">
     <side-nav :items="NAV_ITEMS" />
 
     <div class="content-container">
-      <portfolio-content />
+      <intro-content />
+      <work-experience />
+      <projects-section />
+      <about-me-section />
       <page-footer />
     </div>
   </div>
@@ -12,12 +15,15 @@
 <script lang="ts" setup>
 import SideNav from "@/components/common/SideNav.vue";
 import PageFooter from "@/components/common/PageFooter.vue";
-import PortfolioContent from "@/components/portfolio-content.vue";
+import IntroContent from "@/components/IntroContent.vue";
+import WorkExperience from "@/components/WorkExperience.vue";
+import ProjectsSection from "@/components/ProjectsSection.vue";
+import AboutMeSection from '@/components/AboutMeSection.vue';
 import { NAV_ITEMS } from '@/constants/NavItems.const';
 </script>
 
 <style lang="scss" scoped>
-.landing-view {
+.main-view {
   min-height: 100%;
   display: flex;
   margin-left: 250px;
