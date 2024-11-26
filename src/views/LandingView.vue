@@ -20,6 +20,7 @@ import { NAV_ITEMS } from '@/constants/NavItems.const';
 .landing-view {
   min-height: 100%;
   display: flex;
+  margin-left: 250px;
 
   .content-container {
     height: 100%;

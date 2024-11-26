@@ -52,7 +52,10 @@ function renderMenu() {
 
 <style lang="scss" scoped>
 .side-nav {
-  width: 300px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
   min-height: 100%;
   background-color: #1b1f22;
 
