@@ -13,7 +13,9 @@
 
         <!-- TODO: get name from API response -->
         <h1 class="section-header" role="heading">
-          👋 {{ name }} <span class="period">.</span>
+          👋
+          <span class="name">{{ name }}</span>
+          <span class="period">.</span>
         </h1>
       </header>
 
@@ -92,7 +94,10 @@ const description = ref("UI Engineer and UX Designer with a focus on creating mo
       font-size: 4rem;
       color: var(--color-white);
       margin: 0;
-      text-shadow: 3px 3px 0px #ff0080c0;
+
+      .name {
+        text-shadow: 3px 3px 0px #ff0080c0;
+      }
 
       .period {
         font-family: 'Oswald';
