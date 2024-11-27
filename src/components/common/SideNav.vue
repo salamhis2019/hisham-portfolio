@@ -47,7 +47,6 @@ const showMenu = ref(false);
 /** Methods */
 
 function scrollToSection(sectionId: string) {
-  console.log(sectionId)
   const section = document.getElementById(sectionId);
 
   if (section) {
