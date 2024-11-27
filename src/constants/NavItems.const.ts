@@ -7,16 +7,16 @@ import type { NavItems } from '@/types/nav-items.types';
 
 const NAV_ITEMS: NavItems[] = [
   {
-    name: 'home',
+    name: 'intro-content',
     displayText: 'Home',
-  },
-  {
-    name: 'projects',
-    displayText: 'Projects',
   },
   {
     name: 'work-experience',
     displayText: 'Work Experience',
+  },
+  {
+    name: 'projects',
+    displayText: 'Projects',
   },
   {
     name: 'about-me',

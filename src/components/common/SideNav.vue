@@ -14,6 +14,7 @@
         role="sidenav-link"
         class="nav-item"
         :class="{'active': route.params.currentPage === item.name}"
+        @click.prevent="scrollToSection(item.name)"
       >
 
         <li>{{ item.displayText }}</li>
@@ -45,8 +46,12 @@ const showMenu = ref(false);
 
 /** Methods */
 
-function renderMenu() {
-  showMenu.value = !showMenu.value;
+function scrollToSection(sectionId: string) {
+  const section = document.getElementById(sectionId);
+
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
 }
 </script>
 

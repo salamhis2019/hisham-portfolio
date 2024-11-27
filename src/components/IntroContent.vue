@@ -1,5 +1,5 @@
 <template>
-  <section class="intro-content" aria-labelledby="intro-header">
+  <section id="intro-content" class="intro-content" aria-labelledby="intro-header">
 
     <!-- Fetch Profile Pic from API -->
     <img

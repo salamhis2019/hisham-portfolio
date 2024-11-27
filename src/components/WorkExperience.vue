@@ -1,51 +1,54 @@
 <template>
-  <section
-    v-for="workplace in workExperience"
-    :key="workplace.company"
-    role="contentinfo"
-    aria-label="individual work experience"
-    class="experience-container">
-    <div class="job-description">
-      <p class="title company-title" role="heading">
-        {{ workplace.company }}
-      </p>
-      <div
-        v-for="({ title, date, responsibilities, skills }, index) in workplace.positions"
-        :key="title"
-        class="positions-container"
-      >
-        <div class="title-container">
-          <p class="job-title">{{ title }}</p>
-          <p class="date">{{ date }}</p>
+  <div id="work-experience" class="work-experience">
+    <section
+      v-for="workplace in workExperience"
+      :key="workplace.company"
+      role="contentinfo"
+      aria-label="individual work experience"
+      class="experience-container"
+    >
+      <div class="job-description">
+        <p class="title company-title" role="heading">
+          {{ workplace.company }}
+        </p>
+        <div
+          v-for="({ title, date, responsibilities, skills }, index) in workplace.positions"
+          :key="title"
+          class="positions-container"
+        >
+          <div class="title-container">
+            <p class="job-title">{{ title }}</p>
+            <p class="date">{{ date }}</p>
+          </div>
+          <ul
+            class="description-container"
+          >
+            <li
+              v-for="(description) in responsibilities"
+              :key="description"
+            >
+              {{ description }}
+            </li>
+          </ul>
+          <ul
+            class="skill-badges-container"
+            v-if="skills"
+          >
+            <li
+              v-for="item in skills"
+              :key="item"
+              class="skill-badge"
+            >
+              {{ item }}
+            </li>
+          </ul>
+          <hr
+            v-if="index === 0 && workplace.positions.length == 2"
+          >
         </div>
-        <ul
-          class="description-container"
-        >
-          <li
-            v-for="(description) in responsibilities"
-            :key="description"
-          >
-            {{ description }}
-          </li>
-        </ul>
-        <ul
-          class="skill-badges-container"
-          v-if="skills"
-        >
-          <li
-            v-for="item in skills"
-            :key="item"
-            class="skill-badge"
-          >
-            {{ item }}
-          </li>
-        </ul>
-        <hr
-          v-if="index === 0 && workplace.positions.length == 2"
-        >
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 </template>
 
 <script lang="ts" setup>

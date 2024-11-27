@@ -1,5 +1,5 @@
 <template>
-  <div class="work-experience-container">
+  <div id="work-experience" class="work-experience-container">
     <div class="work-experience-content">
       <div class="header-container">
         <div class="header-content">
