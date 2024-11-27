@@ -1,5 +1,5 @@
 <template>
-  <div class="about-parent-container">
+  <div id="about-me" class="about-parent-container">
     <div class="about-container">
       <header class="about-header">
         <div class="header-container">
