@@ -1,4 +1,4 @@
-export const test = [
+export default [
   {
     company: 'Apple',
     positions: [
@@ -71,5 +71,3 @@ export const test = [
     ]
   }
 ]
-
-export default test;

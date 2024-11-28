@@ -1,4 +1,4 @@
-export const projects = [
+export default [
   {
     title: 'Stock Project with Vantage API',
     description: [
@@ -22,5 +22,3 @@ export const projects = [
     skills: ['Vue.js', 'TypeScript', 'JavaScript', 'HTML', 'SASS', 'jest.js', 'UX Design', 'Acessibility', 'Reusability', 'Verison Control']
   },
 ]
-
-export default projects;

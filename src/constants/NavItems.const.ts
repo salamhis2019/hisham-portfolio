@@ -1,7 +1,7 @@
 import { shallowRef } from 'vue';
 import ProjectsSection from "@/components/ProjectsSection.vue";
 import AboutMeSection from "@/components/AboutMeSection.vue";
-import WorkExperience from "@/components/Work-section.vue";
+import WorkExperience from "@/components/WorkSection.vue";
 import IntroContent from "@/components/IntroContent.vue";
 import type { NavItems } from '@/types/nav-items.types';
 
