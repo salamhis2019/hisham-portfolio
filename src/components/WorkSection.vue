@@ -19,7 +19,7 @@
 
       <work-experience
         v-for="(experience, index) in workExperiences"
-        :key="index"
+        :key="`${experience.company}-${index}`"
         :experience="experience"
       />
     </div>
