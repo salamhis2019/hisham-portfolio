@@ -4,7 +4,7 @@
 
     <div class="content-container">
       <intro-content />
-      <work-experience />
+      <work-section />
       <projects-section />
       <about-me-section />
       <page-footer />
@@ -16,7 +16,7 @@
 import SideNav from "@/components/common/SideNav.vue";
 import PageFooter from "@/components/common/PageFooter.vue";
 import IntroContent from "@/components/IntroContent.vue";
-import WorkExperience from "@/components/WorkExperience.vue";
+import WorkSection from "@/components/WorkSection.vue";
 import ProjectsSection from "@/components/ProjectsSection.vue";
 import AboutMeSection from '@/components/AboutMeSection.vue';
 import { NAV_ITEMS } from '@/constants/NavItems.const';

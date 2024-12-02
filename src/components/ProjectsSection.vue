@@ -58,14 +58,14 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue';
-import Project from '@/json/projects';
+import ProjectsMock from '../json/jobs.mocks'
 import SingleProject from '@/components/single-project.vue'
 
 const currentProject = ref();
 const currentImage = ref();
 
-const project1 = Project[0]
-const project2 = Project[1]
+const project1 = ProjectsMock[0]
+const project2 = ProjectsMock[1]
 
 function setProject(project: string) {
   currentProject.value = project;
