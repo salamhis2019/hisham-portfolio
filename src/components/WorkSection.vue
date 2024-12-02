@@ -12,11 +12,14 @@
         <p class="description">Here are all of my most recent experiences with web development and what I have learned.</p>
       </header>
 
+      <!-- TODO: add aria hidden to hr -->
       <hr>
 
+      <!-- TODO: add loading spinner for when work experiences are loading -->
+
       <work-experience
-        v-for="experience in JobsMock"
-        :key="experience.company"
+        v-for="(experience, index) in workExperiences"
+        :key="`${experience.company}-${index}`"
         :experience="experience"
       />
     </div>
@@ -24,8 +27,22 @@
 </template>
 
 <script lang="ts" setup>
-import WorkExperience from "@/components/WorkExperience.vue";
-import JobsMock from '../json/jobs.mocks';
+import { onMounted } from 'vue';
+import { storeToRefs } from 'pinia';
+import { useBootstrapStore } from '@/stores/bootstrap.store';
+import WorkExperience from '@/components/WorkExperience.vue';
+
+// State
+
+const bootstrapStore = useBootstrapStore();
+
+const { workExperiences } = storeToRefs(bootstrapStore);
+
+// Lifecycle Hooks
+
+onMounted((): void => {
+  bootstrapStore.getWorkExperiences();
+})
 </script>
 
 <style lang="scss" scoped>
