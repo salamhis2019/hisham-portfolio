@@ -14,4 +14,12 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach((to, from, next) => {
+  if (to.fullPath === '/') {
+    next('/intro-content');
+  } else {
+    next();
+  }
+});
+
 export default router;
