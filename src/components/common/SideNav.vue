@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, defineProps } from "vue";
+import { computed, ref, defineProps, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 import type { NavItems } from "@/types/nav-items.types";
 
@@ -44,6 +44,10 @@ const route = useRoute();
 
 const showMenu = ref(false);
 
+/** Computed */
+
+const routeParam = computed(() => route.params);
+
 /** Methods */
 
 function scrollToSection(sectionId: string) {
@@ -53,6 +57,12 @@ function scrollToSection(sectionId: string) {
     section.scrollIntoView({ behavior: 'smooth' });
   }
 }
+
+/** Watchers */
+
+watch(() => routeParam.value.currentPage, () => {
+  scrollToSection(routeParam.value.currentPage as string);
+})
 </script>
 
 <style lang="scss" scoped>
