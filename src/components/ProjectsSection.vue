@@ -1,157 +1,97 @@
 <template>
-  <div id="projects" class="work-experience-container">
-    <div class="work-experience-content">
-      <div class="header-container">
-        <div class="header-content">
-          <h1 class="section-header">
-            Projects<span class="period"> .</span>
-          </h1>
-          <p class="description">Here are some of the awesome projects that I have created in my time doing web development.</p>          
-        </div>
-      </div>
-      <hr>
-      <div class="project-buttons-container">
-        <button
-          id="stock-button"
-          role="button"
-          aria-expanded="false"
-          aria-controls="stock-project"
-          class="button-class stock-project"
-          :class="{'active': currentProject === 'stock-project'}"
-          @click="setProject('stock-project')"
-        >
-          Vantage API Stock Project
-        </button>
-        <button
-          id="portfolio-button"
-          role="button"
-          aria-expanded="false"
-          aria-controls="portfolio-project"
-          class="button-class portfolio-project"
-          :class="{'active': currentProject === 'portfolio-project'}"
-          @click="setProject('portfolio-project')"
-        >
-          Personal Portfolio Project
-        </button>
-      </div>
-        <SingleProject
-          id="stock-project"
-          role="region"
-          aria-labelledby="stock-button"
-          v-if="currentProject === 'stock-project'"
-          :current-project="currentProject"
-          :project="project1"
-          :image="currentImage"
-        />
-        <SingleProject
-          id="portfolio-project"
-          role="region"
-          aria-labelledby="portfolio-button"
-          v-if="currentProject === 'portfolio-project'"
-          :current-project="currentProject"
-          :project="project2"
-          :image="currentImage"
-        />
-    </div>
+  <div id="projects" class="projects-section">
+    <header class="header-container">
+      <h2 class="section-header">
+        Projects
+        <span class="period"> .</span>
+      </h2>
+
+      <p class="description">
+        Here are some of the awesome projects that I have created in my time doing web development.
+      </p>          
+    </header>
+
+    <hr>
+
+    <single-project
+      v-for="(project, index) in projects"
+      :key="`${project.title}-${index}`"
+      id="stock-project"
+      :project="project"
+      :show-divider="showProjectsDivider(projects, index)"
+    />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
-import ProjectsMock from '../json/jobs.mocks'
-import SingleProject from '@/components/single-project.vue'
+import { onMounted } from 'vue';
+import { useBootstrapStore } from '@/stores/bootstrap.store';
+import { storeToRefs } from 'pinia';
+import SingleProject from '@/components/SingleProject.vue'
 
-const currentProject = ref();
-const currentImage = ref();
+/** Pinia */
 
-const project1 = ProjectsMock[0]
-const project2 = ProjectsMock[1]
+const bootstrapStore = useBootstrapStore();
 
-function setProject(project: string) {
-  currentProject.value = project;
-}
+const { projects } = storeToRefs(bootstrapStore);
+
+/** Methods */
+// TODO: create helper method for divider
+const showProjectsDivider = (projects: any, index: number): boolean => {
+  return projects.length > 1 && index !== projects.length - 1;
+};
+
+/** Lifecycle Hooks */
+
+onMounted((): void => {
+  bootstrapStore.getProjects();
+})
 </script>
 
 <style lang="scss" scoped>
-.work-experience-container {
+.projects-section {
+  background: #13141a;
   display: flex;
   justify-content: center;
-  width: 100%;
-  min-height: 650px;
-  background: #13141a;
-  .work-experience-content {
-    width: 900px;
-    .header-container {
-      display: flex;
-      align-items: center;
-      justify-content: left;
-      height: 300px;
-      padding-bottom: 2rem;
-      .description {
-        font-family: 'Source Sans Pro';
-        font-size: 1.2rem;
-        color: white;
-      }
-      .section-header {
-        margin-bottom: 3rem;
-        font-size: 4rem;
-        font-family: 'Source Code Pro';
-        color: white;
-        .period {
-          font-size: 5rem;
-          font-family: 'Oswald';
-          background: -webkit-linear-gradient(#004cff, #ff0080);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-      }
-    }
-    hr {
-      border: 0;
-      height: 2.5px;
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
-      margin-bottom: 4rem;
-    }
-  }
-  @media only screen and (max-width: 450px) {
-    .work-experience-content {
-      margin: 1rem;
-    }
-  }
-  .project-buttons-container {
+  flex-direction: column;
+
+  .header-container {
     display: flex;
-    justify-content: space-evenly;
-    gap: 1rem;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: left;
+    margin: 0 auto 3rem auto;
+    max-width: 1300px;
     width: 100%;
-    margin-bottom: 4rem;
-    .button-class {
-      padding: 0.5rem 1rem;
-      color: rgba(255, 255, 255, 0.957);
-      background: #ff0080;
-      font-size: 1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: 0.2s ease;
-      &:hover {
-        color: #ffffffb6
+
+    .section-header {
+      font-size: 3rem;
+      font-family: 'Source Code Pro';
+      color: var(--color-white);
+
+      .period {
+        font-size: 5rem;
+        font-family: 'Oswald';
+        background: -webkit-linear-gradient(#004cff, #ff0080);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
     }
-    .active {
-      box-shadow: 2px 2px 0px white;
+
+    .description {
+      font-family: 'Source Sans Pro';
+      font-size: 1.2rem;
+      color: var(--color-white);
     }
   }
-  @media only screen and (max-width: 450px) {
-    .content-container {
-      display: block;
-      width: 100%;
-      .stock-icon {
-        display: flex;
-        justify-content: center;
-        margin: 0 auto 3rem auto;
-      }
-    }
+
+  hr {
+    width: 100%;
+    max-width: 80%;
+    height: 2.5px;
+    margin-bottom: 4rem;
+    border: 0;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
   }
 }
 </style>
