@@ -18,7 +18,7 @@
       :key="`${project.title}-${index}`"
       id="stock-project"
       :project="project"
-      :show-divider="showProjectsDivider(projects, index)"
+      :show-divider="showSectionDivider(projects, index)"
     />
   </div>
 </template>
@@ -28,18 +28,13 @@ import { onMounted } from 'vue';
 import { useBootstrapStore } from '@/stores/bootstrap.store';
 import { storeToRefs } from 'pinia';
 import SingleProject from '@/components/SingleProject.vue'
+import { showSectionDivider } from '@/helpers/divider-helper';
 
 /** Pinia */
 
 const bootstrapStore = useBootstrapStore();
 
 const { projects } = storeToRefs(bootstrapStore);
-
-/** Methods */
-// TODO: create helper method for divider
-const showProjectsDivider = (projects: any, index: number): boolean => {
-  return projects.length > 1 && index !== projects.length - 1;
-};
 
 /** Lifecycle Hooks */
 
