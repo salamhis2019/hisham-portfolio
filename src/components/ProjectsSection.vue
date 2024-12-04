@@ -54,6 +54,7 @@ onMounted((): void => {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  padding: 0 2rem;
 
   .header-container {
     display: flex;
