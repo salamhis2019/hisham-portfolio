@@ -51,7 +51,7 @@
 
       <!-- Divider for multiple positions in a company -->
       <hr
-        v-if="showPositionsDivider(experience.positions, index)"
+        v-if="showSectionDivider(experience.positions, index)"
         aria-hidden="true"
       >
     </template>
@@ -60,16 +60,15 @@
 
 <script lang="ts" setup>
 import { defineProps } from 'vue';
+import { showSectionDivider } from '@/helpers/divider-helper';
+
+/** Props */
 
 interface Props {
   experience: any;
 }
 
 defineProps<Props>();
-
-const showPositionsDivider = (positions: any, index: number): boolean => {
-  return positions.length > 1 && index !== positions.length - 1;
-};
 </script>
 
 <style lang="scss" scoped>
