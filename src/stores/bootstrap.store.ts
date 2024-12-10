@@ -2,8 +2,10 @@ import { ref, type Ref } from "vue";
 import { defineStore } from "pinia";
 import WorkExperiencesMock from '../json/jobs.mocks';
 import ProjectsMock from '../json/projects.mocks';
+import AboutMeInfoMock from '../json/about-me.mocks';
 import type { WorkExperience } from "@/types/jobs.types";
 import type { Project } from "@/types/projects.types";
+import { AboutMeInfo } from "@/types/about-me.types";
 
 /**
  * Todo: create swift app to integrate with firebase instead of using mock json
@@ -11,9 +13,11 @@ import type { Project } from "@/types/projects.types";
 
 interface State {
   workExperiences: Ref<WorkExperience[]>;
-  projects: Ref<Project[]>
+  projects: Ref<Project[]>;
+  aboutMeInfo: Ref<AboutMeInfo>;
   getWorkExperiences: () => void;
   getProjects: () => void;
+  getAboutMeInfo: () => void;
 }
 
 export const useBootstrapStore = defineStore("bootstrap", (): State => {
@@ -21,6 +25,11 @@ export const useBootstrapStore = defineStore("bootstrap", (): State => {
 
   const workExperiences = ref<WorkExperience[]>([]);
   const projects = ref<Project[]>([]);
+  const aboutMeInfo = ref<AboutMeInfo>({
+    bio: [],
+    technicalSkills: [],
+    softSkills: []
+  })
 
   // Methods
   
@@ -39,10 +48,18 @@ export const useBootstrapStore = defineStore("bootstrap", (): State => {
     }, 1500);
   }
 
+  function getAboutMeInfo(): void {
+    setTimeout((): void => {
+      aboutMeInfo.value = AboutMeInfoMock;
+    }, 1500);
+  }
+
   return {
     workExperiences,
     projects,
+    aboutMeInfo,
     getWorkExperiences,
-    getProjects
+    getProjects,
+    getAboutMeInfo
   }
 })
