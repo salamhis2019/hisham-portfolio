@@ -1,6 +1,6 @@
 import { shallowRef } from 'vue';
 import ProjectsSection from "@/components/ProjectsSection.vue";
-import AboutMeSection from "@/components/AboutMeSection.vue";
+import AboutMeView from "@/views/AboutMeView.vue";
 import WorkExperience from "@/components/WorkSection.vue";
 import IntroContent from "@/components/IntroContent.vue";
 import type { NavItems } from '@/types/nav-items.types';
@@ -35,7 +35,7 @@ const NAV_COMPONENTS = {
     "work-experience": shallowRef(WorkExperience),
   },
   "about-me": {
-    "about-me": shallowRef(AboutMeSection)
+    "about-me": shallowRef(AboutMeView)
   }
 }
 
