@@ -66,6 +66,7 @@ onMounted((): void => {
   justify-content: center;
   width: 100%;
   background: var(--color-black);
+  padding: 2rem 0;
 
   .about-me-container {
     width: 1300px;
