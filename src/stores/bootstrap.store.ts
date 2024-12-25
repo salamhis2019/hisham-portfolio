@@ -6,6 +6,9 @@ import AboutMeInfoMock from '../json/about-me.mocks';
 import type { WorkExperience } from "@/types/jobs.types";
 import type { Project } from "@/types/projects.types";
 import { AboutMeInfo } from "@/types/about-me.types";
+import { db } from "@/firebase";
+import { collection, getDocs } from 'firebase/firestore';
+import { FIREBASE_COLLECTIONS } from "@/constants/FireBase.const";
 
 /**
  * Todo: create swift app to integrate with firebase instead of using mock json
@@ -33,12 +36,16 @@ export const useBootstrapStore = defineStore("bootstrap", (): State => {
 
   // Methods
   
-  // TODO: create async function which fetches from firebase
-  function getWorkExperiences(): void {
-    setTimeout((): void => {
-      workExperiences.value = WorkExperiencesMock
-      console.log(workExperiences.value);
-    }, 1500)
+  async function getWorkExperiences(): Promise<void> {
+    const workExperienceCollectionRef = await getDocs(collection(db, FIREBASE_COLLECTIONS.WORK_EXPERIENCE));
+  
+    try {
+      workExperienceCollectionRef.forEach((doc) => {
+        workExperiences.value = doc.data().jobs;
+      });
+    } catch (error) {
+      console.error("Error adding document: ", error);
+    }
   }
 
   // TODO: create async function to fetch projects

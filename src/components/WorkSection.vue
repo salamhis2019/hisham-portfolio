@@ -49,7 +49,9 @@ onMounted((): void => {
 .work-section {
   display: flex;
   justify-content: center;
+  max-width: 1350px;
   width: 100%;
+  margin: 0 auto;
   background: var(--color-black);
 
   .work-experience-container {
