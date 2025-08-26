@@ -61,11 +61,12 @@
 <script lang="ts" setup>
 import { defineProps } from 'vue';
 import { showSectionDivider } from '@/helpers/divider-helper';
+import type { WorkExperience } from '@/types/jobs.types';
 
 /** Props */
 
 interface Props {
-  experience: any;
+  experience: WorkExperience;
 }
 
 defineProps<Props>();
