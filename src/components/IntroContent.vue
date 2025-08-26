@@ -2,22 +2,22 @@
   <section id="intro-content" class="intro-content" aria-labelledby="intro-header">
     <!-- Animated Background Elements -->
     <div class="bg-decoration">
-      <div class="floating-orb orb-1"></div>
-      <div class="floating-orb orb-2"></div>
-      <div class="floating-orb orb-3"></div>
+      <div class="floating-orb orb-1" />
+      <div class="floating-orb orb-2" />
+      <div class="floating-orb orb-3" />
     </div>
 
     <!-- Main Content Container -->
     <div class="content-wrapper">
       <!-- Profile Picture with Glassmorphism Frame -->
       <div class="profile-container">
-        <div class="profile-glow"></div>
+        <div class="profile-glow" />
         <img
           class="profile-picture"
           src="@/assets/homepage/headshot.png"
           alt="Headshot of Hisham"
-        >
-        <div class="profile-ring"></div>
+        />
+        <div class="profile-ring" />
       </div>
 
       <!-- Text Content with Glass Card Effect -->
@@ -27,7 +27,7 @@
             <span class="wave">👋</span>
             <span class="greeting-text">Hello, I'm</span>
           </div>
-          
+
           <h1 class="section-header" role="heading">
             <span class="name-wrapper">
               <span class="name">{{ name }}</span>
@@ -49,7 +49,7 @@
                 aria-label="Visit my LinkedIn profile"
                 class="social-link linkedin"
               >
-                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                <i class="fa fa-linkedin" aria-hidden="true" />
                 <span class="social-tooltip">LinkedIn</span>
               </a>
             </li>
@@ -62,7 +62,7 @@
                 aria-label="Visit my GitHub profile"
                 class="social-link github"
               >
-                <i class="fa fa-github" aria-hidden="true"></i>
+                <i class="fa fa-github" aria-hidden="true" />
                 <span class="social-tooltip">GitHub</span>
               </a>
             </li>
@@ -70,7 +70,6 @@
         </div>
       </div>
     </div>
-
   </section>
 </template>
 
@@ -78,8 +77,10 @@
 import { ref, onMounted } from 'vue';
 
 /** State */
-const name = ref("Hisham Salameh");
-const description = ref("UI Engineer and UX Designer crafting exceptional digital experiences with modern web technologies");
+const name = ref('Hisham Salameh');
+const description = ref(
+  'UI Engineer and UX Designer crafting exceptional digital experiences with modern web technologies',
+);
 
 /** Lifecycle */
 onMounted(() => {
@@ -90,9 +91,9 @@ onMounted(() => {
     const sectionHeader = document.querySelector('.intro-content .section-header');
     const description = document.querySelector('.intro-content .description');
     const socialSection = document.querySelector('.intro-content .social-section');
-    
+
     const elements = [profileContainer, greetingBadge, sectionHeader, description, socialSection];
-    
+
     elements.forEach((el, index) => {
       if (el) {
         setTimeout(() => {
@@ -112,13 +113,15 @@ onMounted(() => {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, 
-    #0c0c0c 0%, 
-    #1a0033 25%, 
-    #2d1b69 50%, 
-    #1a0033 75%, 
-    #000000 100%);
-  
+  background: linear-gradient(
+    135deg,
+    #0c0c0c 0%,
+    #1a0033 25%,
+    #2d1b69 50%,
+    #1a0033 75%,
+    #000000 100%
+  );
+
   &::before {
     content: '';
     position: absolute;
@@ -126,8 +129,7 @@ onMounted(() => {
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      radial-gradient(ellipse at 20% 20%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
+    background: radial-gradient(ellipse at 20% 20%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
       radial-gradient(ellipse at 80% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
       radial-gradient(ellipse at 40% 60%, rgba(0, 136, 255, 0.08) 0%, transparent 50%);
     animation: backgroundShift 20s ease-in-out infinite alternate;
@@ -226,9 +228,7 @@ onMounted(() => {
       z-index: 3;
       border: 3px solid rgba(255, 255, 255, 0.2);
       backdrop-filter: blur(10px);
-      box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 2px 4px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 2px 4px rgba(255, 255, 255, 0.1);
 
       @media (max-width: 768px) {
         width: 16rem;
@@ -244,7 +244,13 @@ onMounted(() => {
       bottom: -10px;
       border: 2px solid transparent;
       border-radius: 50%;
-      background: linear-gradient(45deg, transparent, rgba(255, 0, 128, 0.5), transparent, rgba(0, 136, 255, 0.5));
+      background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 0, 128, 0.5),
+        transparent,
+        rgba(0, 136, 255, 0.5)
+      );
       background-size: 200% 200%;
       animation: rotateRing 8s linear infinite;
       z-index: 2;
@@ -254,7 +260,7 @@ onMounted(() => {
   .intro-container {
     flex: 1;
     max-width: 600px;
-    
+
     .header-section {
       margin-bottom: 1.5rem;
 
@@ -314,9 +320,7 @@ onMounted(() => {
             position: relative;
             letter-spacing: 2px;
           }
-
         }
-
       }
     }
 
@@ -387,7 +391,12 @@ onMounted(() => {
               left: -100%;
               width: 100%;
               height: 100%;
-              background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+              background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+              );
               transition: left 0.5s ease;
             }
 
@@ -454,39 +463,63 @@ onMounted(() => {
       }
     }
   }
-
 }
 
 /* Animations */
 @keyframes backgroundShift {
-  0%, 100% { transform: scale(1) rotate(0deg); }
-  50% { transform: scale(1.1) rotate(180deg); }
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+  }
 }
 
 @keyframes floatOrb {
-  0%, 100% { transform: translateY(0) translateX(0) scale(1); }
-  33% { transform: translateY(-30px) translateX(20px) scale(1.1); }
-  66% { transform: translateY(20px) translateX(-20px) scale(0.9); }
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  33% {
+    transform: translateY(-30px) translateX(20px) scale(1.1);
+  }
+  66% {
+    transform: translateY(20px) translateX(-20px) scale(0.9);
+  }
 }
 
 @keyframes pulseGlow {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 @keyframes rotateRing {
-  0% { background-position: 0% 0%; }
-  100% { background-position: 200% 200%; }
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 200% 200%;
+  }
 }
 
 @keyframes wave {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(20deg); }
-  75% { transform: rotate(-10deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(20deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
 }
-
-
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -494,7 +527,7 @@ onMounted(() => {
     .content-wrapper {
       padding: 1rem;
     }
-    
+
     .intro-container {
       .social-section .links-container {
         justify-content: center;
