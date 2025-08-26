@@ -2,8 +2,8 @@
   <div class="main-view">
     <div class="content-container">
       <intro-content />
-      <work-section />
       <about-me-view />
+      <work-section />
       <page-footer />
     </div>
   </div>
