@@ -33,6 +33,8 @@ const animationDelay = computed(() => {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/typography.scss';
+
 .skill-badge {
   position: relative;
   background: rgba(255, 255, 255, 0.1);
@@ -70,9 +72,9 @@ const animationDelay = computed(() => {
   }
 
   .skill-text {
+    @include text-skill-badge();
     position: relative;
     z-index: 2;
-    font-family: 'Helvetica Neue', 'Arial', sans-serif;
   }
 
   &.animate-in {

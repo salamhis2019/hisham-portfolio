@@ -97,6 +97,8 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/typography.scss';
+
 .intro-content {
   min-height: 100vh;
   display: flex;
@@ -275,19 +277,16 @@ onMounted(() => {
         }
 
         .greeting-text {
-          color: rgba(255, 255, 255, 0.9);
-          font-size: 1.2rem;
-          font-family: 'Helvetica Neue', 'Arial', sans-serif;
-          font-weight: 500;
+          @include text-greeting();
         }
       }
 
       .section-header {
-        font-size: clamp(2.5rem, 6vw, 4rem);
+        @include text-responsive(2.5rem, 6vw, 4rem);
         color: #ffffff;
         margin: 0;
-        font-family: 'Source Code Pro', monospace;
-        line-height: 1.1;
+        font-family: var(--font-code);
+        line-height: var(--line-height-tight);
         transform: translateY(30px);
         opacity: 0;
         transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
@@ -302,25 +301,19 @@ onMounted(() => {
           display: inline-block;
 
           .name {
-            background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-family: 'Test the future', 'Orbitron', monospace;
-            font-weight: 700;
+            @include text-name();
             position: relative;
-            letter-spacing: 2px;
+            letter-spacing: var(--letter-spacing-wide);
           }
         }
       }
     }
 
     .description {
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      @include text-responsive(1rem, 2vw, 1.2rem);
+      @include text-base();
       color: rgba(255, 255, 255, 0.8);
-      font-family: 'Helvetica Neue', 'Arial', sans-serif;
-      font-weight: 400;
-      line-height: 1.6;
+      line-height: var(--line-height-relaxed);
       margin: 2rem 0;
       transform: translateY(20px);
       opacity: 0;
@@ -343,13 +336,9 @@ onMounted(() => {
       }
 
       .social-label {
+        @include text-label();
         color: rgba(255, 255, 255, 0.6);
-        font-size: 0.9rem;
-        font-family: 'Helvetica Neue', 'Arial', sans-serif;
-        font-weight: 500;
         margin: 0 0 1rem 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
       }
 
       .links-container {
@@ -424,16 +413,14 @@ onMounted(() => {
             }
 
             .social-tooltip {
+              @include text-tooltip();
               position: absolute;
               bottom: -40px;
               left: 50%;
               transform: translateX(-50%) translateY(10px);
               background: rgba(0, 0, 0, 0.8);
-              color: white;
               padding: 0.5rem 0.75rem;
               border-radius: 6px;
-              font-size: 0.8rem;
-              font-weight: 500;
               opacity: 0;
               transition: all 0.3s ease;
               pointer-events: none;

@@ -9,19 +9,19 @@ export const TECH_STACK: TechStackItem[] = [
   {
     id: 'vue',
     name: 'Vue.js',
-    icon: '@/assets/vue-logo.png',
+    icon: require('@/assets/vue-logo.png'),
     alt: 'Vue.js',
   },
   {
     id: 'typescript',
     name: 'TypeScript',
-    icon: '@/assets/typescript-icon.svg',
+    icon: require('@/assets/typescript-icon.svg'),
     alt: 'TypeScript',
   },
   {
     id: 'vite',
     name: 'Vite',
-    icon: '@/assets/vitejs-logo.svg',
+    icon: require('@/assets/vitejs-logo.svg'),
     alt: 'Vite',
   },
 ];

@@ -1,0 +1,314 @@
+// Typography Variables
+:root {
+  // Font Families
+  --font-primary: 'Helvetica Neue', 'Arial', sans-serif;
+  --font-display: 'Test the future', 'Orbitron', monospace;
+  --font-code: 'Source Code Pro', monospace;
+  --font-accent: 'Oswald', sans-serif;
+
+  // Font Weights
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  // Font Sizes
+  --font-size-xs: 0.8rem;
+  --font-size-sm: 0.9rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.1rem;
+  --font-size-xl: 1.2rem;
+  --font-size-2xl: 1.4rem;
+  --font-size-3xl: 1.8rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 4rem;
+
+  // Line Heights
+  --line-height-tight: 1.1;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.6;
+  --line-height-loose: 1.8;
+
+  // Letter Spacing
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+  --letter-spacing-widest: 0.1em;
+}
+
+// Typography Mixins
+
+// Base text styles
+@mixin text-base {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+  letter-spacing: var(--letter-spacing-normal);
+  margin: 0;
+}
+
+// Display text (large headings)
+@mixin text-display($size: var(--font-size-4xl)) {
+  font-family: var(--font-display);
+  font-size: $size;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-wide);
+  color: #ffffff;
+  margin: 0;
+}
+
+// Responsive display text
+@mixin text-display-responsive($min: 2.5rem, $preferred: 5vw, $max: 4rem) {
+  @include text-display(clamp($min, $preferred, $max));
+}
+
+// Section headers
+@mixin text-section-header {
+  @include text-display-responsive();
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+// Job titles and important headings
+@mixin text-heading($size: var(--font-size-2xl)) {
+  @include text-base;
+  font-size: $size;
+  font-weight: var(--font-weight-semibold);
+  color: #ffffff;
+}
+
+// Body text
+@mixin text-body($size: var(--font-size-base)) {
+  @include text-base;
+  font-size: $size;
+  line-height: var(--line-height-relaxed);
+  color: rgba(255, 255, 255, 0.85);
+}
+
+// Description text
+@mixin text-description($size: var(--font-size-xl)) {
+  @include text-body($size);
+  color: rgba(255, 255, 255, 0.8);
+  line-height: var(--line-height-relaxed);
+}
+
+// Small text and labels
+@mixin text-label($size: var(--font-size-sm)) {
+  @include text-base;
+  font-size: $size;
+  font-weight: var(--font-weight-medium);
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-widest);
+}
+
+// Badge text
+@mixin text-badge($size: var(--font-size-sm)) {
+  @include text-base;
+  font-size: $size;
+  font-weight: var(--font-weight-medium);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+// Skill badge text
+@mixin text-skill-badge {
+  @include text-base;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: #ffffff;
+}
+
+// Stats number text
+@mixin text-stat-number {
+  font-family: var(--font-display);
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+// Stats label text
+@mixin text-stat-label {
+  @include text-label();
+  color: rgba(255, 255, 255, 0.7);
+}
+
+// Social link tooltip
+@mixin text-tooltip {
+  @include text-base;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: white;
+}
+
+// Greeting text
+@mixin text-greeting {
+  @include text-base;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-medium);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+// Name text with gradient
+@mixin text-name {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Responsive text utilities
+@mixin text-responsive($min, $preferred, $max) {
+  font-size: clamp($min, $preferred, $max);
+}
+
+// Text with gradient effect
+@mixin text-gradient($gradient: linear-gradient(45deg, #0088ff, #ff00bb)) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Utility classes for common text styles
+.text-display {
+  @include text-display();
+}
+
+.text-display-responsive {
+  @include text-display-responsive();
+}
+
+.text-section-header {
+  @include text-section-header();
+}
+
+.text-heading {
+  @include text-heading();
+}
+
+.text-heading-lg {
+  @include text-heading(var(--font-size-3xl));
+}
+
+.text-body {
+  @include text-body();
+}
+
+.text-body-lg {
+  @include text-body(var(--font-size-lg));
+}
+
+.text-description {
+  @include text-description();
+}
+
+.text-label {
+  @include text-label();
+}
+
+.text-badge {
+  @include text-badge();
+}
+
+.text-skill-badge {
+  @include text-skill-badge();
+}
+
+.text-stat-number {
+  @include text-stat-number();
+}
+
+.text-stat-label {
+  @include text-stat-label();
+}
+
+.text-tooltip {
+  @include text-tooltip();
+}
+
+.text-greeting {
+  @include text-greeting();
+}
+
+.text-name {
+  @include text-name();
+}
+
+// Text color utilities
+.text-white {
+  color: #ffffff;
+}
+
+.text-white-90 {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.text-white-80 {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.text-white-70 {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.text-white-60 {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+// Text alignment utilities
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// Font weight utilities
+.font-light {
+  font-weight: var(--font-weight-light);
+}
+
+.font-normal {
+  font-weight: var(--font-weight-normal);
+}
+
+.font-medium {
+  font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+// Font family utilities
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-code {
+  font-family: var(--font-code);
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}

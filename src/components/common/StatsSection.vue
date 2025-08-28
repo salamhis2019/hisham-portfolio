@@ -34,6 +34,8 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/typography.scss';
+
 .stats-grid {
   display: flex;
   justify-content: space-around;
@@ -43,21 +45,11 @@ withDefaults(defineProps<Props>(), {
     text-align: center;
 
     .stat-number {
-      font-size: 2.5rem;
-      font-weight: 700;
-      font-family: 'Test the future', 'Orbitron', monospace;
-      color: white;
-      background-clip: text;
-      margin-bottom: 0.5rem;
+      @include text-stat-number();
     }
 
     .stat-label {
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.9rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-family: 'Helvetica Neue', 'Arial', sans-serif;
+      @include text-stat-label();
     }
   }
 

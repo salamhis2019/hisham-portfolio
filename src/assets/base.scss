@@ -13,7 +13,13 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, p, span {
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span {
   margin: 0;
 }
 
@@ -21,5 +27,8 @@ h1, h2, h3, h4, h5, p, span {
   --color-black: #090909;
   --color-white: #ffffff;
   --color-secondary: #efefef;
-  --interactive-blue: #007AFF;
+  --interactive-blue: #007aff;
 }
+
+/* Import Typography System */
+@import './typography.scss';

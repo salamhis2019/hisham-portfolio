@@ -116,6 +116,8 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/typography.scss';
+
 .work-experience {
   position: relative;
   margin-bottom: 3rem;
@@ -178,13 +180,10 @@ onMounted(() => {
         flex-wrap: wrap;
 
         .job-title {
-          font-size: 1.4rem;
-          font-weight: 600;
-          color: #ffffff;
+          @include text-heading(var(--font-size-2xl));
           margin: 0;
           flex: 1;
           min-width: 200px;
-          font-family: 'Helvetica Neue', 'Arial', sans-serif;
         }
 
         .date-badge {
@@ -196,16 +195,13 @@ onMounted(() => {
           border: 1px solid rgba(0, 136, 255, 0.2);
           border-radius: 20px;
           padding: 0.4rem 1rem;
-          font-size: 0.9rem;
-          font-weight: 500;
-          color: rgba(255, 255, 255, 0.9);
-          font-family: 'Helvetica Neue', 'Arial', sans-serif;
 
           .calendar-icon {
-            font-size: 0.8rem;
+            font-size: var(--font-size-xs);
           }
 
           .date {
+            @include text-badge();
             margin: 0;
           }
         }
@@ -216,13 +212,9 @@ onMounted(() => {
       margin-bottom: 1.5rem;
 
       .section-label {
+        @include text-label();
         color: rgba(255, 255, 255, 0.8);
-        font-size: 0.9rem;
-        font-weight: 600;
         margin: 0 0 1rem 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-family: 'Helvetica Neue', 'Arial', sans-serif;
       }
 
       .description-container {
@@ -251,11 +243,8 @@ onMounted(() => {
           }
 
           .responsibility-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
+            @include text-body(var(--font-size-lg));
             color: rgba(255, 255, 255, 0.85);
-            font-weight: 400;
-            font-family: 'Helvetica Neue', 'Arial', sans-serif;
           }
         }
       }
@@ -263,13 +252,9 @@ onMounted(() => {
 
     .skills-section {
       .section-label {
+        @include text-label();
         color: rgba(255, 255, 255, 0.8);
-        font-size: 0.9rem;
-        font-weight: 600;
         margin: 0 0 1rem 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-family: 'Helvetica Neue', 'Arial', sans-serif;
       }
 
       .skills-grid {

@@ -76,6 +76,8 @@ const scrollToTop = () => {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/typography.scss';
+
 .footer-parent-container {
   width: 100%;
   background: #1a1a1a;
@@ -96,33 +98,23 @@ const scrollToTop = () => {
 
     .creator-section {
       .creator-name {
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: #ffffff;
+        @include text-heading(var(--font-size-3xl));
         margin: 0 0 0.5rem 0;
-        font-family: 'Helvetica Neue', 'Arial', sans-serif;
       }
 
       .creator-title {
+        @include text-body(var(--font-size-lg));
         color: rgba(255, 255, 255, 0.7);
-        font-size: 1.1rem;
         margin: 0;
-        font-weight: 400;
-        font-family: 'Helvetica Neue', 'Arial', sans-serif;
       }
     }
 
     .tech-section,
     .connect-section {
       .section-title {
-        font-size: 1.1rem;
-        font-weight: 600;
+        @include text-label();
         color: rgba(255, 255, 255, 0.9);
         margin: 0 0 1rem 0;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        font-size: 0.9rem;
-        font-family: 'Helvetica Neue', 'Arial', sans-serif;
       }
     }
 
@@ -133,12 +125,12 @@ const scrollToTop = () => {
         gap: 0.75rem;
 
         .tech-item {
+          @include text-base();
           display: flex;
           align-items: center;
           gap: 0.75rem;
           color: rgba(255, 255, 255, 0.8);
-          font-size: 0.95rem;
-          font-family: 'Helvetica Neue', 'Arial', sans-serif;
+          font-size: var(--font-size-sm);
           transition: color 0.3s ease;
 
           &:hover {
@@ -152,7 +144,7 @@ const scrollToTop = () => {
           }
 
           .tech-name {
-            font-weight: 500;
+            font-weight: var(--font-weight-medium);
           }
         }
       }
@@ -165,13 +157,13 @@ const scrollToTop = () => {
         gap: 0.75rem;
 
         .connect-link {
+          @include text-base();
           display: flex;
           align-items: center;
           gap: 0.75rem;
           color: rgba(255, 255, 255, 0.8);
           text-decoration: none;
-          font-size: 0.95rem;
-          font-family: 'Helvetica Neue', 'Arial', sans-serif;
+          font-size: var(--font-size-sm);
           transition: all 0.3s ease;
 
           &:hover {
@@ -188,13 +180,13 @@ const scrollToTop = () => {
           }
 
           i {
-            font-size: 1.1rem;
+            font-size: var(--font-size-lg);
             width: 20px;
             text-align: center;
           }
 
           .link-text {
-            font-weight: 500;
+            font-weight: var(--font-weight-medium);
           }
         }
       }
@@ -216,21 +208,22 @@ const scrollToTop = () => {
       gap: 0.25rem;
 
       .copyright {
+        @include text-base();
         color: rgba(255, 255, 255, 0.6);
-        font-size: 0.9rem;
+        font-size: var(--font-size-sm);
         margin: 0;
-        font-family: 'Helvetica Neue', 'Arial', sans-serif;
       }
 
       .location {
+        @include text-base();
         color: rgba(255, 255, 255, 0.5);
-        font-size: 0.85rem;
+        font-size: var(--font-size-xs);
         margin: 0;
-        font-family: 'Helvetica Neue', 'Arial', sans-serif;
       }
     }
 
     .back-to-top {
+      @include text-base();
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 25px;
@@ -240,9 +233,8 @@ const scrollToTop = () => {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.85rem;
-      font-weight: 500;
-      font-family: 'Helvetica Neue', 'Arial', sans-serif;
+      font-size: var(--font-size-xs);
+      font-weight: var(--font-weight-medium);
       transition: all 0.3s ease;
 
       &:hover {
@@ -253,8 +245,8 @@ const scrollToTop = () => {
       }
 
       .arrow-icon {
-        font-size: 1rem;
-        font-weight: bold;
+        font-size: var(--font-size-base);
+        font-weight: var(--font-weight-bold);
       }
     }
   }
@@ -296,7 +288,7 @@ const scrollToTop = () => {
   .footer-parent-container {
     .footer-main {
       .creator-section .creator-name {
-        font-size: 1.5rem;
+        font-size: var(--font-size-2xl);
       }
     }
 

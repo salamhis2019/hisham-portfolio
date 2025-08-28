@@ -45,6 +45,8 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/typography.scss';
+
 .section-header-component {
   text-align: v-bind(textAlign);
   margin-bottom: 4rem;
@@ -67,35 +69,23 @@ withDefaults(defineProps<Props>(), {
       }
 
       .badge-text {
-        color: rgba(255, 255, 255, 0.9);
-        font-size: 0.9rem;
-        font-weight: 500;
-        font-family: 'Helvetica Neue', 'Arial', sans-serif;
+        @include text-badge();
       }
     }
 
     .section-header {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-family: 'Test the future', 'Orbitron', monospace;
-      color: #ffffff;
+      @include text-section-header();
       margin: 0 0 1rem 0;
-      font-weight: 700;
-      animation: fadeInUp 0.8s ease-out 0.2s both;
 
       .period {
-        font-family: 'Oswald', sans-serif;
-        background: linear-gradient(45deg, #0088ff, #ff00bb);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        font-family: var(--font-accent);
+        @include text-gradient();
       }
     }
 
     .section-description {
-      font-size: 1.2rem;
-      color: rgba(255, 255, 255, 0.7);
+      @include text-description();
       margin: 0;
-      font-family: 'Helvetica Neue', 'Arial', sans-serif;
       animation: fadeInUp 0.8s ease-out 0.4s both;
     }
   }
