@@ -24,17 +24,10 @@ import PageFooter from '@/components/common/PageFooter.vue';
 import IntroContent from '@/components/IntroContent.vue';
 import WorkSection from '@/components/WorkSection.vue';
 import AboutMeView from '@/views/AboutMeView.vue';
+import { SECTIONS } from '@/constants/Sections.const';
 
 const router = useRouter();
 const route = useRoute();
-
-// Section configuration
-const sections = [
-  { id: 'intro-content', route: 'intro-content' },
-  { id: 'about-me', route: 'about-me' },
-  { id: 'work-experience', route: 'work-experience' },
-  { id: 'contact', route: 'contact' },
-];
 
 let observer: IntersectionObserver | null = null;
 
@@ -67,7 +60,7 @@ onMounted(() => {
           }
         }
 
-        const sectionConfig = sections.find(s => s.id === targetSection.id);
+        const sectionConfig = SECTIONS.find(s => s.id === targetSection.id);
         if (sectionConfig && route.params.currentPage !== sectionConfig.route) {
           console.log(
             `Updating route to: ${sectionConfig.route} (visibility: ${targetSection.ratio.toFixed(
@@ -89,7 +82,7 @@ onMounted(() => {
   );
 
   // Observe all sections
-  sections.forEach(({ id }) => {
+  SECTIONS.forEach(({ id }) => {
     const element = document.getElementById(id);
     if (element && observer) {
       observer.observe(element);
@@ -101,7 +94,7 @@ onMounted(() => {
   if (currentRoute && currentRoute !== 'intro-content') {
     // Scroll to the section if we're loading a specific route
     setTimeout(() => {
-      const targetSection = sections.find(s => s.route === currentRoute);
+      const targetSection = SECTIONS.find(s => s.route === currentRoute);
       if (targetSection) {
         const element = document.getElementById(targetSection.id);
         if (element) {
