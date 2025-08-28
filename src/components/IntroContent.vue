@@ -24,7 +24,7 @@
       <div class="intro-container">
         <header class="header-section">
           <div class="greeting-badge">
-            <span class="wave">👋</span>
+            <span class="wave material-icons" style="color: white">waving_hand</span>
             <span class="greeting-text">Hello, I'm</span>
           </div>
 

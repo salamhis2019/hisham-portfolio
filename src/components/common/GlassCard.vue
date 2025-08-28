@@ -4,7 +4,7 @@
     <div v-if="showHeader" class="card-header">
       <div v-if="icon" class="header-icon">
         <div class="icon-circle" :class="iconVariant">
-          <span class="icon">{{ icon }}</span>
+          <span class="icon material-icons">{{ icon }}</span>
         </div>
       </div>
       <h3 v-if="title" class="card-title">{{ title }}</h3>
@@ -106,6 +106,7 @@ const cardClass = computed(() => {
 
         .icon {
           font-size: 1.5rem;
+          color: white;
         }
       }
     }

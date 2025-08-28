@@ -16,7 +16,7 @@
       <template v-else>
         <!-- Enhanced Header -->
         <SectionHeader
-          badge-icon="👤"
+          badge-icon="person"
           badge-text="Get to know me"
           title="About Me"
           description="Passionate about creating digital experiences that make a difference"
@@ -25,7 +25,7 @@
         <div class="about-content-container">
           <!-- Bio Section with Glass Card -->
           <div class="bio-section">
-            <GlassCard title="My Story" icon="📖" variant="bio">
+            <GlassCard title="My Story" icon="menu_book" variant="bio">
               <div class="bio-content" role="contentinfo" aria-label="personal bio">
                 <div
                   v-for="(item, index) in aboutMeInfo.bio"
@@ -43,7 +43,7 @@
             <!-- Technical Skills -->
             <GlassCard
               title="Technical Skills"
-              icon="⚡"
+              icon="bolt"
               icon-variant="tech"
               variant="skills"
               :show-count="true"
@@ -63,7 +63,7 @@
             <!-- Soft Skills -->
             <GlassCard
               title="Soft Skills"
-              icon="💎"
+              icon="diamond"
               icon-variant="soft"
               variant="skills"
               :show-count="true"

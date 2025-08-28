@@ -7,7 +7,7 @@
     </div>
 
     <!-- Glass Card Container -->
-    <GlassCard :title="experience.company" icon="🏢">
+    <GlassCard :title="experience.company" icon="business">
       <!-- Positions Content -->
       <div class="positions-container">
         <template
@@ -21,7 +21,7 @@
               <div class="position-info">
                 <h4 class="job-title">{{ title }}</h4>
                 <div class="date-badge">
-                  <span class="calendar-icon">📅</span>
+                  <span class="calendar-icon material-icons" style="color: white">event</span>
                   <span class="date">{{ date }}</span>
                 </div>
               </div>

@@ -16,7 +16,7 @@
       <template v-else>
         <!-- Enhanced Header -->
         <SectionHeader
-          badge-icon="💼"
+          badge-icon="work"
           badge-text="My Professional Journey"
           title="Work Experience"
           description="Here are all of my most recent experiences with web development and what I have learned."

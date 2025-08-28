@@ -3,7 +3,7 @@
     <div class="header-content">
       <!-- Section Badge -->
       <div v-if="badgeIcon || badgeText" class="section-badge">
-        <span v-if="badgeIcon" class="badge-icon">{{ badgeIcon }}</span>
+        <span v-if="badgeIcon" class="badge-icon material-icons">{{ badgeIcon }}</span>
         <span v-if="badgeText" class="badge-text">{{ badgeText }}</span>
       </div>
 
@@ -66,6 +66,7 @@ withDefaults(defineProps<Props>(), {
 
       .badge-icon {
         font-size: 1.2rem;
+        color: white;
       }
 
       .badge-text {
