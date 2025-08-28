@@ -15,8 +15,10 @@ import { FIREBASE_COLLECTIONS } from '@/constants/FireBase.const';
 interface State {
   workExperiences: Ref<WorkExperience[]>;
   aboutMeInfo: Ref<AboutMeInfo>;
+  isLoadingAboutMe: Ref<boolean>;
+  isLoadingWorkExperiences: Ref<boolean>;
   getWorkExperiences: () => void;
-  getAboutMeInfo: () => void;
+  getAboutMeInfo: () => Promise<void>;
 }
 
 export const useBootstrapStore = defineStore('bootstrap', (): State => {
@@ -28,10 +30,13 @@ export const useBootstrapStore = defineStore('bootstrap', (): State => {
     technicalSkills: [],
     softSkills: [],
   });
+  const isLoadingAboutMe = ref<boolean>(false);
+  const isLoadingWorkExperiences = ref<boolean>(false);
 
   // Methods
 
   async function getWorkExperiences(): Promise<void> {
+    isLoadingWorkExperiences.value = true;
     try {
       const workExperienceCollectionRef = await getDocs(
         collection(db, FIREBASE_COLLECTIONS.WORK_EXPERIENCE),
@@ -49,18 +54,27 @@ export const useBootstrapStore = defineStore('bootstrap', (): State => {
       console.error('Error fetching work experiences from Firebase, using mock data: ', error);
       // Fallback to mock data on error
       workExperiences.value = WorkExperiencesMock;
+    } finally {
+      isLoadingWorkExperiences.value = false;
     }
   }
 
-  function getAboutMeInfo(): void {
-    setTimeout((): void => {
-      aboutMeInfo.value = AboutMeInfoMock;
-    }, 1500);
+  function getAboutMeInfo(): Promise<void> {
+    isLoadingAboutMe.value = true;
+    return new Promise(resolve => {
+      setTimeout((): void => {
+        aboutMeInfo.value = AboutMeInfoMock;
+        isLoadingAboutMe.value = false;
+        resolve();
+      }, 1500);
+    });
   }
 
   return {
     workExperiences,
     aboutMeInfo,
+    isLoadingAboutMe,
+    isLoadingWorkExperiences,
     getWorkExperiences,
     getAboutMeInfo,
   };

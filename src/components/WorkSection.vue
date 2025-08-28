@@ -9,47 +9,43 @@
     </div>
 
     <div class="work-experience-container">
-      <!-- Enhanced Header -->
-      <SectionHeader
-        badge-icon="💼"
-        badge-text="My Professional Journey"
-        title="Work Experience"
-        description="Here are all of my most recent experiences with web development and what I have learned."
-      />
+      <!-- Loading State -->
+      <SkeletonLoader v-if="isLoading" variant="work-experience" :show-header="true" />
 
-      <!-- Work Experience Cards Container -->
-      <div class="experiences-grid">
-        <!-- Loading State -->
-        <div v-if="!workExperiences || workExperiences.length === 0" class="loading-container">
-          <div class="glass-card loading-card">
-            <div class="loading-content">
-              <div class="loading-spinner" />
-              <p class="loading-text">Loading work experiences...</p>
-            </div>
-          </div>
+      <!-- Loaded Content -->
+      <template v-else>
+        <!-- Enhanced Header -->
+        <SectionHeader
+          badge-icon="💼"
+          badge-text="My Professional Journey"
+          title="Work Experience"
+          description="Here are all of my most recent experiences with web development and what I have learned."
+        />
+
+        <!-- Work Experience Cards Container -->
+        <div class="experiences-grid">
+          <!-- Experience Cards -->
+          <work-experience
+            v-for="(experience, index) in workExperiences"
+            :key="`${experience.company}-${index}`"
+            :experience="experience"
+            :style="{ '--card-delay': `${index * 0.2}s` }"
+            class="experience-card-wrapper"
+          />
         </div>
 
-        <!-- Experience Cards -->
-        <work-experience
-          v-for="(experience, index) in workExperiences"
-          :key="`${experience.company}-${index}`"
-          :experience="experience"
-          :style="{ '--card-delay': `${index * 0.2}s` }"
-          class="experience-card-wrapper"
-        />
-      </div>
-
-      <!-- Summary Section -->
-      <div v-if="workExperiences && workExperiences.length > 0" class="summary-section">
-        <StatsSection
-          :stats="[
-            { value: workExperiences.length, label: 'Companies' },
-            { value: totalPositions, label: 'Positions' },
-            { value: totalYearsExperience, label: 'Years' },
-          ]"
-          variant="stats"
-        />
-      </div>
+        <!-- Summary Section -->
+        <div v-if="workExperiences && workExperiences.length > 0" class="summary-section">
+          <StatsSection
+            :stats="[
+              { value: workExperiences.length, label: 'Companies' },
+              { value: totalPositions, label: 'Positions' },
+              { value: totalYearsExperience, label: 'Years' },
+            ]"
+            variant="stats"
+          />
+        </div>
+      </template>
     </div>
   </section>
 </template>
@@ -61,10 +57,16 @@ import { useBootstrapStore } from '@/stores/bootstrap.store';
 import WorkExperience from '@/components/WorkExperience.vue';
 import SectionHeader from '@/components/common/SectionHeader.vue';
 import StatsSection from '@/components/common/StatsSection.vue';
+import SkeletonLoader from '@/components/common/SkeletonLoader.vue';
 
 // State
 const bootstrapStore = useBootstrapStore();
-const { workExperiences } = storeToRefs(bootstrapStore);
+const { workExperiences, isLoadingWorkExperiences } = storeToRefs(bootstrapStore);
+
+// Loading state
+const isLoading = computed(() => {
+  return isLoadingWorkExperiences.value;
+});
 
 // Computed Properties
 const totalPositions = computed(() => {
@@ -198,44 +200,6 @@ onMounted(async (): Promise<void> => {
     gap: 2rem;
     margin-bottom: 3rem;
 
-    .loading-container {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-
-      .loading-card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 24px;
-        padding: 3rem;
-        text-align: center;
-        min-width: 300px;
-
-        .loading-content {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 1.5rem;
-
-          .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            border-top: 3px solid #0088ff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-          }
-
-          .loading-text {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.1rem;
-            margin: 0;
-          }
-        }
-      }
-    }
-
     .experience-card-wrapper {
       transform: translateY(30px);
       opacity: 0;
@@ -293,15 +257,6 @@ onMounted(async (): Promise<void> => {
   50% {
     opacity: 1;
     transform: translateX(-50%) scale(1.2);
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
   }
 }
 

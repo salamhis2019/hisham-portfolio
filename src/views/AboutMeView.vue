@@ -9,100 +9,107 @@
     </div>
 
     <div class="about-me-container">
-      <!-- Enhanced Header -->
-      <SectionHeader
-        badge-icon="👤"
-        badge-text="Get to know me"
-        title="About Me"
-        description="Passionate about creating digital experiences that make a difference"
-      />
+      <!-- Loading State -->
+      <SkeletonLoader v-if="isLoading" variant="about-me" :show-header="true" />
 
-      <div class="about-content-container">
-        <!-- Bio Section with Glass Card -->
-        <div class="bio-section">
-          <GlassCard title="My Story" icon="📖" variant="bio">
-            <div class="bio-content" role="contentinfo" aria-label="personal bio">
-              <div
-                v-for="(item, index) in aboutMeInfo.bio"
-                :key="index"
-                v-dompurify-html="item"
-                class="bio-paragraph"
-                :style="{ '--delay': `${index * ANIMATION_CONFIG.BIO_DELAY_MULTIPLIER}s` }"
-              />
-            </div>
-          </GlassCard>
-        </div>
-
-        <!-- Skills Section with Enhanced Cards -->
-        <div class="skills-section">
-          <!-- Technical Skills -->
-          <GlassCard
-            title="Technical Skills"
-            icon="⚡"
-            icon-variant="tech"
-            variant="skills"
-            :show-count="true"
-            :count="aboutMeInfo.technicalSkills?.length || 0"
-          >
-            <div class="skills-grid">
-              <SkillBadge
-                v-for="(skill, index) in aboutMeInfo.technicalSkills"
-                :key="skill"
-                :skill="skill"
-                type="tech"
-                :index="index"
-              />
-            </div>
-          </GlassCard>
-
-          <!-- Soft Skills -->
-          <GlassCard
-            title="Soft Skills"
-            icon="💎"
-            icon-variant="soft"
-            variant="skills"
-            :show-count="true"
-            :count="aboutMeInfo.softSkills?.length || 0"
-          >
-            <div class="skills-grid">
-              <SkillBadge
-                v-for="(skill, index) in aboutMeInfo.softSkills"
-                :key="skill"
-                :skill="skill"
-                type="soft"
-                :index="index"
-              />
-            </div>
-          </GlassCard>
-        </div>
-      </div>
-
-      <!-- Stats Section -->
-      <div class="stats-section">
-        <StatsSection
-          :stats="[
-            {
-              value: aboutMeInfo.technicalSkills?.length || 0,
-              label: STATS_LABELS.TECHNICAL_SKILLS,
-            },
-            { value: aboutMeInfo.softSkills?.length || 0, label: STATS_LABELS.SOFT_SKILLS },
-            { value: aboutMeInfo.bio?.length || 0, label: STATS_LABELS.STORY_CHAPTERS },
-          ]"
-          variant="stats"
+      <!-- Loaded Content -->
+      <template v-else>
+        <!-- Enhanced Header -->
+        <SectionHeader
+          badge-icon="👤"
+          badge-text="Get to know me"
+          title="About Me"
+          description="Passionate about creating digital experiences that make a difference"
         />
-      </div>
+
+        <div class="about-content-container">
+          <!-- Bio Section with Glass Card -->
+          <div class="bio-section">
+            <GlassCard title="My Story" icon="📖" variant="bio">
+              <div class="bio-content" role="contentinfo" aria-label="personal bio">
+                <div
+                  v-for="(item, index) in aboutMeInfo.bio"
+                  :key="index"
+                  v-dompurify-html="item"
+                  class="bio-paragraph"
+                  :style="{ '--delay': `${index * ANIMATION_CONFIG.BIO_DELAY_MULTIPLIER}s` }"
+                />
+              </div>
+            </GlassCard>
+          </div>
+
+          <!-- Skills Section with Enhanced Cards -->
+          <div class="skills-section">
+            <!-- Technical Skills -->
+            <GlassCard
+              title="Technical Skills"
+              icon="⚡"
+              icon-variant="tech"
+              variant="skills"
+              :show-count="true"
+              :count="aboutMeInfo.technicalSkills?.length || 0"
+            >
+              <div class="skills-grid">
+                <SkillBadge
+                  v-for="(skill, index) in aboutMeInfo.technicalSkills"
+                  :key="skill"
+                  :skill="skill"
+                  type="tech"
+                  :index="index"
+                />
+              </div>
+            </GlassCard>
+
+            <!-- Soft Skills -->
+            <GlassCard
+              title="Soft Skills"
+              icon="💎"
+              icon-variant="soft"
+              variant="skills"
+              :show-count="true"
+              :count="aboutMeInfo.softSkills?.length || 0"
+            >
+              <div class="skills-grid">
+                <SkillBadge
+                  v-for="(skill, index) in aboutMeInfo.softSkills"
+                  :key="skill"
+                  :skill="skill"
+                  type="soft"
+                  :index="index"
+                />
+              </div>
+            </GlassCard>
+          </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+          <StatsSection
+            :stats="[
+              {
+                value: aboutMeInfo.technicalSkills?.length || 0,
+                label: STATS_LABELS.TECHNICAL_SKILLS,
+              },
+              { value: aboutMeInfo.softSkills?.length || 0, label: STATS_LABELS.SOFT_SKILLS },
+              { value: aboutMeInfo.bio?.length || 0, label: STATS_LABELS.STORY_CHAPTERS },
+            ]"
+            variant="stats"
+          />
+        </div>
+      </template>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { onMounted, nextTick } from 'vue';
+import { onMounted, nextTick, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useBootstrapStore } from '@/stores/bootstrap.store';
 import GlassCard from '@/components/common/GlassCard.vue';
 import SectionHeader from '@/components/common/SectionHeader.vue';
 import SkillBadge from '@/components/common/SkillBadge.vue';
 import StatsSection from '@/components/common/StatsSection.vue';
+import SkeletonLoader from '@/components/common/SkeletonLoader.vue';
 import {
   ANIMATION_CONFIG,
   ANIMATION_CLASSES,
@@ -111,7 +118,12 @@ import {
 import { STATS_LABELS } from '@/constants/StatsLabels.const';
 
 const bootstrapStore = useBootstrapStore();
-const { aboutMeInfo } = storeToRefs(bootstrapStore);
+const { aboutMeInfo, isLoadingAboutMe } = storeToRefs(bootstrapStore);
+
+// Loading state
+const isLoading = computed(() => {
+  return isLoadingAboutMe.value;
+});
 
 const initializeAnimations = () => {
   // Animate cards entrance
