@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import MainView from '../views/MainView.vue';
+import App from '../App.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -8,8 +8,8 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/:currentPage(intro-content|about-me|work-experience|contact)',
-    name: 'MainView',
-    component: MainView,
+    name: 'App',
+    component: App,
   },
   {
     path: '/:pathMatch(.*)*',
@@ -21,7 +21,5 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
-
-// Router guard is no longer needed since we handle redirects in routes
 
 export default router;

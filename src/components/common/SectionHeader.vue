@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/max-attributes-per-line -->
 <template>
   <header class="section-header-component">
     <div class="header-content">
@@ -44,6 +45,10 @@ interface Props {
 /** Props */
 
 withDefaults(defineProps<Props>(), {
+  badgeIcon: undefined,
+  badgeText: undefined,
+  title: undefined,
+  description: undefined,
   showDivider: true,
   textAlign: 'center',
 });

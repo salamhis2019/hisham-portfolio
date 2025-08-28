@@ -36,8 +36,12 @@ interface Props {
 /** Props */
 
 const props = withDefaults(defineProps<Props>(), {
+  title: undefined,
+  icon: undefined,
   iconVariant: 'default',
   showCount: false,
+  count: undefined,
+  variant: undefined,
 });
 
 /** Computed */

@@ -22,7 +22,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, defineProps, onMounted, watch } from 'vue';
+import { computed, ref, defineProps, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import type { NavItems } from '@/types/nav-items.types';
 
