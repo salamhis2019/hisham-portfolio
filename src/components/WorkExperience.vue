@@ -1,10 +1,7 @@
 <template>
   <section role="contentinfo" class="work-experience" aria-label="Work experience details">
     <!-- Background decoration -->
-    <div class="bg-decoration">
-      <div class="floating-shape shape-1" />
-      <div class="floating-shape shape-2" />
-    </div>
+    <BackgroundDecoration variant="card" />
 
     <!-- Glass Card Container -->
     <GlassCard :title="experience.company" icon="business">
@@ -76,13 +73,14 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, onMounted, onUnmounted, nextTick } from 'vue';
+import { defineProps } from 'vue';
 import { showSectionDivider } from '@/helpers/divider-helper';
 import type { WorkExperience } from '@/types/jobs.types';
 import SkillBadge from '@/components/common/SkillBadge.vue';
 import GlassCard from '@/components/common/GlassCard.vue';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
-import { initializeElementAnimations } from '@/helpers/animation-helper';
+import BackgroundDecoration from '@/components/common/BackgroundDecoration.vue';
+import { useWorkExperienceCardAnimations } from '@/composables/useAnimations';
 
 /** Types */
 
@@ -94,26 +92,9 @@ interface Props {
 
 defineProps<Props>();
 
-/** State */
+/** Animations */
 
-let observer: IntersectionObserver | null = null;
-
-/** Lifecycle Hooks */
-
-onMounted(() => {
-  nextTick(() => {
-    observer = initializeElementAnimations(
-      ['.glass-card', '.position-section', '.responsibility-item', '.skill-badge'],
-      { threshold: 0.1, staggerDelay: 100 },
-    );
-  });
-});
-
-onUnmounted(() => {
-  if (observer) {
-    observer.disconnect();
-  }
-});
+useWorkExperienceCardAnimations();
 </script>
 
 <style lang="scss" scoped>
@@ -123,40 +104,6 @@ onUnmounted(() => {
   position: relative;
   margin-bottom: 3rem;
   overflow: hidden;
-
-  .bg-decoration {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 1;
-
-    .floating-shape {
-      position: absolute;
-      background: linear-gradient(45deg, rgba(255, 0, 128, 0.08), rgba(0, 136, 255, 0.08));
-      border-radius: 50%;
-      filter: blur(40px);
-      animation: floatShape 15s ease-in-out infinite;
-
-      &.shape-1 {
-        width: 200px;
-        height: 200px;
-        top: 20%;
-        left: -10%;
-        animation-delay: 0s;
-      }
-
-      &.shape-2 {
-        width: 150px;
-        height: 150px;
-        bottom: 20%;
-        right: -5%;
-        animation-delay: -7s;
-      }
-    }
-  }
 
   .positions-container {
     display: flex;
@@ -314,19 +261,6 @@ onUnmounted(() => {
   to {
     opacity: 1;
     transform: translateX(0);
-  }
-}
-
-@keyframes floatShape {
-  0%,
-  100% {
-    transform: translateY(0px) translateX(0px) scale(1);
-  }
-  33% {
-    transform: translateY(-30px) translateX(20px) scale(1.1);
-  }
-  66% {
-    transform: translateY(20px) translateX(-20px) scale(0.9);
   }
 }
 

@@ -1,12 +1,7 @@
 <template>
   <section id="work-experience" class="work-section">
     <!-- Background decoration -->
-    <div class="bg-decoration">
-      <div class="floating-shape shape-1" />
-      <div class="floating-shape shape-2" />
-      <div class="floating-shape shape-3" />
-      <div class="grid-overlay" />
-    </div>
+    <BackgroundDecoration variant="section" />
 
     <div class="work-experience-container">
       <!-- Loading State -->
@@ -51,14 +46,15 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, onUnmounted, computed, nextTick } from 'vue';
+import { onMounted, computed, nextTick } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useBootstrapStore } from '@/stores/bootstrap.store';
 import WorkExperience from '@/components/WorkExperience.vue';
 import SectionHeader from '@/components/common/SectionHeader.vue';
 import StatsSection from '@/components/common/StatsSection.vue';
 import SkeletonLoader from '@/components/common/SkeletonLoader.vue';
-import { initializeElementAnimations } from '@/helpers/animation-helper';
+import BackgroundDecoration from '@/components/common/BackgroundDecoration.vue';
+import { useWorkExperienceAnimations } from '@/composables/useAnimations';
 
 /** Pinia Stores */
 
@@ -68,9 +64,9 @@ const bootstrapStore = useBootstrapStore();
 
 const { workExperiences, isLoadingWorkExperiences } = storeToRefs(bootstrapStore);
 
-/** State */
+/** Animations */
 
-let observer: IntersectionObserver | null = null;
+const { initializeAnimations } = useWorkExperienceAnimations();
 
 /** Computed */
 
@@ -91,15 +87,6 @@ const totalYearsExperience = computed(() => {
   return workExperiences.value?.length ? workExperiences.value.length * 2 : 0;
 });
 
-/** Methods */
-
-function initializeAnimations(): void {
-  observer = initializeElementAnimations(['.experience-card-wrapper', '.summary-section'], {
-    threshold: 0.1,
-    staggerDelay: 0,
-  });
-}
-
 /** Lifecycle Hooks */
 
 onMounted(async (): Promise<void> => {
@@ -108,12 +95,6 @@ onMounted(async (): Promise<void> => {
   nextTick(() => {
     initializeAnimations();
   });
-});
-
-onUnmounted(() => {
-  if (observer) {
-    observer.disconnect();
-  }
 });
 </script>
 
@@ -132,60 +113,6 @@ onUnmounted(() => {
   );
   padding: 4rem 0;
   overflow: hidden;
-
-  .bg-decoration {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 1;
-
-    .grid-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      animation: gridShift 20s linear infinite;
-    }
-
-    .floating-shape {
-      position: absolute;
-      background: linear-gradient(45deg, rgba(255, 0, 128, 0.1), rgba(0, 136, 255, 0.1));
-      border-radius: 50%;
-      filter: blur(60px);
-      animation: floatShape 20s ease-in-out infinite;
-
-      &.shape-1 {
-        width: 400px;
-        height: 400px;
-        top: 10%;
-        left: -10%;
-        animation-delay: 0s;
-      }
-
-      &.shape-2 {
-        width: 300px;
-        height: 300px;
-        top: 50%;
-        right: -10%;
-        animation-delay: -7s;
-      }
-
-      &.shape-3 {
-        width: 250px;
-        height: 250px;
-        bottom: 10%;
-        left: 30%;
-        animation-delay: -14s;
-      }
-    }
-  }
 
   .work-experience-container {
     max-width: 1400px;
@@ -224,40 +151,6 @@ onUnmounted(() => {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes floatShape {
-  0%,
-  100% {
-    transform: translateY(0px) translateX(0px) scale(1);
-  }
-  33% {
-    transform: translateY(-50px) translateX(30px) scale(1.1);
-  }
-  66% {
-    transform: translateY(30px) translateX(-30px) scale(0.9);
-  }
-}
-
-@keyframes gridShift {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(50px, 50px);
-  }
-}
-
-@keyframes glowPulse {
-  0%,
-  100% {
-    opacity: 0.5;
-    transform: translateX(-50%) scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(-50%) scale(1.2);
   }
 }
 

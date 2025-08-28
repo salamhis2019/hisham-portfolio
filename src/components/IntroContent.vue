@@ -1,11 +1,7 @@
 <template>
   <section id="intro-content" class="intro-content" aria-labelledby="intro-header">
     <!-- Animated Background Elements -->
-    <div class="bg-decoration">
-      <div class="floating-orb orb-1" />
-      <div class="floating-orb orb-2" />
-      <div class="floating-orb orb-3" />
-    </div>
+    <BackgroundDecoration variant="intro" />
 
     <!-- Main Content Container -->
     <div class="content-wrapper">
@@ -64,7 +60,8 @@
 import { ref, onMounted } from 'vue';
 import { SOCIAL_LINKS } from '@/constants/SocialLinks.const';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
-import { animateElementsWithDelay } from '@/helpers/animation-helper';
+import BackgroundDecoration from '@/components/common/BackgroundDecoration.vue';
+import { useAnimations } from '@/composables/useAnimations';
 
 /** State */
 
@@ -73,6 +70,12 @@ const description = ref<string>(
   'UI Engineer and UX Designer crafting exceptional digital experiences with modern web technologies',
 );
 const socialLinks = ref(SOCIAL_LINKS);
+
+/** Animations */
+
+const { animateWithDelay } = useAnimations({
+  autoInit: false, // We'll handle this manually for intro timing
+});
 
 /** Lifecycle Hooks */
 
@@ -83,7 +86,7 @@ onMounted(() => {
       '.intro-content .profile-container, .intro-content .greeting-badge, .intro-content .section-header, .intro-content .description, .intro-content .social-section',
     );
 
-    animateElementsWithDelay(elements, 200);
+    animateWithDelay(elements, 200);
   }, 100);
 });
 </script>
@@ -106,61 +109,6 @@ onMounted(() => {
     #1a0033 75%,
     #000000 100%
   );
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at 20% 20%, rgba(120, 119, 198, 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 80%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
-      radial-gradient(ellipse at 40% 60%, rgba(0, 136, 255, 0.08) 0%, transparent 50%);
-    animation: backgroundShift 20s ease-in-out infinite alternate;
-  }
-
-  .bg-decoration {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: 1;
-
-    .floating-orb {
-      position: absolute;
-      border-radius: 50%;
-      background: linear-gradient(45deg, rgba(255, 0, 128, 0.3), rgba(0, 136, 255, 0.3));
-      filter: blur(40px);
-      animation: floatOrb 15s ease-in-out infinite;
-
-      &.orb-1 {
-        width: 300px;
-        height: 300px;
-        top: 10%;
-        left: 10%;
-        animation-delay: 0s;
-      }
-
-      &.orb-2 {
-        width: 200px;
-        height: 200px;
-        top: 60%;
-        right: 15%;
-        animation-delay: -5s;
-      }
-
-      &.orb-3 {
-        width: 150px;
-        height: 150px;
-        bottom: 20%;
-        left: 60%;
-        animation-delay: -10s;
-      }
-    }
-  }
 
   .content-wrapper {
     display: flex;
@@ -436,29 +384,6 @@ onMounted(() => {
 }
 
 /* Animations */
-@keyframes backgroundShift {
-  0%,
-  100% {
-    transform: scale(1) rotate(0deg);
-  }
-  50% {
-    transform: scale(1.1) rotate(180deg);
-  }
-}
-
-@keyframes floatOrb {
-  0%,
-  100% {
-    transform: translateY(0) translateX(0) scale(1);
-  }
-  33% {
-    transform: translateY(-30px) translateX(20px) scale(1.1);
-  }
-  66% {
-    transform: translateY(20px) translateX(-20px) scale(0.9);
-  }
-}
-
 @keyframes pulseGlow {
   0%,
   100% {
