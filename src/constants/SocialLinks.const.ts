@@ -1,10 +1,4 @@
-export interface SocialLink {
-  id: string;
-  name: string;
-  url: string;
-  icon: string;
-  ariaLabel: string;
-}
+import type { SocialLink } from '@/types/ui.types';
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {

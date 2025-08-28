@@ -1,9 +1,10 @@
-import { ref, type Ref } from 'vue';
+import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import WorkExperiencesMock from '../json/jobs.mocks';
 import AboutMeInfoMock from '../json/about-me.mocks';
 import type { WorkExperience } from '@/types/jobs.types';
 import { AboutMeInfo } from '@/types/about-me.types';
+import type { BootstrapState } from '@/types/store.types';
 import { db } from '@/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import { FIREBASE_COLLECTIONS } from '@/constants/FireBase.const';
@@ -12,16 +13,7 @@ import { FIREBASE_COLLECTIONS } from '@/constants/FireBase.const';
  * Todo: create swift app to integrate with firebase instead of using mock json
  */
 
-interface State {
-  workExperiences: Ref<WorkExperience[]>;
-  aboutMeInfo: Ref<AboutMeInfo>;
-  isLoadingAboutMe: Ref<boolean>;
-  isLoadingWorkExperiences: Ref<boolean>;
-  getWorkExperiences: () => void;
-  getAboutMeInfo: () => Promise<void>;
-}
-
-export const useBootstrapStore = defineStore('bootstrap', (): State => {
+export const useBootstrapStore = defineStore('bootstrap', (): BootstrapState => {
   // State
 
   const workExperiences = ref<WorkExperience[]>([]);

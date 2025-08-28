@@ -1,9 +1,4 @@
-export interface TechStackItem {
-  id: string;
-  name: string;
-  icon: string;
-  alt: string;
-}
+import type { TechStackItem } from '@/types/ui.types';
 
 export const TECH_STACK: TechStackItem[] = [
   {

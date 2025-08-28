@@ -1,11 +1,8 @@
 import { defineStore } from 'pinia';
-
-interface State {
-  currentComponent: any;
-}
+import type { PortfolioState } from '@/types/store.types';
 
 const usePortfolioStore = defineStore('portfolio', {
-  state: (): State => ({
+  state: (): PortfolioState => ({
     currentComponent: '',
   }),
 });

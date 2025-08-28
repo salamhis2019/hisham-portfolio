@@ -2,12 +2,7 @@
  * Animation helper functions for consistent intersection observer animations
  */
 
-export interface AnimationConfig {
-  threshold?: number | number[];
-  rootMargin?: string;
-  staggerDelay?: number;
-  animationClass?: string;
-}
+import type { AnimationConfig } from '@/types/ui.types';
 
 const DEFAULT_CONFIG: Required<AnimationConfig> = {
   threshold: 0.1,

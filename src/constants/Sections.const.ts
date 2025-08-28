@@ -1,7 +1,4 @@
-export interface SectionConfig {
-  id: string;
-  route: string;
-}
+import type { SectionConfig } from '@/types/ui.types';
 
 export const SECTIONS: SectionConfig[] = [
   { id: 'intro-content', route: 'intro-content' },
