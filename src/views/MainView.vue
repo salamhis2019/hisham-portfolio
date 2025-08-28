@@ -10,7 +10,7 @@
       <section id="work-experience" class="section-wrapper">
         <work-section />
       </section>
-      <section id="contact" class="section-wrapper">
+      <section id="footer">
         <page-footer />
       </section>
     </div>
