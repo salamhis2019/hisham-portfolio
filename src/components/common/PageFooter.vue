@@ -1,162 +1,312 @@
 <template>
   <footer class="footer-parent-container" role="contentinfo" aria-label="footer">
     <div class="footer-content">
-      <div class="footer-info">
-        <p class="created-by">
-          Crafted by
-          <span class="name"> Hisham Salameh</span>
-        </p>
+      <!-- Main Content -->
+      <div class="footer-main">
+        <!-- Creator Section -->
+        <div class="creator-section">
+          <h3 class="creator-name">Hisham Salameh</h3>
+          <p class="creator-title">UI Engineer & UX Designer</p>
+        </div>
 
-        <div class="footer-details">
-          <p class="last-updated">Last Updated: October 2022</p>
-          <p class="copyright">© 2022 All rights reserved</p>
+        <!-- Built With Section -->
+        <div class="tech-section">
+          <h4 class="section-title">Built With</h4>
+          <div class="tech-stack">
+            <div v-for="tech in TECH_STACK" :key="tech.id" class="tech-item">
+              <img :src="tech.icon" :alt="tech.alt" class="tech-icon" />
+              <span class="tech-name">{{ tech.name }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Connect Links -->
+        <div class="connect-section">
+          <h4 class="section-title">Connect</h4>
+          <div class="connect-links">
+            <a
+              v-for="link in SOCIAL_LINKS"
+              :key="link.id"
+              :href="link.url"
+              target="_blank"
+              rel="noopener noreferrer"
+              :class="['connect-link', link.id]"
+              :aria-label="link.ariaLabel"
+            >
+              <i :class="['fa', link.icon]" aria-hidden="true" />
+              <span class="link-text">{{ link.name }}</span>
+            </a>
+          </div>
         </div>
       </div>
 
-      <div class="footer-tech">
-        <p class="tech-stack">Built with Vue.js & TypeScript</p>
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-info">
+          <p class="copyright">© {{ currentYear }} Hisham Salameh. All rights reserved.</p>
+          <p class="location">Austin, Texas</p>
+        </div>
+
+        <button class="back-to-top" @click="scrollToTop" aria-label="Scroll to top">
+          <span class="arrow-icon">↑</span>
+          <span class="button-text">Top</span>
+        </button>
       </div>
     </div>
   </footer>
 </template>
 
+<script lang="ts" setup>
+import { computed } from 'vue';
+import { SOCIAL_LINKS } from '@/constants/SocialLinks.const';
+import { TECH_STACK } from '@/constants/TechStack.const';
+
+// Computed Properties
+const currentYear = computed(() => {
+  return new Date().getFullYear();
+});
+
+// Methods
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+};
+</script>
+
 <style lang="scss" scoped>
 .footer-parent-container {
   width: 100%;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, #ff00d9, #004cff, transparent);
-  }
+  background: #1a1a1a;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 3rem 0 1.5rem;
 
   .footer-content {
-    max-width: 1350px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 3rem 2rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
+    padding: 0 2rem;
   }
 
-  .footer-info {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
+  .footer-main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
 
-  .created-by {
-    margin: 0;
-    font-family: 'Source Sans Pro', sans-serif;
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.3rem;
-    font-weight: 400;
+    .creator-section {
+      .creator-name {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin: 0 0 0.5rem 0;
+        font-family: 'Helvetica Neue', 'Arial', sans-serif;
+      }
 
-    .heart {
-      color: #ff0080;
-      font-size: 1.2em;
-      animation: heartbeat 2s ease-in-out infinite;
-    }
-
-    .name {
-      font-family: 'Source Code Pro', monospace;
-      font-size: 1.4rem;
-      font-weight: 700;
-      background: linear-gradient(135deg, #004cff, #ff00d9, #00ff88);
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: gradientShift 3s ease-in-out infinite;
-      text-shadow: 0 0 20px rgba(255, 0, 217, 0.3);
-    }
-  }
-
-  .footer-details {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-
-    @media (min-width: 768px) {
-      flex-direction: row;
-      justify-content: center;
-      gap: 2rem;
-    }
-  }
-
-  .last-updated,
-  .copyright {
-    margin: 0;
-    font-family: 'Source Sans Pro', sans-serif;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.95rem;
-    font-weight: 300;
-  }
-
-  .footer-tech {
-    .tech-stack {
-      margin: 0;
-      font-family: 'Source Code Pro', monospace;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 0.9rem;
-      font-weight: 400;
-      padding: 0.5rem 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-    }
-  }
-}
-
-@keyframes heartbeat {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-}
-
-@keyframes gradientShift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-// Responsive design
-@media (max-width: 768px) {
-  .footer-parent-container {
-    .footer-content {
-      padding: 2rem 1rem 1.5rem;
-      gap: 1.5rem;
-    }
-
-    .created-by {
-      font-size: 1.1rem;
-
-      .name {
-        font-size: 1.2rem;
+      .creator-title {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 1.1rem;
+        margin: 0;
+        font-weight: 400;
+        font-family: 'Helvetica Neue', 'Arial', sans-serif;
       }
     }
 
-    .footer-details {
-      gap: 0.8rem;
+    .tech-section,
+    .connect-section {
+      .section-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.9);
+        margin: 0 0 1rem 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+        font-family: 'Helvetica Neue', 'Arial', sans-serif;
+      }
+    }
+
+    .tech-section {
+      .tech-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .tech-item {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          color: rgba(255, 255, 255, 0.8);
+          font-size: 0.95rem;
+          font-family: 'Helvetica Neue', 'Arial', sans-serif;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: rgba(255, 255, 255, 1);
+          }
+
+          .tech-icon {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+          }
+
+          .tech-name {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .connect-section {
+      .connect-links {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .connect-link {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          color: rgba(255, 255, 255, 0.8);
+          text-decoration: none;
+          font-size: 0.95rem;
+          font-family: 'Helvetica Neue', 'Arial', sans-serif;
+          transition: all 0.3s ease;
+
+          &:hover {
+            color: rgba(255, 255, 255, 1);
+            transform: translateX(5px);
+          }
+
+          &.linkedin:hover {
+            color: #0077b5;
+          }
+
+          &.github:hover {
+            color: #58a6ff;
+          }
+
+          i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+          }
+
+          .link-text {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .footer-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      .copyright {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+        margin: 0;
+        font-family: 'Helvetica Neue', 'Arial', sans-serif;
+      }
+
+      .location {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.85rem;
+        margin: 0;
+        font-family: 'Helvetica Neue', 'Arial', sans-serif;
+      }
+    }
+
+    .back-to-top {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      padding: 0.5rem 1rem;
+      color: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      font-family: 'Helvetica Neue', 'Arial', sans-serif;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+        color: rgba(255, 255, 255, 1);
+        transform: translateY(-2px);
+      }
+
+      .arrow-icon {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-parent-container {
+    padding: 2rem 0 1rem;
+
+    .footer-content {
+      padding: 0 1rem;
+    }
+
+    .footer-main {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+
+      .footer-info {
+        order: 2;
+      }
+
+      .back-to-top {
+        order: 1;
+        align-self: center;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-parent-container {
+    .footer-main {
+      .creator-section .creator-name {
+        font-size: 1.5rem;
+      }
+    }
+
+    .footer-bottom {
+      text-align: center;
+      align-items: center;
+
+      .footer-info {
+        align-items: center;
+      }
     }
   }
 }

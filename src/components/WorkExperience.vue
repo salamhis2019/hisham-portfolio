@@ -184,6 +184,7 @@ onMounted(() => {
           margin: 0;
           flex: 1;
           min-width: 200px;
+          font-family: 'Helvetica Neue', 'Arial', sans-serif;
         }
 
         .date-badge {
@@ -198,6 +199,7 @@ onMounted(() => {
           font-size: 0.9rem;
           font-weight: 500;
           color: rgba(255, 255, 255, 0.9);
+          font-family: 'Helvetica Neue', 'Arial', sans-serif;
 
           .calendar-icon {
             font-size: 0.8rem;
@@ -220,6 +222,7 @@ onMounted(() => {
         margin: 0 0 1rem 0;
         text-transform: uppercase;
         letter-spacing: 1px;
+        font-family: 'Helvetica Neue', 'Arial', sans-serif;
       }
 
       .description-container {
@@ -252,6 +255,7 @@ onMounted(() => {
             line-height: 1.6;
             color: rgba(255, 255, 255, 0.85);
             font-weight: 400;
+            font-family: 'Helvetica Neue', 'Arial', sans-serif;
           }
         }
       }
@@ -265,6 +269,7 @@ onMounted(() => {
         margin: 0 0 1rem 0;
         text-transform: uppercase;
         letter-spacing: 1px;
+        font-family: 'Helvetica Neue', 'Arial', sans-serif;
       }
 
       .skills-grid {

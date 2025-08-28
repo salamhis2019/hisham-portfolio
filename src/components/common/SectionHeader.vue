@@ -39,7 +39,6 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  showPeriod: true,
   showDivider: true,
   textAlign: 'center',
 });

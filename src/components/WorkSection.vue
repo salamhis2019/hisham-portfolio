@@ -13,7 +13,7 @@
       <SectionHeader
         badge-icon="💼"
         badge-text="My Professional Journey"
-        title="Work Experience."
+        title="Work Experience"
         description="Here are all of my most recent experiences with web development and what I have learned."
       />
 
@@ -40,32 +40,16 @@
       </div>
 
       <!-- Summary Section -->
-      <footer class="section-footer" v-if="workExperiences && workExperiences.length > 0">
-        <div class="glass-card summary-card">
-          <div class="summary-content">
-            <div class="summary-title">
-              <span class="title-icon">📊</span>
-              Career Summary
-            </div>
-            <div class="summary-stats">
-              <div class="stat-item">
-                <div class="stat-number">{{ workExperiences.length }}</div>
-                <div class="stat-label">Companies</div>
-              </div>
-              <div class="stat-divider" />
-              <div class="stat-item">
-                <div class="stat-number">{{ totalPositions }}</div>
-                <div class="stat-label">Positions</div>
-              </div>
-              <div class="stat-divider" />
-              <div class="stat-item">
-                <div class="stat-number">{{ totalYearsExperience }}</div>
-                <div class="stat-label">Years</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <div v-if="workExperiences && workExperiences.length > 0" class="summary-section">
+        <StatsSection
+          :stats="[
+            { value: workExperiences.length, label: 'Companies' },
+            { value: totalPositions, label: 'Positions' },
+            { value: totalYearsExperience, label: 'Years' },
+          ]"
+          variant="stats"
+        />
+      </div>
     </div>
   </section>
 </template>
@@ -76,6 +60,7 @@ import { storeToRefs } from 'pinia';
 import { useBootstrapStore } from '@/stores/bootstrap.store';
 import WorkExperience from '@/components/WorkExperience.vue';
 import SectionHeader from '@/components/common/SectionHeader.vue';
+import StatsSection from '@/components/common/StatsSection.vue';
 
 // State
 const bootstrapStore = useBootstrapStore();
@@ -113,7 +98,7 @@ const initializeAnimations = () => {
   experienceCards.forEach(card => observer.observe(card));
 
   // Animate summary section
-  const summarySection = document.querySelector('.section-footer');
+  const summarySection = document.querySelector('.summary-section');
   if (summarySection) {
     observer.observe(summarySection);
   }
@@ -263,86 +248,6 @@ onMounted(async (): Promise<void> => {
       }
     }
   }
-
-  .section-footer {
-    transform: translateY(30px);
-    opacity: 0;
-    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-
-    &.animate-in {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    .summary-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      padding: 2rem;
-      transition: all 0.4s ease;
-
-      .summary-content {
-        text-align: center;
-
-        .summary-title {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          font-size: 1.2rem;
-          font-weight: 600;
-          color: #ffffff;
-          margin-bottom: 1.5rem;
-
-          .title-icon {
-            font-size: 1.3rem;
-          }
-        }
-
-        .summary-stats {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 2rem;
-
-          .stat-item {
-            text-align: center;
-
-            .stat-number {
-              font-size: 2rem;
-              font-weight: 700;
-              background: linear-gradient(45deg, #0088ff, #ff00bb);
-              -webkit-background-clip: text;
-              -webkit-text-fill-color: transparent;
-              background-clip: text;
-              margin-bottom: 0.5rem;
-              display: block;
-            }
-
-            .stat-label {
-              color: rgba(255, 255, 255, 0.7);
-              font-size: 0.9rem;
-              font-weight: 500;
-              text-transform: uppercase;
-              letter-spacing: 1px;
-            }
-          }
-
-          .stat-divider {
-            width: 1px;
-            height: 50px;
-            background: linear-gradient(
-              to bottom,
-              transparent,
-              rgba(255, 255, 255, 0.3),
-              transparent
-            );
-          }
-        }
-      }
-    }
-  }
 }
 
 /* Animations */
@@ -407,17 +312,6 @@ onMounted(async (): Promise<void> => {
 
     .work-experience-container {
       padding: 0 1rem;
-    }
-
-    .section-footer .summary-card .summary-content .summary-stats {
-      flex-direction: column;
-      gap: 1.5rem;
-
-      .stat-divider {
-        width: 60px;
-        height: 1px;
-        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
-      }
     }
   }
 }

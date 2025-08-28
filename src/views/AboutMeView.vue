@@ -79,24 +79,17 @@
 
       <!-- Stats Section -->
       <div class="stats-section">
-        <GlassCard variant="stats">
-          <div class="stats-grid">
-            <div class="stat-item">
-              <div class="stat-number">{{ aboutMeInfo.technicalSkills?.length || 0 }}</div>
-              <div class="stat-label">{{ STATS_LABELS.TECHNICAL_SKILLS }}</div>
-            </div>
-            <div class="stat-divider" />
-            <div class="stat-item">
-              <div class="stat-number">{{ aboutMeInfo.softSkills?.length || 0 }}</div>
-              <div class="stat-label">{{ STATS_LABELS.SOFT_SKILLS }}</div>
-            </div>
-            <div class="stat-divider" />
-            <div class="stat-item">
-              <div class="stat-number">{{ aboutMeInfo.bio?.length || 0 }}</div>
-              <div class="stat-label">{{ STATS_LABELS.STORY_CHAPTERS }}</div>
-            </div>
-          </div>
-        </GlassCard>
+        <StatsSection
+          :stats="[
+            {
+              value: aboutMeInfo.technicalSkills?.length || 0,
+              label: STATS_LABELS.TECHNICAL_SKILLS,
+            },
+            { value: aboutMeInfo.softSkills?.length || 0, label: STATS_LABELS.SOFT_SKILLS },
+            { value: aboutMeInfo.bio?.length || 0, label: STATS_LABELS.STORY_CHAPTERS },
+          ]"
+          variant="stats"
+        />
       </div>
     </div>
   </section>
@@ -109,6 +102,7 @@ import { useBootstrapStore } from '@/stores/bootstrap.store';
 import GlassCard from '@/components/common/GlassCard.vue';
 import SectionHeader from '@/components/common/SectionHeader.vue';
 import SkillBadge from '@/components/common/SkillBadge.vue';
+import StatsSection from '@/components/common/StatsSection.vue';
 import {
   ANIMATION_CONFIG,
   ANIMATION_CLASSES,
@@ -289,40 +283,6 @@ onMounted(async (): Promise<void> => {
     flex-wrap: wrap;
     gap: 0.75rem;
   }
-
-  .stats-section {
-    .stats-grid {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-
-      .stat-item {
-        .stat-number {
-          font-size: 2.5rem;
-          font-weight: 700;
-          font-family: 'Test the future', 'Orbitron', monospace;
-          color: white;
-          background-clip: text;
-          margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-          color: rgba(255, 255, 255, 0.7);
-          font-size: 0.9rem;
-          font-weight: 500;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          font-family: 'Helvetica Neue', 'Arial', sans-serif;
-        }
-      }
-
-      .stat-divider {
-        width: 1px;
-        height: 60px;
-        background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
-      }
-    }
-  }
 }
 
 /* Animations */
@@ -366,17 +326,6 @@ onMounted(async (): Promise<void> => {
 
     .about-me-container {
       padding: 0 1rem;
-    }
-
-    .stats-section .stats-grid {
-      flex-direction: column;
-      gap: 1.5rem;
-
-      .stat-divider {
-        width: 60px;
-        height: 1px;
-        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
-      }
     }
   }
 }
