@@ -306,7 +306,7 @@ onMounted(() => {
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-family: 'test the future', 'Orbitron', monospace;
+            font-family: 'Test the future', 'Orbitron', monospace;
             font-weight: 700;
             position: relative;
             letter-spacing: 2px;

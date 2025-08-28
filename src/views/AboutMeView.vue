@@ -1,164 +1,382 @@
 <template>
   <section id="about-me" class="about-me-view">
-    <div class="about-me-container">
-      <header class="about-header">
-        <h2 class="section-header">About Me<span class="period"> .</span></h2>
+    <!-- Background decoration -->
+    <div class="bg-decoration">
+      <div class="floating-shape shape-1" />
+      <div class="floating-shape shape-2" />
+      <div class="floating-shape shape-3" />
+      <div class="grid-overlay" />
+    </div>
 
-        <hr />
-      </header>
+    <div class="about-me-container">
+      <!-- Enhanced Header -->
+      <SectionHeader
+        badge-icon="👤"
+        badge-text="Get to know me"
+        title="About Me"
+        description="Passionate about creating digital experiences that make a difference"
+      />
 
       <div class="about-content-container">
-        <div class="bio-content" role="contentinfo" aria-label="personal bio">
-          <h2 class="bio-header">Bio</h2>
-
-          <p
-            v-for="(item, index) in aboutMeInfo.bio"
-            :key="index"
-            v-dompurify-html="item"
-            class="bio-item"
-          />
+        <!-- Bio Section with Glass Card -->
+        <div class="bio-section">
+          <GlassCard title="My Story" icon="📖" variant="bio">
+            <div class="bio-content" role="contentinfo" aria-label="personal bio">
+              <div
+                v-for="(item, index) in aboutMeInfo.bio"
+                :key="index"
+                v-dompurify-html="item"
+                class="bio-paragraph"
+                :style="{ '--delay': `${index * ANIMATION_CONFIG.BIO_DELAY_MULTIPLIER}s` }"
+              />
+            </div>
+          </GlassCard>
         </div>
 
-        <section class="skills-container" role="contentinfo" aria-label="skills">
-          <h2 class="skills-header">Skills</h2>
-          <ul class="technical-skills">
-            <li v-for="skill in aboutMeInfo.technicalSkills" :key="skill" class="skill">
-              {{ skill }}
-            </li>
-          </ul>
+        <!-- Skills Section with Enhanced Cards -->
+        <div class="skills-section">
+          <!-- Technical Skills -->
+          <GlassCard
+            title="Technical Skills"
+            icon="⚡"
+            icon-variant="tech"
+            variant="skills"
+            :show-count="true"
+            :count="aboutMeInfo.technicalSkills?.length || 0"
+          >
+            <div class="skills-grid">
+              <SkillBadge
+                v-for="(skill, index) in aboutMeInfo.technicalSkills"
+                :key="skill"
+                :skill="skill"
+                type="tech"
+                :index="index"
+              />
+            </div>
+          </GlassCard>
 
-          <h2 class="skills-header">Soft Skills</h2>
-          <ul class="soft-skills">
-            <li v-for="skill in aboutMeInfo.softSkills" :key="skill" class="skill soft">
-              {{ skill }}
-            </li>
-          </ul>
-        </section>
+          <!-- Soft Skills -->
+          <GlassCard
+            title="Soft Skills"
+            icon="💎"
+            icon-variant="soft"
+            variant="skills"
+            :show-count="true"
+            :count="aboutMeInfo.softSkills?.length || 0"
+          >
+            <div class="skills-grid">
+              <SkillBadge
+                v-for="(skill, index) in aboutMeInfo.softSkills"
+                :key="skill"
+                :skill="skill"
+                type="soft"
+                :index="index"
+              />
+            </div>
+          </GlassCard>
+        </div>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="stats-section">
+        <GlassCard variant="stats">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">{{ aboutMeInfo.technicalSkills?.length || 0 }}</div>
+              <div class="stat-label">{{ STATS_LABELS.TECHNICAL_SKILLS }}</div>
+            </div>
+            <div class="stat-divider" />
+            <div class="stat-item">
+              <div class="stat-number">{{ aboutMeInfo.softSkills?.length || 0 }}</div>
+              <div class="stat-label">{{ STATS_LABELS.SOFT_SKILLS }}</div>
+            </div>
+            <div class="stat-divider" />
+            <div class="stat-item">
+              <div class="stat-number">{{ aboutMeInfo.bio?.length || 0 }}</div>
+              <div class="stat-label">{{ STATS_LABELS.STORY_CHAPTERS }}</div>
+            </div>
+          </div>
+        </GlassCard>
       </div>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue';
+import { onMounted, nextTick } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useBootstrapStore } from '@/stores/bootstrap.store';
+import GlassCard from '@/components/common/GlassCard.vue';
+import SectionHeader from '@/components/common/SectionHeader.vue';
+import SkillBadge from '@/components/common/SkillBadge.vue';
+import {
+  ANIMATION_CONFIG,
+  ANIMATION_CLASSES,
+  ANIMATION_SELECTORS,
+} from '@/constants/Animation.const';
+import { STATS_LABELS } from '@/constants/StatsLabels.const';
 
 const bootstrapStore = useBootstrapStore();
-
 const { aboutMeInfo } = storeToRefs(bootstrapStore);
 
-onMounted((): void => {
-  bootstrapStore.getAboutMeInfo();
+const initializeAnimations = () => {
+  // Animate cards entrance
+  const cards = document.querySelectorAll(ANIMATION_SELECTORS.GLASS_CARD);
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add(ANIMATION_CLASSES.ANIMATE_IN);
+          }, index * ANIMATION_CONFIG.CARD_STAGGER_DELAY);
+        }
+      });
+    },
+    { threshold: ANIMATION_CONFIG.INTERSECTION_THRESHOLD },
+  );
+
+  cards.forEach(card => observer.observe(card));
+
+  // Animate skills
+  const skills = document.querySelectorAll(ANIMATION_SELECTORS.SKILL_BADGE);
+  const skillObserver = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add(ANIMATION_CLASSES.ANIMATE_IN);
+        }
+      });
+    },
+    { threshold: ANIMATION_CONFIG.INTERSECTION_THRESHOLD },
+  );
+
+  skills.forEach(skill => skillObserver.observe(skill));
+};
+
+onMounted(async (): Promise<void> => {
+  await bootstrapStore.getAboutMeInfo();
+
+  nextTick(() => {
+    initializeAnimations();
+  });
 });
 </script>
 
 <style lang="scss" scoped>
 .about-me-view {
-  display: flex;
-  justify-content: center;
+  position: relative;
   width: 100%;
-  background: var(--color-black);
-  padding: 2rem 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #1a0033 25%,
+    #2d1b69 50%,
+    #1a0033 75%,
+    #0a0a0a 100%
+  );
+  padding: 4rem 0;
+  overflow: hidden;
 
-  .about-me-container {
-    width: 1300px;
-    margin: 0 2rem;
-  }
+  .bg-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
 
-  .about-header {
-    margin: 2rem 0;
+    .grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+      animation: gridShift 20s linear infinite;
+    }
 
-    .section-header {
-      margin-bottom: 2rem;
-      font-size: 3rem;
-      font-family: 'Source Code Pro';
-      color: var(--color-white);
+    .floating-shape {
+      position: absolute;
+      background: linear-gradient(45deg, rgba(255, 0, 128, 0.1), rgba(0, 136, 255, 0.1));
+      border-radius: 50%;
+      filter: blur(60px);
+      animation: floatShape 20s ease-in-out infinite;
 
-      .period {
-        font-size: 3rem;
-        font-family: 'Oswald';
-        background: -webkit-linear-gradient(#004cff, #ff0080);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+      &.shape-1 {
+        width: 400px;
+        height: 400px;
+        top: 10%;
+        left: -10%;
+        animation-delay: 0s;
+      }
+
+      &.shape-2 {
+        width: 300px;
+        height: 300px;
+        top: 50%;
+        right: -10%;
+        animation-delay: -7s;
+      }
+
+      &.shape-3 {
+        width: 250px;
+        height: 250px;
+        bottom: 10%;
+        left: 30%;
+        animation-delay: -14s;
       }
     }
+  }
 
-    hr {
-      border: 0;
-      height: 2.5px;
-      background-image: linear-gradient(to right, #00000000, #ffffffbf, #00000000);
-      margin-bottom: 4rem;
-    }
+  .about-me-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
   }
 
   .about-content-container {
-    display: flex;
-    gap: 4rem;
-    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
 
-    .bio-content {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      font-family: 'Source Sans Pro';
-      color: var(--color-white);
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
 
-      .bio-header {
-        margin: 0;
-        font-family: 'Source Sans Pro';
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--color-white);
+  .bio-content {
+    .bio-paragraph {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      font-family: 'Helvetica Neue', 'Arial', sans-serif;
+      animation: fadeInUp 0.6s ease-out
+        calc(var(--delay) + v-bind('ANIMATION_CONFIG.BIO_BASE_DELAY + "s"')) both;
+
+      &:last-child {
+        margin-bottom: 0;
       }
 
-      .bio-item {
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin: 0;
-
-        .key-word {
-          font-weight: 700;
-        }
+      :deep(.key-word) {
+        background: linear-gradient(45deg, #0088ff, #ff00bb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
       }
     }
+  }
 
-    .skills-container {
+  .skills-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .stats-section {
+    .stats-grid {
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 50%;
+      justify-content: space-around;
+      align-items: center;
 
-      .skills-header {
-        margin: 0;
-        font-family: 'Source Sans Pro';
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--color-white);
+      .stat-item {
+        .stat-number {
+          font-size: 2.5rem;
+          font-weight: 700;
+          background: linear-gradient(45deg, #0088ff, #ff00bb);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+          color: rgba(255, 255, 255, 0.7);
+          font-size: 0.9rem;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          font-family: 'Helvetica Neue', 'Arial', sans-serif;
+        }
       }
 
-      .technical-skills,
-      .soft-skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin: 0;
-        padding: 0;
-        font-family: 'Source Code Pro';
+      .stat-divider {
+        width: 1px;
+        height: 60px;
+        background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.3), transparent);
+      }
+    }
+  }
+}
 
-        .skill {
-          list-style-type: none;
-          color: var(--color-white);
-          background: #323f61;
-          margin: 0;
-          padding: 0.5rem 1.5rem;
-          border-radius: 5px;
-        }
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-        .soft {
-          background: #ff0080ba;
-        }
+@keyframes floatShape {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+  }
+  33% {
+    transform: translateY(-50px) translateX(30px) scale(1.1);
+  }
+  66% {
+    transform: translateY(30px) translateX(-30px) scale(0.9);
+  }
+}
+
+@keyframes gridShift {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-me-view {
+    padding: 2rem 0;
+
+    .about-me-container {
+      padding: 0 1rem;
+    }
+
+    .stats-section .stats-grid {
+      flex-direction: column;
+      gap: 1.5rem;
+
+      .stat-divider {
+        width: 60px;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.3), transparent);
       }
     }
   }
