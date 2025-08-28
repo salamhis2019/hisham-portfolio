@@ -64,6 +64,7 @@
 import { ref, onMounted } from 'vue';
 import { SOCIAL_LINKS } from '@/constants/SocialLinks.const';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
+import { animateElementsWithDelay } from '@/helpers/animation-helper';
 
 /** State */
 
@@ -76,23 +77,13 @@ const socialLinks = ref(SOCIAL_LINKS);
 /** Lifecycle Hooks */
 
 onMounted(() => {
-  // Add entrance animations
+  // Add entrance animations with staggered delays
   setTimeout(() => {
-    const profileContainer = document.querySelector('.intro-content .profile-container');
-    const greetingBadge = document.querySelector('.intro-content .greeting-badge');
-    const sectionHeader = document.querySelector('.intro-content .section-header');
-    const description = document.querySelector('.intro-content .description');
-    const socialSection = document.querySelector('.intro-content .social-section');
+    const elements = document.querySelectorAll(
+      '.intro-content .profile-container, .intro-content .greeting-badge, .intro-content .section-header, .intro-content .description, .intro-content .social-section',
+    );
 
-    const elements = [profileContainer, greetingBadge, sectionHeader, description, socialSection];
-
-    elements.forEach((el, index) => {
-      if (el) {
-        setTimeout(() => {
-          el.classList.add('animate-in');
-        }, index * 200);
-      }
-    });
+    animateElementsWithDelay(elements, 200);
   }, 100);
 });
 </script>

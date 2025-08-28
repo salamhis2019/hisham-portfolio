@@ -51,13 +51,14 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, computed, nextTick } from 'vue';
+import { onMounted, onUnmounted, computed, nextTick } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useBootstrapStore } from '@/stores/bootstrap.store';
 import WorkExperience from '@/components/WorkExperience.vue';
 import SectionHeader from '@/components/common/SectionHeader.vue';
 import StatsSection from '@/components/common/StatsSection.vue';
 import SkeletonLoader from '@/components/common/SkeletonLoader.vue';
+import { initializeElementAnimations } from '@/helpers/animation-helper';
 
 /** Pinia Stores */
 
@@ -66,6 +67,10 @@ const bootstrapStore = useBootstrapStore();
 /** Pinia State */
 
 const { workExperiences, isLoadingWorkExperiences } = storeToRefs(bootstrapStore);
+
+/** State */
+
+let observer: IntersectionObserver | null = null;
 
 /** Computed */
 
@@ -88,27 +93,11 @@ const totalYearsExperience = computed(() => {
 
 /** Methods */
 
-function initializeAnimations() {
-  // Animate experience cards
-  const experienceCards = document.querySelectorAll('.experience-card-wrapper');
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-        }
-      });
-    },
-    { threshold: 0.1 },
-  );
-
-  experienceCards.forEach(card => observer.observe(card));
-
-  // Animate summary section
-  const summarySection = document.querySelector('.summary-section');
-  if (summarySection) {
-    observer.observe(summarySection);
-  }
+function initializeAnimations(): void {
+  observer = initializeElementAnimations(['.experience-card-wrapper', '.summary-section'], {
+    threshold: 0.1,
+    staggerDelay: 0,
+  });
 }
 
 /** Lifecycle Hooks */
@@ -119,6 +108,12 @@ onMounted(async (): Promise<void> => {
   nextTick(() => {
     initializeAnimations();
   });
+});
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
+  }
 });
 </script>
 

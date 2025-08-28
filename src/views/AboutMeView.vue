@@ -102,7 +102,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, nextTick, computed } from 'vue';
+import { onMounted, onUnmounted, nextTick, computed } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useBootstrapStore } from '@/stores/bootstrap.store';
 import GlassCard from '@/components/common/GlassCard.vue';
@@ -110,12 +110,9 @@ import SectionHeader from '@/components/common/SectionHeader.vue';
 import SkillBadge from '@/components/common/SkillBadge.vue';
 import StatsSection from '@/components/common/StatsSection.vue';
 import SkeletonLoader from '@/components/common/SkeletonLoader.vue';
-import {
-  ANIMATION_CONFIG,
-  ANIMATION_CLASSES,
-  ANIMATION_SELECTORS,
-} from '@/constants/Animation.const';
+import { ANIMATION_CONFIG } from '@/constants/Animation.const';
 import { STATS_LABELS } from '@/constants/StatsLabels.const';
+import { setupCommonAnimations } from '@/helpers/animation-helper';
 
 /** Pinia Stores */
 
@@ -125,6 +122,10 @@ const bootstrapStore = useBootstrapStore();
 
 const { aboutMeInfo, isLoadingAboutMe } = storeToRefs(bootstrapStore);
 
+/** State */
+
+let animationCleanup: (() => void) | null = null;
+
 /** Computed */
 
 const isLoading = computed(() => {
@@ -133,38 +134,9 @@ const isLoading = computed(() => {
 
 /** Methods */
 
-function initializeAnimations() {
-  // Animate cards entrance
-  const cards = document.querySelectorAll(ANIMATION_SELECTORS.GLASS_CARD);
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach((entry, index) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add(ANIMATION_CLASSES.ANIMATE_IN);
-          }, index * ANIMATION_CONFIG.CARD_STAGGER_DELAY);
-        }
-      });
-    },
-    { threshold: ANIMATION_CONFIG.INTERSECTION_THRESHOLD },
-  );
-
-  cards.forEach(card => observer.observe(card));
-
-  // Animate skills
-  const skills = document.querySelectorAll(ANIMATION_SELECTORS.SKILL_BADGE);
-  const skillObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add(ANIMATION_CLASSES.ANIMATE_IN);
-        }
-      });
-    },
-    { threshold: ANIMATION_CONFIG.INTERSECTION_THRESHOLD },
-  );
-
-  skills.forEach(skill => skillObserver.observe(skill));
+function initializeAnimations(): void {
+  const { cleanup } = setupCommonAnimations();
+  animationCleanup = cleanup;
 }
 
 /** Lifecycle Hooks */
@@ -175,6 +147,12 @@ onMounted(async (): Promise<void> => {
   nextTick(() => {
     initializeAnimations();
   });
+});
+
+onUnmounted(() => {
+  if (animationCleanup) {
+    animationCleanup();
+  }
 });
 </script>
 

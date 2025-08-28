@@ -76,12 +76,13 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, onMounted, nextTick } from 'vue';
+import { defineProps, onMounted, onUnmounted, nextTick } from 'vue';
 import { showSectionDivider } from '@/helpers/divider-helper';
 import type { WorkExperience } from '@/types/jobs.types';
 import SkillBadge from '@/components/common/SkillBadge.vue';
 import GlassCard from '@/components/common/GlassCard.vue';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
+import { initializeElementAnimations } from '@/helpers/animation-helper';
 
 /** Types */
 
@@ -93,30 +94,25 @@ interface Props {
 
 defineProps<Props>();
 
+/** State */
+
+let observer: IntersectionObserver | null = null;
+
 /** Lifecycle Hooks */
 
 onMounted(() => {
   nextTick(() => {
-    // Initialize animations when component mounts
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add('animate-in');
-            }, index * 100);
-          }
-        });
-      },
-      { threshold: 0.1 },
+    observer = initializeElementAnimations(
+      ['.glass-card', '.position-section', '.responsibility-item', '.skill-badge'],
+      { threshold: 0.1, staggerDelay: 100 },
     );
-
-    // Observe all animated elements
-    const elements = document.querySelectorAll(
-      '.glass-card, .position-section, .responsibility-item, .skill-badge',
-    );
-    elements.forEach(el => observer.observe(el));
   });
+});
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect();
+  }
 });
 </script>
 
