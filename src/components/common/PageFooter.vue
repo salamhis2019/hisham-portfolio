@@ -6,13 +6,13 @@
           Crafted by
           <span class="name"> Hisham Salameh</span>
         </p>
-        
+
         <div class="footer-details">
           <p class="last-updated">Last Updated: October 2022</p>
           <p class="copyright">© 2022 All rights reserved</p>
         </div>
       </div>
-      
+
       <div class="footer-tech">
         <p class="tech-stack">Built with Vue.js & TypeScript</p>
       </div>
@@ -61,13 +61,13 @@
     color: rgba(255, 255, 255, 0.9);
     font-size: 1.3rem;
     font-weight: 400;
-    
+
     .heart {
       color: #ff0080;
       font-size: 1.2em;
       animation: heartbeat 2s ease-in-out infinite;
     }
-    
+
     .name {
       font-family: 'Source Code Pro', monospace;
       font-size: 1.4rem;
@@ -86,7 +86,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    
+
     @media (min-width: 768px) {
       flex-direction: row;
       justify-content: center;
@@ -120,13 +120,23 @@
 }
 
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 @keyframes gradientShift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 // Responsive design
@@ -136,15 +146,15 @@
       padding: 2rem 1rem 1.5rem;
       gap: 1.5rem;
     }
-    
+
     .created-by {
       font-size: 1.1rem;
-      
+
       .name {
         font-size: 1.2rem;
       }
     }
-    
+
     .footer-details {
       gap: 0.8rem;
     }

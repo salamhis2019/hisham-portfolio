@@ -4,22 +4,15 @@
       <h3 role="heading">{{ project.title }}</h3>
 
       <ul class="description-container" aria-label="Project Description">
-        <li
-          v-for="item in project.description"
-          :key="item"
-        >
+        <li v-for="item in project.description" :key="item">
           {{ item }}
         </li>
       </ul>
-  
+
       <h3>Skills</h3>
-  
+
       <ul v-if="project.skills" class="skills-container" aria-label="Project Skills">
-        <li
-          v-for="skill in project.skills"
-          :key="skill"
-          class="skill"
-        >
+        <li v-for="skill in project.skills" :key="skill" class="skill">
           {{ skill }}
         </li>
       </ul>
@@ -31,7 +24,7 @@
     </div>
   </section>
 
-  <hr v-if="showDivider" aria-hidden="true">
+  <hr v-if="showDivider" aria-hidden="true" />
 </template>
 
 <script lang="ts" setup>
@@ -45,7 +38,7 @@ interface Props {
   showDivider: boolean;
 }
 
-defineProps<Props>()
+defineProps<Props>();
 </script>
 
 <style lang="scss" scoped>
@@ -116,7 +109,12 @@ defineProps<Props>()
 hr {
   border: 0;
   height: 2.5px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(255, 255, 255, 0.75),
+    rgba(0, 0, 0, 0)
+  );
   margin-bottom: 4rem;
 }
 </style>

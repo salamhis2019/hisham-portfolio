@@ -1,12 +1,12 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
 interface State {
   currentComponent: any;
 }
 
-const usePortfolioStore = defineStore("portfolio", {
+const usePortfolioStore = defineStore('portfolio', {
   state: (): State => ({
-    currentComponent: "",
+    currentComponent: '',
   }),
 });
 

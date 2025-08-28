@@ -1,7 +1,7 @@
 import { shallowRef } from 'vue';
-import AboutMeView from "@/views/AboutMeView.vue";
-import WorkExperience from "@/components/WorkSection.vue";
-import IntroContent from "@/components/IntroContent.vue";
+import AboutMeView from '@/views/AboutMeView.vue';
+import WorkExperience from '@/components/WorkSection.vue';
+import IntroContent from '@/components/IntroContent.vue';
 import type { NavItems } from '@/types/nav-items.types';
 
 const NAV_ITEMS: NavItems[] = [
@@ -16,22 +16,19 @@ const NAV_ITEMS: NavItems[] = [
   {
     name: 'about-me',
     displayText: 'About Me',
-  }
-]
+  },
+];
 
 const NAV_COMPONENTS = {
-  "home": {
-    "home": shallowRef(IntroContent),
+  home: {
+    home: shallowRef(IntroContent),
   },
-  "work-experience": {
-    "work-experience": shallowRef(WorkExperience),
+  'work-experience': {
+    'work-experience': shallowRef(WorkExperience),
   },
-  "about-me": {
-    "about-me": shallowRef(AboutMeView)
-  }
-}
+  'about-me': {
+    'about-me': shallowRef(AboutMeView),
+  },
+};
 
-export {
-  NAV_ITEMS,
-  NAV_COMPONENTS
-}
+export { NAV_ITEMS, NAV_COMPONENTS };

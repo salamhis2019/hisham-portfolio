@@ -1,10 +1,5 @@
 <template>
-  <section
-    role="contentinfo"
-    class="work-experience"
-    aria-label="Work experience details"
-  >
-
+  <section role="contentinfo" class="work-experience" aria-label="Work experience details">
     <!-- Company Title -->
     <h3 class="title company-title" role="heading">
       {{ experience.company }}
@@ -15,7 +10,6 @@
       :key="`${title}-${index}`"
     >
       <header class="title-container">
-
         <!-- Job Title -->
         <p class="job-title">{{ title }}</p>
 
@@ -23,11 +17,9 @@
         <p class="date">{{ date }}</p>
       </header>
 
-      <ul
-        class="description-container"
-      >
+      <ul class="description-container">
         <li
-          v-for="(description) in responsibilities"
+          v-for="description in responsibilities"
           :key="description"
           aria-label="Position Responsibilities"
         >
@@ -35,25 +27,14 @@
         </li>
       </ul>
 
-      <ul
-        class="skill-badges-container"
-        v-if="skills"
-        aria-label="Skills"
-      >
-        <li
-          v-for="(skill, index) in skills"
-          :key="`${skill}-${index}`"
-          class="skill-badge"
-        >
+      <ul class="skill-badges-container" v-if="skills" aria-label="Skills">
+        <li v-for="(skill, index) in skills" :key="`${skill}-${index}`" class="skill-badge">
           {{ skill }}
         </li>
       </ul>
 
       <!-- Divider for multiple positions in a company -->
-      <hr
-        v-if="showSectionDivider(experience.positions, index)"
-        aria-hidden="true"
-      >
+      <hr v-if="showSectionDivider(experience.positions, index)" aria-hidden="true" />
     </template>
   </section>
 </template>
@@ -92,7 +73,7 @@ defineProps<Props>();
     font-size: 2rem;
     font-weight: 700;
     text-shadow: 3px 3px 0px #ff0080b7;
-  } 
+  }
 
   .title-container {
     display: flex;
@@ -149,7 +130,12 @@ defineProps<Props>();
     height: 1px;
     width: 75%;
     margin: 3rem auto;
-    background-image: linear-gradient(to right, rgba(255, 255, 255, 0.475), var(--color-white), rgba(255, 255, 255, 0.503));
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.475),
+      var(--color-white),
+      rgba(255, 255, 255, 0.503)
+    );
     border-radius: 15px;
   }
 }

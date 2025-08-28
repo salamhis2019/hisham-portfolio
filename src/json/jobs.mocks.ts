@@ -11,8 +11,16 @@ export default [
           'Adhere to various processes defined within team such as Agile, code review, or Git.',
         ],
         skills: [
-          'Vue', 'UX/UI Development', 'JavaScript', 'SASS', 'HTML', 'Jest', 'Vue Test Utils', 'Sketch', 'Photoshop'
-        ]
+          'Vue',
+          'UX/UI Development',
+          'JavaScript',
+          'SASS',
+          'HTML',
+          'Jest',
+          'Vue Test Utils',
+          'Sketch',
+          'Photoshop',
+        ],
       },
       {
         title: 'iOS T1 Advisor',
@@ -20,10 +28,10 @@ export default [
         responsibilities: [
           'Provide exemplary professional customer service and technical support on Apple products and software while under pressure',
           'Assembled team to assist manager in optimizing advisor role and improve mental and physical well- being on the job (project in progress)',
-          'Consistently performed highly with customer satisfaction and resolving issues with efficiency'
+          'Consistently performed highly with customer satisfaction and resolving issues with efficiency',
         ],
-      }
-    ]
+      },
+    ],
   },
   {
     company: 'Michigan State University',
@@ -33,11 +41,9 @@ export default [
         date: '10/01/2021 - Current',
         responsibilities: [
           'Met one on one with students to guide them through understanding the fundamentals of website creation with HTML and CSS',
-          'Graded student assignments and provided additional feedback on how to improve their projects and website format'
+          'Graded student assignments and provided additional feedback on how to improve their projects and website format',
         ],
-        skills: [
-          'HTML', 'CSS',
-        ]
+        skills: ['HTML', 'CSS'],
       },
       {
         title: 'Advertising and Public Relations Web Developer',
@@ -47,11 +53,9 @@ export default [
           'Created interface elements using JavaScript to keep students engaged while maintaining a well formatted HTML structure',
           'Created an image carousel with bootstrap and manipulated DOM elements throug JavaScript to create logic for the interface',
         ],
-        skills: [
-          'JavaScript', 'CSS', 'HTML', 'Photoshop', 'Figma'
-        ]
-      }
-    ]
+        skills: ['JavaScript', 'CSS', 'HTML', 'Photoshop', 'Figma'],
+      },
+    ],
   },
   {
     company: 'Essexville Hampton Public Schools',
@@ -62,12 +66,10 @@ export default [
         responsibilities: [
           'Implemented a focused, user-friendly interface with new HTML and CSS elements',
           'Implemented scheduling and news solution by embedding external documents into the website to allow for updateable info, saving the school $5000 annually',
-          'Collaborated with peers and set meetings with departments and leadership across the school district to ensure each area was well represented'
-        ], 
-        skills: [
-          'HTML', 'SCSS', 'Wordpress', 'Photoshop'
-        ]
-      }
-    ]
-  }
-]
+          'Collaborated with peers and set meetings with departments and leadership across the school district to ensure each area was well represented',
+        ],
+        skills: ['HTML', 'SCSS', 'Wordpress', 'Photoshop'],
+      },
+    ],
+  },
+];

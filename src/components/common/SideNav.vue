@@ -6,17 +6,15 @@
       class="nav-items-container"
       :class="showMenu ? 'open-menu' : 'closed-menu'"
     >
-
       <router-link
         v-for="item in items"
         :to="`/${item.name}`"
         :key="item.name"
         role="sidenav-link"
         class="nav-item"
-        :class="{'active': route.params.currentPage === item.name}"
+        :class="{ active: route.params.currentPage === item.name }"
         @click.prevent="scrollToSection(item.name)"
       >
-
         <li>{{ item.displayText }}</li>
       </router-link>
     </nav>
@@ -24,14 +22,14 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, defineProps, onMounted, watch } from "vue";
-import { useRoute } from "vue-router";
-import type { NavItems } from "@/types/nav-items.types";
+import { computed, ref, defineProps, onMounted, watch } from 'vue';
+import { useRoute } from 'vue-router';
+import type { NavItems } from '@/types/nav-items.types';
 
 /** Props */
 
 interface Props {
-  items: NavItems[]
+  items: NavItems[];
 }
 
 defineProps<Props>();
@@ -60,9 +58,12 @@ function scrollToSection(sectionId: string) {
 
 /** Watchers */
 
-watch(() => routeParam.value.currentPage, () => {
-  scrollToSection(routeParam.value.currentPage as string);
-})
+watch(
+  () => routeParam.value.currentPage,
+  () => {
+    scrollToSection(routeParam.value.currentPage as string);
+  },
+);
 </script>
 
 <style lang="scss" scoped>
@@ -96,7 +97,7 @@ watch(() => routeParam.value.currentPage, () => {
       li {
         list-style-type: none;
         margin: 0 1rem;
-        font-family: "Source Sans Pro";
+        font-family: 'Source Sans Pro';
         transition: 0.2s ease;
       }
 

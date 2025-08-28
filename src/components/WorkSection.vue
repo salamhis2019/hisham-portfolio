@@ -1,19 +1,17 @@
 <template>
   <section id="work-experience" class="work-section">
-
     <div class="work-experience-container">
       <header class="header-container">
-
         <!-- Work Section Header -->
-        <h1 class="section-header">
-          Work Experience<span class="period"> .</span>
-        </h1>
+        <h1 class="section-header">Work Experience<span class="period"> .</span></h1>
 
-        <p class="description">Here are all of my most recent experiences with web development and what I have learned.</p>
+        <p class="description">
+          Here are all of my most recent experiences with web development and what I have learned.
+        </p>
       </header>
 
       <!-- TODO: add aria hidden to hr -->
-      <hr>
+      <hr />
 
       <!-- TODO: add loading spinner for when work experiences are loading -->
 
@@ -42,7 +40,7 @@ const { workExperiences } = storeToRefs(bootstrapStore);
 
 onMounted((): void => {
   bootstrapStore.getWorkExperiences();
-})
+});
 </script>
 
 <style lang="scss" scoped>
@@ -89,7 +87,12 @@ onMounted((): void => {
     hr {
       border: 0;
       height: 2.5px;
-      background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+      background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0),
+        rgba(255, 255, 255, 0.75),
+        rgba(0, 0, 0, 0)
+      );
       margin-bottom: 4rem;
     }
   }

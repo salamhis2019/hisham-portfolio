@@ -10,9 +10,9 @@
 </template>
 
 <script lang="ts" setup>
-import PageFooter from "@/components/common/PageFooter.vue";
-import IntroContent from "@/components/IntroContent.vue";
-import WorkSection from "@/components/WorkSection.vue";
+import PageFooter from '@/components/common/PageFooter.vue';
+import IntroContent from '@/components/IntroContent.vue';
+import WorkSection from '@/components/WorkSection.vue';
 import AboutMeView from '@/views/AboutMeView.vue';
 </script>
 

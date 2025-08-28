@@ -41,29 +41,16 @@
         <div class="social-section">
           <p class="social-label">Connect with me</p>
           <ul class="links-container">
-            <li class="social-item">
+            <li v-for="link in socialLinks" :key="link.id" class="social-item">
               <a
-                href="https://www.linkedin.com/in/hishamsalameh"
+                :href="link.url"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Visit my LinkedIn profile"
-                class="social-link linkedin"
+                :aria-label="link.ariaLabel"
+                :class="['social-link', link.id]"
               >
-                <i class="fa fa-linkedin" aria-hidden="true" />
-                <span class="social-tooltip">LinkedIn</span>
-              </a>
-            </li>
-
-            <li class="social-item">
-              <a
-                href="https://github.com/salamhis2019"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Visit my GitHub profile"
-                class="social-link github"
-              >
-                <i class="fa fa-github" aria-hidden="true" />
-                <span class="social-tooltip">GitHub</span>
+                <i :class="['fa', link.icon]" aria-hidden="true" />
+                <span class="social-tooltip">{{ link.name }}</span>
               </a>
             </li>
           </ul>
@@ -75,12 +62,16 @@
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
+import { SOCIAL_LINKS } from '@/constants/SocialLinks.const';
 
 /** State */
 const name = ref('Hisham Salameh');
 const description = ref(
   'UI Engineer and UX Designer crafting exceptional digital experiences with modern web technologies',
 );
+
+// Social Links
+const socialLinks = ref(SOCIAL_LINKS);
 
 /** Lifecycle */
 onMounted(() => {

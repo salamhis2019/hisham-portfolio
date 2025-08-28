@@ -2,41 +2,34 @@
   <section id="about-me" class="about-me-view">
     <div class="about-me-container">
       <header class="about-header">
-  
-        <h2 class="section-header">
-          About Me<span class="period"> .</span>
-        </h2>
-  
-        <hr>
-  
+        <h2 class="section-header">About Me<span class="period"> .</span></h2>
+
+        <hr />
       </header>
-  
+
       <div class="about-content-container">
         <div class="bio-content" role="contentinfo" aria-label="personal bio">
           <h2 class="bio-header">Bio</h2>
 
-          <p v-for="(item, index) in aboutMeInfo.bio" :key="index" v-dompurify-html="item" class="bio-item"></p>
+          <p
+            v-for="(item, index) in aboutMeInfo.bio"
+            :key="index"
+            v-dompurify-html="item"
+            class="bio-item"
+          />
         </div>
-  
+
         <section class="skills-container" role="contentinfo" aria-label="skills">
           <h2 class="skills-header">Skills</h2>
           <ul class="technical-skills">
-            <li
-              v-for="skill in aboutMeInfo.technicalSkills"
-              :key="skill"
-              class="skill"
-            >
+            <li v-for="skill in aboutMeInfo.technicalSkills" :key="skill" class="skill">
               {{ skill }}
             </li>
           </ul>
-  
+
           <h2 class="skills-header">Soft Skills</h2>
           <ul class="soft-skills">
-            <li
-              v-for="skill in aboutMeInfo.softSkills"
-              :key="skill"
-              class="skill soft"
-            >
+            <li v-for="skill in aboutMeInfo.softSkills" :key="skill" class="skill soft">
               {{ skill }}
             </li>
           </ul>

@@ -8,10 +8,10 @@
 
       <p class="description">
         Here are some of the awesome projects that I have created in my time doing web development.
-      </p>          
+      </p>
     </header>
 
-    <hr>
+    <hr />
 
     <single-project
       v-for="(project, index) in projects"
@@ -27,7 +27,7 @@
 import { onMounted } from 'vue';
 import { useBootstrapStore } from '@/stores/bootstrap.store';
 import { storeToRefs } from 'pinia';
-import SingleProject from '@/components/SingleProject.vue'
+import SingleProject from '@/components/SingleProject.vue';
 import { showSectionDivider } from '@/helpers/divider-helper';
 
 /** Pinia */
@@ -40,7 +40,7 @@ const { projects } = storeToRefs(bootstrapStore);
 
 onMounted((): void => {
   bootstrapStore.getProjects();
-})
+});
 </script>
 
 <style lang="scss" scoped>
@@ -87,7 +87,12 @@ onMounted((): void => {
     height: 2.5px;
     margin-bottom: 4rem;
     border: 0;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0),
+      rgba(255, 255, 255, 0.75),
+      rgba(0, 0, 0, 0)
+    );
   }
 }
 </style>
