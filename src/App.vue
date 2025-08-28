@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/max-attributes-per-line -->
 <template>
   <div class="main-view">
     <!-- Skip Navigation Link -->
@@ -5,7 +6,7 @@
 
     <!-- Main Content Container -->
     <div class="content-container">
-      <main id="main-content" role="main" aria-label="Portfolio content">
+      <main id="main-content" role="main" aria-label="Portfolio content" tabindex="-1">
         <section id="intro-content" class="section-wrapper" aria-labelledby="intro-heading">
           <intro-content />
         </section>
@@ -191,6 +192,17 @@ onUnmounted(() => {
       // Ensure sections take up appropriate space
       display: flex;
       flex-direction: column;
+
+      // Focus styles for keyboard navigation
+      &:focus {
+        outline: 2px solid #0088ff;
+        outline-offset: 4px;
+      }
+
+      // Ensure sections can receive focus but don't show focus by default
+      &:focus:not(:focus-visible) {
+        outline: none;
+      }
 
       &#intro-content {
         // Intro section should be full height

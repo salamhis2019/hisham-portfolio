@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/max-attributes-per-line -->
 <template>
   <section id="about-me" class="about-me-view" aria-labelledby="about-heading">
     <!-- Background decoration -->
@@ -22,13 +23,14 @@
           <!-- Bio Section with Glass Card -->
           <div class="bio-section">
             <GlassCard title="My Story" icon="menu_book" variant="bio">
-              <div class="bio-content" role="contentinfo" aria-label="personal bio">
+              <div class="bio-content" role="contentinfo" aria-label="personal bio" tabindex="0">
                 <div
                   v-for="(item, index) in aboutMeInfo.bio"
                   :key="index"
                   v-dompurify-html="item"
                   class="bio-paragraph"
                   :style="{ '--delay': `${index * ANIMATION_CONFIG.BIO_DELAY_MULTIPLIER}s` }"
+                  tabindex="0"
                 />
               </div>
             </GlassCard>
@@ -44,16 +46,13 @@
               variant="skills"
               :show-count="true"
               :count="aboutMeInfo.technicalSkills?.length || 0"
+              tabindex="0"
             >
-              <div class="skills-grid">
-                <SkillBadge
-                  v-for="(skill, index) in aboutMeInfo.technicalSkills"
-                  :key="skill"
-                  :skill="skill"
-                  type="tech"
-                  :index="index"
-                />
-              </div>
+              <ul class="skills-grid">
+                <li v-for="(skill, index) in aboutMeInfo.technicalSkills" :key="skill">
+                  <SkillBadge :skill="skill" type="tech" :index="index" />
+                </li>
+              </ul>
             </GlassCard>
 
             <!-- Soft Skills -->
@@ -64,16 +63,13 @@
               variant="skills"
               :show-count="true"
               :count="aboutMeInfo.softSkills?.length || 0"
+              tabindex="0"
             >
-              <div class="skills-grid">
-                <SkillBadge
-                  v-for="(skill, index) in aboutMeInfo.softSkills"
-                  :key="skill"
-                  :skill="skill"
-                  type="soft"
-                  :index="index"
-                />
-              </div>
+              <ul class="skills-grid">
+                <li v-for="(skill, index) in aboutMeInfo.softSkills" :key="skill">
+                  <SkillBadge :skill="skill" type="soft" :index="index" />
+                </li>
+              </ul>
             </GlassCard>
           </div>
         </div>
@@ -212,6 +208,13 @@ onMounted(async (): Promise<void> => {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: flex;
+    }
   }
 }
 

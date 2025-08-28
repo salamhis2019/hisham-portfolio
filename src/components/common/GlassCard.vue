@@ -1,5 +1,5 @@
 <template>
-  <div class="glass-card" :class="cardClass">
+  <div class="glass-card" :class="cardClass" :tabindex="tabindex">
     <!-- Card Header -->
     <div v-if="showHeader" class="card-header">
       <div v-if="icon" class="header-icon">
@@ -31,6 +31,7 @@ interface Props {
   showCount?: boolean;
   count?: number;
   variant?: 'bio' | 'skills' | 'stats';
+  tabindex?: string | number;
 }
 
 /** Props */
@@ -42,6 +43,7 @@ const props = withDefaults(defineProps<Props>(), {
   showCount: false,
   count: undefined,
   variant: undefined,
+  tabindex: undefined,
 });
 
 /** Computed */

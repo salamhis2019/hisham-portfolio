@@ -24,7 +24,7 @@
             <span class="greeting-text">Hello, I'm</span>
           </div>
 
-          <h1 id="intro-heading" class="section-header">
+          <h1 id="intro-heading" class="section-header" tabindex="0">
             <span class="name-wrapper">
               <span class="name">{{ name }}</span>
             </span>

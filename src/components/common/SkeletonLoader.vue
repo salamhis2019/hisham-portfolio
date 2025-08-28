@@ -30,18 +30,18 @@
                 <div class="skeleton-icon" />
                 <div class="skeleton-card-title" />
               </div>
-              <div class="skeleton-badges">
-                <div v-for="i in 8" :key="i" class="skeleton-badge" />
-              </div>
+              <ul class="skeleton-badges">
+                <li v-for="i in 8" :key="i" class="skeleton-badge" />
+              </ul>
             </div>
             <div class="skeleton-card">
               <div class="skeleton-card-header">
                 <div class="skeleton-icon" />
                 <div class="skeleton-card-title" />
               </div>
-              <div class="skeleton-badges">
-                <div v-for="i in 6" :key="i" class="skeleton-badge" />
-              </div>
+              <ul class="skeleton-badges">
+                <li v-for="i in 6" :key="i" class="skeleton-badge" />
+              </ul>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@
             <!-- Position Header -->
             <header class="position-header">
               <div class="position-info">
-                <h4 class="job-title">{{ title }}</h4>
+                <h4 class="job-title" tabindex="0">{{ title }}</h4>
                 <div class="date-badge">
                   <MaterialIcon name="event" size="sm" class="calendar-icon" />
                   <span class="date">{{ date }}</span>
@@ -26,7 +26,7 @@
 
             <!-- Responsibilities -->
             <div class="content-section">
-              <h5 class="section-label">Key Achievements</h5>
+              <h5 class="section-label" tabindex="0">Key Achievements</h5>
               <ul class="description-container">
                 <li
                   v-for="(description, descIndex) in responsibilities"
@@ -34,6 +34,7 @@
                   class="responsibility-item"
                   :style="{ '--item-delay': `${descIndex * 0.05}s` }"
                   aria-label="Position Responsibilities"
+                  tabindex="0"
                 >
                   <div class="bullet-point" />
                   <span class="responsibility-text">{{ description }}</span>
@@ -43,17 +44,17 @@
 
             <!-- Skills -->
             <div class="skills-section" v-if="skills && skills.length > 0">
-              <h5 class="section-label">Technologies & Skills</h5>
-              <div class="skills-grid" aria-label="Skills">
-                <SkillBadge
-                  v-for="(skill, skillIndex) in skills"
-                  :key="`${skill}-${skillIndex}`"
-                  :skill="skill"
-                  type="soft"
-                  :index="skillIndex"
-                  :animation-delay-multiplier="0.03"
-                />
-              </div>
+              <h5 class="section-label" tabindex="0">Technologies & Skills</h5>
+              <ul class="skills-grid" aria-label="Skills">
+                <li v-for="(skill, skillIndex) in skills" :key="`${skill}-${skillIndex}`">
+                  <SkillBadge
+                    :skill="skill"
+                    type="soft"
+                    :index="skillIndex"
+                    :animation-delay-multiplier="0.03"
+                  />
+                </li>
+              </ul>
             </div>
           </div>
 
@@ -209,6 +210,13 @@ useWorkExperienceCardAnimations();
         display: flex;
         flex-wrap: wrap;
         gap: 0.75rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: flex;
+        }
       }
     }
   }

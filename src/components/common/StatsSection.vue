@@ -1,14 +1,15 @@
+<!-- eslint-disable vue/max-attributes-per-line -->
 <template>
-  <GlassCard :variant="variant">
-    <div class="stats-grid" role="group" aria-label="Statistics">
+  <GlassCard :variant="variant" tabindex="0">
+    <ul class="stats-grid" role="group" aria-label="Statistics">
       <template v-for="(stat, index) in stats" :key="stat.label">
-        <div class="stat-item" role="img" :aria-label="`${stat.value} ${stat.label}`">
+        <li class="stat-item" role="img" :aria-label="`${stat.value} ${stat.label}`" tabindex="0">
           <div class="stat-number" aria-hidden="true">{{ stat.value }}</div>
           <div class="stat-label" aria-hidden="true">{{ stat.label }}</div>
-        </div>
+        </li>
         <div v-if="index < stats.length - 1" class="stat-divider" aria-hidden="true" />
       </template>
-    </div>
+    </ul>
   </GlassCard>
 </template>
 
@@ -40,6 +41,9 @@ withDefaults(defineProps<Props>(), {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 
   .stat-item {
     text-align: center;

@@ -59,6 +59,82 @@ select:focus-visible,
   outline-offset: var(--focus-outline-offset);
 }
 
+/* Enhanced focus styles for heading elements */
+h1[tabindex]:focus-visible,
+h2[tabindex]:focus-visible,
+h3[tabindex]:focus-visible,
+h4[tabindex]:focus-visible,
+h5[tabindex]:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-color);
+  outline-offset: var(--focus-outline-offset);
+  background-color: rgba(0, 136, 255, 0.1);
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin: -2px -4px;
+}
+
+/* Enhanced focus styles for content containers */
+.glass-card:focus-visible,
+.bio-content:focus-visible,
+.content-section:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-color);
+  outline-offset: var(--focus-outline-offset);
+  background-color: rgba(0, 136, 255, 0.05);
+  border-radius: 8px;
+}
+
+/* Focus styles for section labels */
+.section-label:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-color);
+  outline-offset: var(--focus-outline-offset);
+  background-color: rgba(0, 136, 255, 0.1);
+  border-radius: 4px;
+  padding: 2px 4px;
+  margin: -2px -4px;
+}
+
+/* Focus styles for responsibility items (bullet points) */
+.responsibility-item:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-color);
+  outline-offset: var(--focus-outline-offset);
+  background-color: rgba(0, 136, 255, 0.08);
+  border-radius: 6px;
+  padding: 4px 8px;
+  margin: -4px -8px;
+}
+
+/* Focus styles for bio paragraphs */
+.bio-paragraph:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-color);
+  outline-offset: var(--focus-outline-offset);
+  background-color: rgba(0, 136, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: -8px -12px;
+}
+
+/* Focus styles for individual stat items */
+.stat-item:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-color);
+  outline-offset: var(--focus-outline-offset);
+  background-color: rgba(0, 136, 255, 0.1);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: -8px -12px;
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
+
+/* Focus styles for section descriptions */
+.section-description:focus-visible {
+  outline: var(--focus-outline-width) solid var(--focus-color);
+  outline-offset: var(--focus-outline-offset);
+  background-color: rgba(0, 136, 255, 0.06);
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin: -6px -10px;
+}
+
 /* Ensure text has sufficient contrast */
 body {
   color: var(--color-white);

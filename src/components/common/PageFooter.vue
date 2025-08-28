@@ -12,31 +12,31 @@
         <!-- Built With Section -->
         <div class="tech-section">
           <h4 class="section-title">Built With</h4>
-          <div class="tech-stack">
-            <div v-for="tech in TECH_STACK" :key="tech.id" class="tech-item">
+          <ul class="tech-stack">
+            <li v-for="tech in TECH_STACK" :key="tech.id" class="tech-item">
               <img :src="tech.icon" :alt="tech.alt" class="tech-icon" />
               <span class="tech-name">{{ tech.name }}</span>
-            </div>
-          </div>
+            </li>
+          </ul>
         </div>
 
         <!-- Connect Links -->
         <div class="connect-section">
           <h4 class="section-title">Connect</h4>
-          <div class="connect-links">
-            <a
-              v-for="link in SOCIAL_LINKS"
-              :key="link.id"
-              :href="link.url"
-              target="_blank"
-              rel="noopener noreferrer"
-              :class="['connect-link', link.id]"
-              :aria-label="link.ariaLabel"
-            >
-              <i :class="['fa', link.icon]" aria-hidden="true" />
-              <span class="link-text">{{ link.name }}</span>
-            </a>
-          </div>
+          <ul class="connect-links">
+            <li v-for="link in SOCIAL_LINKS" :key="link.id">
+              <a
+                :href="link.url"
+                target="_blank"
+                rel="noopener noreferrer"
+                :class="['connect-link', link.id]"
+                :aria-label="link.ariaLabel"
+              >
+                <i :class="['fa', link.icon]" aria-hidden="true" />
+                <span class="link-text">{{ link.name }}</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -122,6 +122,9 @@ const scrollToTop = () => {
           display: flex;
           flex-direction: column;
           gap: 0.75rem;
+          list-style: none;
+          margin: 0;
+          padding: 0;
 
           .tech-item {
             @include text-base();
@@ -154,6 +157,13 @@ const scrollToTop = () => {
           display: flex;
           flex-direction: column;
           gap: 0.75rem;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+
+          li {
+            display: flex;
+          }
 
           .connect-link {
             @include text-base();
@@ -164,6 +174,7 @@ const scrollToTop = () => {
             text-decoration: none;
             font-size: var(--font-size-sm);
             transition: all 0.3s ease;
+            flex: 1;
 
             &:hover {
               color: rgba(255, 255, 255, 1);

@@ -9,12 +9,12 @@
       </div>
 
       <!-- Main Title -->
-      <h2 v-if="title" :id="headingId" class="section-header">
+      <h2 v-if="title" :id="headingId" class="section-header" tabindex="0">
         {{ title }}
       </h2>
 
       <!-- Description -->
-      <p v-if="description" class="section-description">
+      <p v-if="description" class="section-description" tabindex="0">
         {{ description }}
       </p>
     </div>
