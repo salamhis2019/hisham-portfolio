@@ -300,9 +300,8 @@ onMounted(async (): Promise<void> => {
         .stat-number {
           font-size: 2.5rem;
           font-weight: 700;
-          background: linear-gradient(45deg, #0088ff, #ff00bb);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          font-family: 'Test the future', 'Orbitron', monospace;
+          color: white;
           background-clip: text;
           margin-bottom: 0.5rem;
         }
