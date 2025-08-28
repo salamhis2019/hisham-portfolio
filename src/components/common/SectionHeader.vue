@@ -3,7 +3,7 @@
     <div class="header-content">
       <!-- Section Badge -->
       <div v-if="badgeIcon || badgeText" class="section-badge">
-        <span v-if="badgeIcon" class="badge-icon material-icons">{{ badgeIcon }}</span>
+        <MaterialIcon v-if="badgeIcon" :name="badgeIcon" size="sm" class="badge-icon" />
         <span v-if="badgeText" class="badge-text">{{ badgeText }}</span>
       </div>
 
@@ -28,6 +28,7 @@
 
 <script lang="ts" setup>
 import { withDefaults, defineProps } from 'vue';
+import MaterialIcon from './MaterialIcon.vue';
 
 interface Props {
   badgeIcon?: string;
@@ -65,8 +66,7 @@ withDefaults(defineProps<Props>(), {
       animation: fadeInUp 0.8s ease-out;
 
       .badge-icon {
-        font-size: 1.2rem;
-        color: white;
+        // MaterialIcon component handles sizing and color
       }
 
       .badge-text {

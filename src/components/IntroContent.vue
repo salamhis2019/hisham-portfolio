@@ -24,7 +24,7 @@
       <div class="intro-container">
         <header class="header-section">
           <div class="greeting-badge">
-            <span class="wave material-icons" style="color: white">waving_hand</span>
+            <MaterialIcon name="waving_hand" size="sm" class="wave" />
             <span class="greeting-text">Hello, I'm</span>
           </div>
 
@@ -63,6 +63,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue';
 import { SOCIAL_LINKS } from '@/constants/SocialLinks.const';
+import MaterialIcon from '@/components/common/MaterialIcon.vue';
 
 /** State */
 const name = ref('Hisham Salameh');

@@ -21,7 +21,7 @@
               <div class="position-info">
                 <h4 class="job-title">{{ title }}</h4>
                 <div class="date-badge">
-                  <span class="calendar-icon material-icons" style="color: white">event</span>
+                  <MaterialIcon name="event" size="sm" class="calendar-icon" />
                   <span class="date">{{ date }}</span>
                 </div>
               </div>
@@ -81,6 +81,7 @@ import { showSectionDivider } from '@/helpers/divider-helper';
 import type { WorkExperience } from '@/types/jobs.types';
 import SkillBadge from '@/components/common/SkillBadge.vue';
 import GlassCard from '@/components/common/GlassCard.vue';
+import MaterialIcon from '@/components/common/MaterialIcon.vue';
 
 /** Props */
 interface Props {

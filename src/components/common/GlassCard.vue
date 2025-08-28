@@ -4,7 +4,7 @@
     <div v-if="showHeader" class="card-header">
       <div v-if="icon" class="header-icon">
         <div class="icon-circle" :class="iconVariant">
-          <span class="icon material-icons">{{ icon }}</span>
+          <MaterialIcon :name="icon" size="lg" class="icon" />
         </div>
       </div>
       <h3 v-if="title" class="card-title">{{ title }}</h3>
@@ -20,6 +20,7 @@
 
 <script lang="ts" setup>
 import { computed, withDefaults, defineProps } from 'vue';
+import MaterialIcon from './MaterialIcon.vue';
 
 interface Props {
   title?: string;
@@ -105,8 +106,7 @@ const cardClass = computed(() => {
         }
 
         .icon {
-          font-size: 1.5rem;
-          color: white;
+          // MaterialIcon component handles sizing and color
         }
       }
     }
