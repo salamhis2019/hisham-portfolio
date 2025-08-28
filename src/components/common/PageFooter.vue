@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer-parent-container" role="contentinfo" aria-label="footer">
+  <footer class="footer-wrapper">
     <div class="footer-content">
       <!-- Main Content -->
       <div class="footer-main">
@@ -78,7 +78,7 @@ const scrollToTop = () => {
 <style lang="scss" scoped>
 @import '@/assets/typography.scss';
 
-.footer-parent-container {
+.footer-wrapper {
   width: 100%;
   background: #1a1a1a;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -88,165 +88,165 @@ const scrollToTop = () => {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
-  }
 
-  .footer-main {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-bottom: 3rem;
+    .footer-main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 3rem;
 
-    .creator-section {
-      .creator-name {
-        @include text-heading(var(--font-size-3xl));
-        margin: 0 0 0.5rem 0;
+      .creator-section {
+        .creator-name {
+          @include text-heading(var(--font-size-3xl));
+          margin: 0 0 0.5rem 0;
+        }
+
+        .creator-title {
+          @include text-body(var(--font-size-lg));
+          color: rgba(255, 255, 255, 0.7);
+          margin: 0;
+        }
       }
 
-      .creator-title {
-        @include text-body(var(--font-size-lg));
-        color: rgba(255, 255, 255, 0.7);
-        margin: 0;
+      .tech-section,
+      .connect-section {
+        .section-title {
+          @include text-label();
+          color: rgba(255, 255, 255, 0.9);
+          margin: 0 0 1rem 0;
+        }
       }
-    }
 
-    .tech-section,
-    .connect-section {
-      .section-title {
-        @include text-label();
-        color: rgba(255, 255, 255, 0.9);
-        margin: 0 0 1rem 0;
-      }
-    }
-
-    .tech-section {
-      .tech-stack {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-
-        .tech-item {
-          @include text-base();
+      .tech-section {
+        .tech-stack {
           display: flex;
-          align-items: center;
+          flex-direction: column;
           gap: 0.75rem;
-          color: rgba(255, 255, 255, 0.8);
-          font-size: var(--font-size-sm);
-          transition: color 0.3s ease;
 
-          &:hover {
-            color: rgba(255, 255, 255, 1);
+          .tech-item {
+            @include text-base();
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: var(--font-size-sm);
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: rgba(255, 255, 255, 1);
+            }
+
+            .tech-icon {
+              width: 20px;
+              height: 20px;
+              object-fit: contain;
+            }
+
+            .tech-name {
+              font-weight: var(--font-weight-medium);
+            }
           }
+        }
+      }
 
-          .tech-icon {
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-          }
+      .connect-section {
+        .connect-links {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
 
-          .tech-name {
-            font-weight: var(--font-weight-medium);
+          .connect-link {
+            @include text-base();
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: var(--font-size-sm);
+            transition: all 0.3s ease;
+
+            &:hover {
+              color: rgba(255, 255, 255, 1);
+              transform: translateX(5px);
+            }
+
+            &.linkedin:hover {
+              color: #0077b5;
+            }
+
+            &.github:hover {
+              color: #58a6ff;
+            }
+
+            i {
+              font-size: var(--font-size-lg);
+              width: 20px;
+              text-align: center;
+            }
+
+            .link-text {
+              font-weight: var(--font-weight-medium);
+            }
           }
         }
       }
     }
 
-    .connect-section {
-      .connect-links {
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-
-        .connect-link {
-          @include text-base();
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          color: rgba(255, 255, 255, 0.8);
-          text-decoration: none;
-          font-size: var(--font-size-sm);
-          transition: all 0.3s ease;
-
-          &:hover {
-            color: rgba(255, 255, 255, 1);
-            transform: translateX(5px);
-          }
-
-          &.linkedin:hover {
-            color: #0077b5;
-          }
-
-          &.github:hover {
-            color: #58a6ff;
-          }
-
-          i {
-            font-size: var(--font-size-lg);
-            width: 20px;
-            text-align: center;
-          }
-
-          .link-text {
-            font-weight: var(--font-weight-medium);
-          }
-        }
-      }
-    }
-  }
-
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    flex-wrap: wrap;
-    gap: 1rem;
-
-    .footer-info {
+    .footer-bottom {
       display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-
-      .copyright {
-        @include text-base();
-        color: rgba(255, 255, 255, 0.6);
-        font-size: var(--font-size-sm);
-        margin: 0;
-      }
-
-      .location {
-        @include text-base();
-        color: rgba(255, 255, 255, 0.5);
-        font-size: var(--font-size-xs);
-        margin: 0;
-      }
-    }
-
-    .back-to-top {
-      @include text-base();
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 25px;
-      padding: 0.5rem 1rem;
-      color: rgba(255, 255, 255, 0.8);
-      cursor: pointer;
-      display: flex;
+      justify-content: space-between;
       align-items: center;
-      gap: 0.5rem;
-      font-size: var(--font-size-xs);
-      font-weight: var(--font-weight-medium);
-      transition: all 0.3s ease;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      flex-wrap: wrap;
+      gap: 1rem;
 
-      &:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.3);
-        color: rgba(255, 255, 255, 1);
-        transform: translateY(-2px);
+      .footer-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+
+        .copyright {
+          @include text-base();
+          color: rgba(255, 255, 255, 0.6);
+          font-size: var(--font-size-sm);
+          margin: 0;
+        }
+
+        .location {
+          @include text-base();
+          color: rgba(255, 255, 255, 0.5);
+          font-size: var(--font-size-xs);
+          margin: 0;
+        }
       }
 
-      .arrow-icon {
-        font-size: var(--font-size-base);
-        font-weight: var(--font-weight-bold);
+      .back-to-top {
+        @include text-base();
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        padding: 0.5rem 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: var(--font-size-xs);
+        font-weight: var(--font-weight-medium);
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.15);
+          border-color: rgba(255, 255, 255, 0.3);
+          color: rgba(255, 255, 255, 1);
+          transform: translateY(-2px);
+        }
+
+        .arrow-icon {
+          font-size: var(--font-size-base);
+          font-weight: var(--font-weight-bold);
+        }
       }
     }
   }
@@ -254,7 +254,7 @@ const scrollToTop = () => {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .footer-parent-container {
+  .footer-wrapper {
     padding: 2rem 0 1rem;
 
     .footer-content {
@@ -285,7 +285,7 @@ const scrollToTop = () => {
 }
 
 @media (max-width: 480px) {
-  .footer-parent-container {
+  .footer-wrapper {
     .footer-main {
       .creator-section .creator-name {
         font-size: var(--font-size-2xl);

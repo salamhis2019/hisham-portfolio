@@ -208,12 +208,6 @@ onUnmounted(() => {
         padding-bottom: 2rem;
       }
     }
-
-    #footer {
-      // Footer section should have some minimum height for detection
-      min-height: 50vh;
-      padding-top: 2rem;
-    }
   }
 }
 
