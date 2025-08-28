@@ -2,8 +2,10 @@ import { ref } from 'vue';
 import { defineStore } from 'pinia';
 import WorkExperiencesMock from '../json/jobs.mocks';
 import AboutMeInfoMock from '../json/about-me.mocks';
+import ProjectsMock from '../json/projects.mocks';
 import type { WorkExperience } from '@/types/jobs.types';
 import { AboutMeInfo } from '@/types/about-me.types';
+import type { Project } from '@/types/projects.types';
 import type { BootstrapState } from '@/types/store.types';
 import { db } from '@/firebase';
 import { collection, getDocs } from 'firebase/firestore';
@@ -22,8 +24,10 @@ export const useBootstrapStore = defineStore('bootstrap', (): BootstrapState => 
     technicalSkills: [],
     softSkills: [],
   });
+  const projects = ref<Project[]>([]);
   const isLoadingAboutMe = ref<boolean>(false);
   const isLoadingWorkExperiences = ref<boolean>(false);
+  const isLoadingProjects = ref<boolean>(false);
 
   // Methods
 
@@ -51,23 +55,41 @@ export const useBootstrapStore = defineStore('bootstrap', (): BootstrapState => 
     }
   }
 
-  function getAboutMeInfo(): Promise<void> {
+  async function getAboutMeInfo(): Promise<void> {
     isLoadingAboutMe.value = true;
-    return new Promise(resolve => {
-      setTimeout((): void => {
-        aboutMeInfo.value = AboutMeInfoMock;
-        isLoadingAboutMe.value = false;
-        resolve();
-      }, 1500);
-    });
+    try {
+      // For now, use mock data. In the future, this could fetch from Firebase
+      aboutMeInfo.value = AboutMeInfoMock;
+    } catch (error) {
+      console.error('Error fetching about me info, using mock data: ', error);
+      aboutMeInfo.value = AboutMeInfoMock;
+    } finally {
+      isLoadingAboutMe.value = false;
+    }
+  }
+
+  async function getProjects(): Promise<void> {
+    isLoadingProjects.value = true;
+    try {
+      // For now, use mock data. In the future, this could fetch from Firebase
+      projects.value = ProjectsMock;
+    } catch (error) {
+      console.error('Error fetching projects, using mock data: ', error);
+      projects.value = ProjectsMock;
+    } finally {
+      isLoadingProjects.value = false;
+    }
   }
 
   return {
     workExperiences,
     aboutMeInfo,
+    projects,
     isLoadingAboutMe,
     isLoadingWorkExperiences,
+    isLoadingProjects,
     getWorkExperiences,
     getAboutMeInfo,
+    getProjects,
   };
 });

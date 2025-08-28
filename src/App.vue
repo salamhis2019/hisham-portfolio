@@ -67,11 +67,6 @@ onMounted(() => {
 
         const sectionConfig = SECTIONS.find(s => s.id === targetSection.id);
         if (sectionConfig && route.params.currentPage !== sectionConfig.route) {
-          console.log(
-            `Updating route to: ${sectionConfig.route} (visibility: ${targetSection.ratio.toFixed(
-              2,
-            )})`,
-          );
           router.replace(`/${sectionConfig.route}`);
         }
       }

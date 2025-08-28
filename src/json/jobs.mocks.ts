@@ -15,7 +15,7 @@ export default [
       },
       {
         title: 'Full Stack Web Engineer',
-        date: '01/2025 - 05/2025',
+        date: '01/2024 - 05/2024',
         responsibilities: [
           'Engineered interactive, production-ready features for getsupport.apple.com using React and Redux with a focus on performance and scalability.',
           'Implemented server-side rendered web pages with Next.js to improve SEO, accessibility, and page load times on checkcoverage.apple.com.',
