@@ -59,16 +59,20 @@ import SectionHeader from '@/components/common/SectionHeader.vue';
 import StatsSection from '@/components/common/StatsSection.vue';
 import SkeletonLoader from '@/components/common/SkeletonLoader.vue';
 
-// State
+/** Pinia Stores */
+
 const bootstrapStore = useBootstrapStore();
+
+/** Pinia State */
+
 const { workExperiences, isLoadingWorkExperiences } = storeToRefs(bootstrapStore);
 
-// Loading state
+/** Computed */
+
 const isLoading = computed(() => {
   return isLoadingWorkExperiences.value;
 });
 
-// Computed Properties
 const totalPositions = computed(() => {
   if (!workExperiences.value) return 0;
   return workExperiences.value.reduce((total, experience) => {
@@ -82,8 +86,9 @@ const totalYearsExperience = computed(() => {
   return workExperiences.value?.length ? workExperiences.value.length * 2 : 0;
 });
 
-// Methods
-const initializeAnimations = () => {
+/** Methods */
+
+function initializeAnimations() {
   // Animate experience cards
   const experienceCards = document.querySelectorAll('.experience-card-wrapper');
   const observer = new IntersectionObserver(
@@ -104,9 +109,10 @@ const initializeAnimations = () => {
   if (summarySection) {
     observer.observe(summarySection);
   }
-};
+}
 
-// Lifecycle Hooks
+/** Lifecycle Hooks */
+
 onMounted(async (): Promise<void> => {
   await bootstrapStore.getWorkExperiences();
 

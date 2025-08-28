@@ -66,15 +66,15 @@ import { SOCIAL_LINKS } from '@/constants/SocialLinks.const';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
 
 /** State */
-const name = ref('Hisham Salameh');
-const description = ref(
+
+const name = ref<string>('Hisham Salameh');
+const description = ref<string>(
   'UI Engineer and UX Designer crafting exceptional digital experiences with modern web technologies',
 );
-
-// Social Links
 const socialLinks = ref(SOCIAL_LINKS);
 
-/** Lifecycle */
+/** Lifecycle Hooks */
+
 onMounted(() => {
   // Add entrance animations
   setTimeout(() => {

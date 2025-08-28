@@ -22,6 +22,8 @@
 import { computed, withDefaults, defineProps } from 'vue';
 import MaterialIcon from './MaterialIcon.vue';
 
+/** Types */
+
 interface Props {
   title?: string;
   icon?: string;
@@ -31,10 +33,14 @@ interface Props {
   variant?: 'bio' | 'skills' | 'stats';
 }
 
+/** Props */
+
 const props = withDefaults(defineProps<Props>(), {
   iconVariant: 'default',
   showCount: false,
 });
+
+/** Computed */
 
 const showHeader = computed(
   () => props.title || props.icon || (props.showCount && props.count !== undefined),

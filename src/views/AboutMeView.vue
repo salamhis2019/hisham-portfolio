@@ -117,15 +117,23 @@ import {
 } from '@/constants/Animation.const';
 import { STATS_LABELS } from '@/constants/StatsLabels.const';
 
+/** Pinia Stores */
+
 const bootstrapStore = useBootstrapStore();
+
+/** Pinia State */
+
 const { aboutMeInfo, isLoadingAboutMe } = storeToRefs(bootstrapStore);
 
-// Loading state
+/** Computed */
+
 const isLoading = computed(() => {
   return isLoadingAboutMe.value;
 });
 
-const initializeAnimations = () => {
+/** Methods */
+
+function initializeAnimations() {
   // Animate cards entrance
   const cards = document.querySelectorAll(ANIMATION_SELECTORS.GLASS_CARD);
   const observer = new IntersectionObserver(
@@ -157,7 +165,9 @@ const initializeAnimations = () => {
   );
 
   skills.forEach(skill => skillObserver.observe(skill));
-};
+}
+
+/** Lifecycle Hooks */
 
 onMounted(async (): Promise<void> => {
   await bootstrapStore.getAboutMeInfo();

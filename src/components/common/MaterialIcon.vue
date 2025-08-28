@@ -12,6 +12,8 @@
 <script lang="ts" setup>
 import { computed, withDefaults, defineProps, defineEmits } from 'vue';
 
+/** Types */
+
 interface Props {
   name: string;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | number;
@@ -19,13 +21,19 @@ interface Props {
   clickable?: boolean;
 }
 
+/** Props */
+
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
   color: 'white',
   clickable: false,
 });
 
+/** Emits */
+
 const emit = defineEmits(['click']);
+
+/** Computed */
 
 const sizeClass = computed(() => {
   if (typeof props.size === 'number') return '';
@@ -57,11 +65,13 @@ const customStyle = computed(() => {
   return style;
 });
 
-const handleClick = (event: MouseEvent) => {
+/** Methods */
+
+function handleClick(event: MouseEvent) {
   if (props.clickable) {
     emit('click', event);
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

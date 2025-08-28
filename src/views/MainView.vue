@@ -26,12 +26,17 @@ import WorkSection from '@/components/WorkSection.vue';
 import AboutMeView from '@/views/AboutMeView.vue';
 import { SECTIONS } from '@/constants/Sections.const';
 
+/** Router */
+
 const router = useRouter();
 const route = useRoute();
 
+/** State */
+
 let observer: IntersectionObserver | null = null;
 
-// Initialize scroll-based route updating
+/** Lifecycle Hooks */
+
 onMounted(() => {
   // Create intersection observer
   observer = new IntersectionObserver(
@@ -105,7 +110,6 @@ onMounted(() => {
   }
 });
 
-// Cleanup observer on unmount
 onUnmounted(() => {
   if (observer) {
     observer.disconnect();

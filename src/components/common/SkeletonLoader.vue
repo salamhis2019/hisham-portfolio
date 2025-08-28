@@ -72,10 +72,14 @@
 <script lang="ts" setup>
 import { withDefaults, defineProps } from 'vue';
 
+/** Types */
+
 interface Props {
   variant: 'about-me' | 'work-experience';
   showHeader?: boolean;
 }
+
+/** Props */
 
 withDefaults(defineProps<Props>(), {
   showHeader: true,

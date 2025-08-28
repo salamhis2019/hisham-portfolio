@@ -83,14 +83,18 @@ import SkillBadge from '@/components/common/SkillBadge.vue';
 import GlassCard from '@/components/common/GlassCard.vue';
 import MaterialIcon from '@/components/common/MaterialIcon.vue';
 
-/** Props */
+/** Types */
+
 interface Props {
   experience: WorkExperience;
 }
 
+/** Props */
+
 defineProps<Props>();
 
-/** Lifecycle */
+/** Lifecycle Hooks */
+
 onMounted(() => {
   nextTick(() => {
     // Initialize animations when component mounts

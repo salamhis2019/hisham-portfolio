@@ -30,6 +30,8 @@
 import { withDefaults, defineProps } from 'vue';
 import MaterialIcon from './MaterialIcon.vue';
 
+/** Types */
+
 interface Props {
   badgeIcon?: string;
   badgeText?: string;
@@ -38,6 +40,8 @@ interface Props {
   showDivider?: boolean;
   textAlign?: 'left' | 'center' | 'right';
 }
+
+/** Props */
 
 withDefaults(defineProps<Props>(), {
   showDivider: true,
