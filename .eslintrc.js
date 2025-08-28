@@ -37,13 +37,7 @@ module.exports = {
     'vue/prop-name-casing': ['error', 'camelCase'],
     'vue/attribute-hyphenation': ['error', 'always'],
     'vue/v-on-event-hyphenation': ['error', 'always'],
-    'vue/max-attributes-per-line': [
-      'error',
-      {
-        singleline: { max: 3 },
-        multiline: { max: 1 },
-      },
-    ],
+    'vue/max-attributes-per-line': 'off',
     'vue/html-self-closing': [
       'error',
       {

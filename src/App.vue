@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/max-attributes-per-line -->
 <template>
   <div class="main-view">
     <!-- Skip Navigation Link -->

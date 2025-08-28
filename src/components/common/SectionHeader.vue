@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/max-attributes-per-line -->
 <template>
   <header class="section-header-component">
     <div class="header-content">

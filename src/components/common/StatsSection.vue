@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/max-attributes-per-line -->
 <template>
   <GlassCard :variant="variant" tabindex="0">
     <ul class="stats-grid" role="group" aria-label="Statistics">

@@ -1,4 +1,3 @@
-<!-- eslint-disable vue/max-attributes-per-line -->
 <template>
   <section id="about-me" class="about-me-view" aria-labelledby="about-heading">
     <!-- Background decoration -->
