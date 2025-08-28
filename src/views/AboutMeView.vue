@@ -1,172 +1,241 @@
 <template>
-  <section id="about-me" class="about-me-view">
-    <div class="about-me-container">
-      <header class="about-header">
-  
-        <h2 class="section-header">
-          About Me<span class="period"> .</span>
-        </h2>
-  
-        <hr>
-  
-      </header>
-  
-      <div class="about-content-container">
-        <div class="bio-content" role="contentinfo" aria-label="personal bio">
-          <h2 class="bio-header">Bio</h2>
+  <section id="about-me" class="about-me-view" aria-labelledby="about-heading">
+    <!-- Background decoration -->
+    <BackgroundDecoration variant="section" />
 
-          <p v-for="(item, index) in aboutMeInfo.bio" :key="index" v-dompurify-html="item" class="bio-item"></p>
+    <div class="about-me-container">
+      <!-- Loading State -->
+      <SkeletonLoader v-if="isLoading" variant="about-me" :show-header="true" />
+
+      <!-- Loaded Content -->
+      <template v-else>
+        <!-- Enhanced Header -->
+        <SectionHeader
+          badge-icon="person"
+          badge-text="Get to know me"
+          title="About Me"
+          description="Passionate about creating digital experiences that make a difference"
+          heading-id="about-heading"
+        />
+
+        <div class="about-content-container">
+          <!-- Bio Section with Glass Card -->
+          <div class="bio-section">
+            <GlassCard title="My Story" icon="menu_book" variant="bio">
+              <div class="bio-content" role="contentinfo" aria-label="personal bio" tabindex="0">
+                <div
+                  v-for="(item, index) in aboutMeInfo.bio"
+                  :key="index"
+                  v-dompurify-html="item"
+                  class="bio-paragraph"
+                  :style="{ '--delay': `${index * ANIMATION_CONFIG.BIO_DELAY_MULTIPLIER}s` }"
+                  tabindex="0"
+                />
+              </div>
+            </GlassCard>
+          </div>
+
+          <!-- Skills Section with Enhanced Cards -->
+          <div class="skills-section">
+            <!-- Technical Skills -->
+            <GlassCard
+              title="Technical Skills"
+              icon="bolt"
+              icon-variant="tech"
+              variant="skills"
+              :show-count="true"
+              :count="aboutMeInfo.technicalSkills?.length || 0"
+              tabindex="0"
+            >
+              <ul class="skills-grid">
+                <li v-for="(skill, index) in aboutMeInfo.technicalSkills" :key="skill">
+                  <SkillBadge :skill="skill" type="tech" :index="index" />
+                </li>
+              </ul>
+            </GlassCard>
+
+            <!-- Soft Skills -->
+            <GlassCard
+              title="Soft Skills"
+              icon="diamond"
+              icon-variant="soft"
+              variant="skills"
+              :show-count="true"
+              :count="aboutMeInfo.softSkills?.length || 0"
+              tabindex="0"
+            >
+              <ul class="skills-grid">
+                <li v-for="(skill, index) in aboutMeInfo.softSkills" :key="skill">
+                  <SkillBadge :skill="skill" type="soft" :index="index" />
+                </li>
+              </ul>
+            </GlassCard>
+          </div>
         </div>
-  
-        <section class="skills-container" role="contentinfo" aria-label="skills">
-          <h2 class="skills-header">Skills</h2>
-          <ul class="technical-skills">
-            <li
-              v-for="skill in aboutMeInfo.technicalSkills"
-              :key="skill"
-              class="skill"
-            >
-              {{ skill }}
-            </li>
-          </ul>
-  
-          <h2 class="skills-header">Soft Skills</h2>
-          <ul class="soft-skills">
-            <li
-              v-for="skill in aboutMeInfo.softSkills"
-              :key="skill"
-              class="skill soft"
-            >
-              {{ skill }}
-            </li>
-          </ul>
-        </section>
-      </div>
+
+        <!-- Stats Section -->
+        <div class="stats-section">
+          <StatsSection
+            :stats="[
+              {
+                value: aboutMeInfo.technicalSkills?.length || 0,
+                label: STATS_LABELS.TECHNICAL_SKILLS,
+              },
+              { value: aboutMeInfo.softSkills?.length || 0, label: STATS_LABELS.SOFT_SKILLS },
+              { value: aboutMeInfo.bio?.length || 0, label: STATS_LABELS.STORY_CHAPTERS },
+            ]"
+            variant="stats"
+          />
+        </div>
+      </template>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { onMounted } from 'vue';
+import { onMounted, computed, nextTick } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useBootstrapStore } from '@/stores/bootstrap.store';
+import GlassCard from '@/components/common/GlassCard.vue';
+import SectionHeader from '@/components/common/SectionHeader.vue';
+import SkillBadge from '@/components/common/SkillBadge.vue';
+import StatsSection from '@/components/common/StatsSection.vue';
+import SkeletonLoader from '@/components/common/SkeletonLoader.vue';
+import BackgroundDecoration from '@/components/common/BackgroundDecoration.vue';
+import { ANIMATION_CONFIG } from '@/constants/Animation.const';
+import { STATS_LABELS } from '@/constants/StatsLabels.const';
+import { useAboutMeAnimations } from '@/composables/useAnimations';
+
+/** Pinia Stores */
 
 const bootstrapStore = useBootstrapStore();
 
-const { aboutMeInfo } = storeToRefs(bootstrapStore);
+/** Pinia State */
 
-onMounted((): void => {
-  bootstrapStore.getAboutMeInfo();
+const { aboutMeInfo, isLoadingAboutMe } = storeToRefs(bootstrapStore);
+
+/** Animations */
+
+const { initializeAnimations } = useAboutMeAnimations();
+
+/** Computed */
+
+const isLoading = computed(() => {
+  return isLoadingAboutMe.value;
+});
+
+/** Lifecycle Hooks */
+
+onMounted(async (): Promise<void> => {
+  await bootstrapStore.getAboutMeInfo();
+
+  nextTick(() => {
+    initializeAnimations();
+  });
 });
 </script>
 
 <style lang="scss" scoped>
 .about-me-view {
-  display: flex;
-  justify-content: center;
+  position: relative;
   width: 100%;
-  background: var(--color-black);
-  padding: 2rem 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #1a0033 25%,
+    #2d1b69 50%,
+    #1a0033 75%,
+    #0a0a0a 100%
+  );
+  padding: 4rem 0;
+  overflow: hidden;
 
   .about-me-container {
-    width: 1300px;
-    margin: 0 2rem;
-  }
-
-  .about-header {
-    margin: 2rem 0;
-
-    .section-header {
-      margin-bottom: 2rem;
-      font-size: 3rem;
-      font-family: 'Source Code Pro';
-      color: var(--color-white);
-
-      .period {
-        font-size: 3rem;
-        font-family: 'Oswald';
-        background: -webkit-linear-gradient(#004cff, #ff0080);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-    }
-
-    hr {
-      border: 0;
-      height: 2.5px;
-      background-image: linear-gradient(to right, #00000000, #ffffffbf, #00000000);
-      margin-bottom: 4rem;
-    }
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
   }
 
   .about-content-container {
-    display: flex;
-    gap: 4rem;
-    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 3rem;
 
-    .bio-content {
-      width: 50%;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      font-family: 'Source Sans Pro';
-      color: var(--color-white);
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
 
-      .bio-header {
-        margin: 0;
-        font-family: 'Source Sans Pro';
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--color-white);
+  .bio-content {
+    .bio-paragraph {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      font-family: 'Helvetica Neue', 'Arial', sans-serif;
+      animation: fadeInUp 0.6s ease-out
+        calc(var(--delay) + v-bind('ANIMATION_CONFIG.BIO_BASE_DELAY + "s"')) both;
+
+      &:last-child {
+        margin-bottom: 0;
       }
 
-      .bio-item {
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin: 0;
-
-        .key-word {
-          font-weight: 700;
-        }
+      :deep(.key-word) {
+        background: linear-gradient(45deg, #0088ff, #ff00bb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
       }
     }
+  }
 
-    .skills-container {
+  .skills-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
       display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      width: 50%;
+    }
+  }
+}
 
-      .skills-header {
-        margin: 0;
-        font-family: 'Source Sans Pro';
-        font-size: 2rem;
-        font-weight: 700;
-        color: var(--color-white);
-      }
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-      .technical-skills,
-      .soft-skills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin: 0;
-        padding: 0;
-        font-family: 'Source Code Pro';
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-me-view {
+    padding: 2rem 0;
 
-        .skill {
-          list-style-type: none;
-          color: var(--color-white);
-          background: #323f61;
-          margin: 0;
-          padding: 0.5rem 1.5rem;
-          border-radius: 5px;
-        }
-
-        .soft {
-          background: #ff0080ba;
-        }
-      }
+    .about-me-container {
+      padding: 0 1rem;
     }
   }
 }

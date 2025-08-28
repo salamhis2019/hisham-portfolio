@@ -1,25 +1,25 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from "vue-router";
-import MainView from '../views/MainView.vue'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import App from '../App.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/:currentPage',
-    name: 'MainView',
-    component: MainView,
-  }
+    path: '/',
+    redirect: '/intro-content',
+  },
+  {
+    path: '/:currentPage(intro-content|about-me|work-experience|contact)',
+    name: 'App',
+    component: App,
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/intro-content',
+  },
 ];
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
-});
-
-router.beforeEach((to, from, next) => {
-  if (to.fullPath === '/') {
-    next('/intro-content');
-  } else {
-    next();
-  }
 });
 
 export default router;

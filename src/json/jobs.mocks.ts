@@ -3,71 +3,88 @@ export default [
     company: 'Apple',
     positions: [
       {
-        title: 'UI Engineering Intern',
-        date: '05/31/2022 - 08/26/2022',
+        title: 'UI Engineer Lead',
+        date: '09/2023 - Current',
         responsibilities: [
-          'Own and drive UI assigned tasks for all phases from development to production',
-          'Become subject matter expert for intern project while working with technical leaders',
-          'Adhere to various processes defined within team such as Agile, code review, or Git.',
+          'Directed a high-visibility project from concept to production using TypeScript, Vue.js, and Vite.',
+          'Collaborated with product managers, UX designers, and backend engineers to translate design concepts into engaging, interactive web experiences.',
+          'Maintained proactive communication with stakeholders through demos and timely issue resolution.',
+          'Integrated user-friendly interfaces with robust APIs in partnership with backend and UX teams.',
         ],
-        skills: [
-          'Vue', 'UX/UI Development', 'JavaScript', 'SASS', 'HTML', 'Jest', 'Vue Test Utils', 'Sketch', 'Photoshop'
-        ]
+        skills: ['TypeScript', 'Vue.js', 'Vite', 'Agile', 'UX Collaboration'],
       },
       {
-        title: 'iOS T1 Advisor',
-        date: '05/25/2021 - Currrent',
+        title: 'Full Stack Web Engineer',
+        date: '01/2024 - 05/2024',
         responsibilities: [
-          'Provide exemplary professional customer service and technical support on Apple products and software while under pressure',
-          'Assembled team to assist manager in optimizing advisor role and improve mental and physical well- being on the job (project in progress)',
-          'Consistently performed highly with customer satisfaction and resolving issues with efficiency'
+          'Engineered interactive, production-ready features for getsupport.apple.com using React and Redux with a focus on performance and scalability.',
+          'Implemented server-side rendered web pages with Next.js to improve SEO, accessibility, and page load times on checkcoverage.apple.com.',
+          'Collaborated with product, design, and QA teams to deliver reliable, accessible, and user-friendly experiences across platforms.',
+          'Conducted A/B testing with product managers to refine user interactions and optimize engagement flows.',
+          'Developed a new feature that reduced cost center expenses by an estimated 10%.',
         ],
-      }
-    ]
+        skills: ['React', 'Redux', 'Next.js', 'JavaScript', 'Accessibility', 'A/B Testing'],
+      },
+      {
+        title: 'Full Stack Engineer',
+        date: '01/2023 - 06/2023',
+        responsibilities: [
+          'Developed full-stack applications with Python and Django, ensuring scalable and robust architecture.',
+          'Designed wireframes and collaborated with users to refine requirements and improve usability.',
+          'Conducted user studies and gathered feedback to inform product design decisions.',
+          'Presented progress and insights to business stakeholders for alignment and transparency.',
+        ],
+        skills: ['Python', 'Django', 'Wireframing', 'User Research'],
+      },
+      {
+        title: 'iOS at Home Advisor',
+        date: '05/2021 - 09/2023',
+        responsibilities: [
+          'Delivered high-quality customer service and technical support for Apple hardware and software in fast-paced environments.',
+          'Earned the AppleCare Excellence Award, placing in the top 3% for performance, collaboration, and customer satisfaction.',
+        ],
+        skills: ['Customer Service', 'Technical Support', 'Problem Solving'],
+      },
+      {
+        title: 'UI Engineering Intern',
+        date: '05/2022 - 08/2022',
+        responsibilities: [
+          'Managed UI tasks across development phases using Vue.js (Composition API), TypeScript, SASS, and Jest.',
+          'Collaborated with business and accessibility teams to deliver designs aligned with project requirements.',
+          'Followed Agile workflows, code reviews, and Git best practices to maintain high code quality.',
+          'Worked with technical leaders on component-based design solutions for a large-scale application.',
+        ],
+        skills: ['Vue.js', 'TypeScript', 'SASS', 'Jest', 'Accessibility', 'Agile', 'Git'],
+      },
+    ],
   },
   {
     company: 'Michigan State University',
     positions: [
       {
         title: 'CAS 204 Web Design Teaching Assistant',
-        date: '10/01/2021 - Current',
+        date: '10/2021 - Present',
         responsibilities: [
-          'Met one on one with students to guide them through understanding the fundamentals of website creation with HTML and CSS',
-          'Graded student assignments and provided additional feedback on how to improve their projects and website format'
+          'Conducted one-on-one sessions with students to teach foundational web development concepts in HTML and CSS.',
+          'Evaluated student assignments and provided constructive feedback to improve project execution and formatting.',
         ],
-        skills: [
-          'HTML', 'CSS',
-        ]
+        skills: ['HTML', 'CSS', 'Teaching', 'Mentorship'],
       },
-      {
-        title: 'Advertising and Public Relations Web Developer',
-        date: '10/01/2021 - 01/31/2022',
-        responsibilities: [
-          'Created prototypes and wireframes to present to project manager to determine which approach best fits the needs of the project',
-          'Created interface elements using JavaScript to keep students engaged while maintaining a well formatted HTML structure',
-          'Created an image carousel with bootstrap and manipulated DOM elements throug JavaScript to create logic for the interface',
-        ],
-        skills: [
-          'JavaScript', 'CSS', 'HTML', 'Photoshop', 'Figma'
-        ]
-      }
-    ]
+    ],
   },
   {
-    company: 'Essexville Hampton Public Schools',
+    company: 'Essexville-Hampton Public Schools',
     positions: [
       {
-        title: 'Web Developer/Tech Aide',
-        date: '02/14/2021 - 08/31/2021',
+        title: 'Web Developer / Tech Aide',
+        date: '02/2021 - 08/2021',
         responsibilities: [
-          'Implemented a focused, user-friendly interface with new HTML and CSS elements',
-          'Implemented scheduling and news solution by embedding external documents into the website to allow for updateable info, saving the school $5000 annually',
-          'Collaborated with peers and set meetings with departments and leadership across the school district to ensure each area was well represented'
-        ], 
-        skills: [
-          'HTML', 'SCSS', 'Wordpress', 'Photoshop'
-        ]
-      }
-    ]
-  }
-]
+          'Redesigned school district website with user-friendly HTML/CSS updates to improve usability.',
+          'Implemented scheduling and news updates via embedded external documents, saving the school ~$5,000 annually.',
+          'Collaborated with departments and leadership to ensure needs were represented across the site.',
+        ],
+        skills: ['HTML', 'CSS', 'WordPress', 'Photoshop'],
+      },
+    ],
+  },
+];

@@ -1,72 +1,95 @@
-import { ref, type Ref } from "vue";
-import { defineStore } from "pinia";
+import { ref } from 'vue';
+import { defineStore } from 'pinia';
 import WorkExperiencesMock from '../json/jobs.mocks';
-import ProjectsMock from '../json/projects.mocks';
 import AboutMeInfoMock from '../json/about-me.mocks';
-import type { WorkExperience } from "@/types/jobs.types";
-import type { Project } from "@/types/projects.types";
-import { AboutMeInfo } from "@/types/about-me.types";
-import { db } from "@/firebase";
+import ProjectsMock from '../json/projects.mocks';
+import type { WorkExperience } from '@/types/jobs.types';
+import { AboutMeInfo } from '@/types/about-me.types';
+import type { Project } from '@/types/projects.types';
+import type { BootstrapState } from '@/types/store.types';
+import { db } from '@/firebase';
 import { collection, getDocs } from 'firebase/firestore';
-import { FIREBASE_COLLECTIONS } from "@/constants/FireBase.const";
+import { FIREBASE_COLLECTIONS } from '@/constants/FireBase.const';
 
 /**
  * Todo: create swift app to integrate with firebase instead of using mock json
  */
 
-interface State {
-  workExperiences: Ref<WorkExperience[]>;
-  projects: Ref<Project[]>;
-  aboutMeInfo: Ref<AboutMeInfo>;
-  getWorkExperiences: () => void;
-  getProjects: () => void;
-  getAboutMeInfo: () => void;
-}
-
-export const useBootstrapStore = defineStore("bootstrap", (): State => {
+export const useBootstrapStore = defineStore('bootstrap', (): BootstrapState => {
   // State
 
   const workExperiences = ref<WorkExperience[]>([]);
-  const projects = ref<Project[]>([]);
   const aboutMeInfo = ref<AboutMeInfo>({
     bio: [],
     technicalSkills: [],
-    softSkills: []
-  })
+    softSkills: [],
+  });
+  const projects = ref<Project[]>([]);
+  const isLoadingAboutMe = ref<boolean>(false);
+  const isLoadingWorkExperiences = ref<boolean>(false);
+  const isLoadingProjects = ref<boolean>(false);
 
   // Methods
-  
+
   async function getWorkExperiences(): Promise<void> {
-    const workExperienceCollectionRef = await getDocs(collection(db, FIREBASE_COLLECTIONS.WORK_EXPERIENCE));
-  
+    isLoadingWorkExperiences.value = true;
     try {
-      workExperienceCollectionRef.forEach((doc) => {
-        workExperiences.value = doc.data().jobs;
-      });
+      const workExperienceCollectionRef = await getDocs(
+        collection(db, FIREBASE_COLLECTIONS.WORK_EXPERIENCE),
+      );
+
+      if (workExperienceCollectionRef.empty) {
+        // Use mock data if no Firebase data is available
+        workExperiences.value = WorkExperiencesMock;
+      } else {
+        workExperienceCollectionRef.forEach(doc => {
+          workExperiences.value = doc.data().jobs;
+        });
+      }
     } catch (error) {
-      console.error("Error adding document: ", error);
+      console.error('Error fetching work experiences from Firebase, using mock data: ', error);
+      // Fallback to mock data on error
+      workExperiences.value = WorkExperiencesMock;
+    } finally {
+      isLoadingWorkExperiences.value = false;
     }
   }
 
-  // TODO: create async function to fetch projects
-  function getProjects(): void {
-    setTimeout((): void => {
-      projects.value = ProjectsMock;
-    }, 1500);
+  async function getAboutMeInfo(): Promise<void> {
+    isLoadingAboutMe.value = true;
+    try {
+      // For now, use mock data. In the future, this could fetch from Firebase
+      aboutMeInfo.value = AboutMeInfoMock;
+    } catch (error) {
+      console.error('Error fetching about me info, using mock data: ', error);
+      aboutMeInfo.value = AboutMeInfoMock;
+    } finally {
+      isLoadingAboutMe.value = false;
+    }
   }
 
-  function getAboutMeInfo(): void {
-    setTimeout((): void => {
-      aboutMeInfo.value = AboutMeInfoMock;
-    }, 1500);
+  async function getProjects(): Promise<void> {
+    isLoadingProjects.value = true;
+    try {
+      // For now, use mock data. In the future, this could fetch from Firebase
+      projects.value = ProjectsMock;
+    } catch (error) {
+      console.error('Error fetching projects, using mock data: ', error);
+      projects.value = ProjectsMock;
+    } finally {
+      isLoadingProjects.value = false;
+    }
   }
 
   return {
     workExperiences,
-    projects,
     aboutMeInfo,
+    projects,
+    isLoadingAboutMe,
+    isLoadingWorkExperiences,
+    isLoadingProjects,
     getWorkExperiences,
+    getAboutMeInfo,
     getProjects,
-    getAboutMeInfo
-  }
-})
+  };
+});
