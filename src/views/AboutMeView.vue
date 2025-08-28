@@ -1,5 +1,5 @@
 <template>
-  <section id="about-me" class="about-me-view">
+  <section id="about-me" class="about-me-view" aria-labelledby="about-heading">
     <!-- Background decoration -->
     <BackgroundDecoration variant="section" />
 
@@ -15,6 +15,7 @@
           badge-text="Get to know me"
           title="About Me"
           description="Passionate about creating digital experiences that make a difference"
+          heading-id="about-heading"
         />
 
         <div class="about-content-container">

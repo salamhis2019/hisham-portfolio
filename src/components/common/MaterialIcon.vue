@@ -1,16 +1,16 @@
 <template>
   <span
     class="material-icons"
-    :class="[sizeClass, colorClass, { clickable: clickable }]"
+    :class="[sizeClass, colorClass]"
     :style="customStyle"
-    @click="handleClick"
+    aria-hidden="true"
   >
     {{ name }}
   </span>
 </template>
 
 <script lang="ts" setup>
-import { computed, withDefaults, defineProps, defineEmits } from 'vue';
+import { computed, withDefaults, defineProps } from 'vue';
 
 /** Types */
 
@@ -18,7 +18,6 @@ interface Props {
   name: string;
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | number;
   color?: 'white' | 'primary' | 'secondary' | 'accent' | 'muted' | string;
-  clickable?: boolean;
 }
 
 /** Props */
@@ -26,12 +25,7 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   size: 'md',
   color: 'white',
-  clickable: false,
 });
-
-/** Emits */
-
-const emit = defineEmits(['click']);
 
 /** Computed */
 
@@ -64,14 +58,6 @@ const customStyle = computed(() => {
 
   return style;
 });
-
-/** Methods */
-
-function handleClick(event: MouseEvent) {
-  if (props.clickable) {
-    emit('click', event);
-  }
-}
 </script>
 
 <style lang="scss" scoped>
@@ -130,21 +116,6 @@ function handleClick(event: MouseEvent) {
 
   &.color-muted {
     color: rgba(255, 255, 255, 0.6);
-  }
-
-  // Clickable state
-  &.clickable {
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    &:hover {
-      transform: scale(1.1);
-      opacity: 0.8;
-    }
-
-    &:active {
-      transform: scale(0.95);
-    }
   }
 }
 </style>

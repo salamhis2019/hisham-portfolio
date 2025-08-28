@@ -1,18 +1,24 @@
 <template>
   <div class="main-view">
+    <!-- Skip Navigation Link -->
+    <a href="#main-content" class="skip-link" @click="skipToMain"> Skip to main content </a>
+
+    <!-- Main Content Container -->
     <div class="content-container">
-      <section id="intro-content" class="section-wrapper">
-        <intro-content />
-      </section>
-      <section id="about-me" class="section-wrapper">
-        <about-me-view />
-      </section>
-      <section id="work-experience" class="section-wrapper">
-        <work-section />
-      </section>
-      <section id="footer">
+      <main id="main-content" role="main" aria-label="Portfolio content">
+        <section id="intro-content" class="section-wrapper" aria-labelledby="intro-heading">
+          <intro-content />
+        </section>
+        <section id="about-me" class="section-wrapper" aria-labelledby="about-heading">
+          <about-me-view />
+        </section>
+        <section id="work-experience" class="section-wrapper" aria-labelledby="work-heading">
+          <work-section />
+        </section>
+      </main>
+      <footer id="footer" role="contentinfo" aria-label="Site footer">
         <page-footer />
-      </section>
+      </footer>
     </div>
   </div>
 </template>
@@ -34,6 +40,16 @@ const route = useRoute();
 /** State */
 
 let observer: IntersectionObserver | null = null;
+
+/** Methods */
+
+function skipToMain() {
+  const mainContent = document.getElementById('main-content');
+  if (mainContent) {
+    mainContent.focus();
+    mainContent.scrollIntoView({ behavior: 'smooth' });
+  }
+}
 
 /** Lifecycle Hooks */
 
@@ -116,10 +132,49 @@ onUnmounted(() => {
 .main-view {
   min-height: 100%;
   display: flex;
+  flex-direction: column;
+
+  // Skip Link Styles
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000000;
+    color: #ffffff;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 9999;
+    font-weight: 600;
+    border: 2px solid #ffffff;
+    transition: all 0.3s ease;
+
+    &:focus {
+      top: 6px;
+      outline: 2px solid #0088ff;
+      outline-offset: 2px;
+    }
+
+    &:hover {
+      background: #0088ff;
+      color: #ffffff;
+    }
+  }
 
   .content-container {
     height: 100%;
     width: 100%;
+    flex: 1;
+
+    #main-content {
+      // Ensure main content can receive focus
+      outline: none;
+
+      &:focus {
+        outline: 2px solid #0088ff;
+        outline-offset: 4px;
+      }
+    }
 
     .section-wrapper {
       min-height: 100vh;
@@ -152,13 +207,29 @@ onUnmounted(() => {
         min-height: 100vh;
         padding-bottom: 2rem;
       }
+    }
 
-      &#contact {
-        // Footer section should have some minimum height for detection
-        min-height: 50vh;
-        padding-top: 2rem;
-      }
+    #footer {
+      // Footer section should have some minimum height for detection
+      min-height: 50vh;
+      padding-top: 2rem;
     }
   }
+}
+
+// Global focus styles for better accessibility
+:global(*:focus) {
+  outline: 2px solid #0088ff;
+  outline-offset: 2px;
+}
+
+// Ensure interactive elements have proper focus indicators
+:global(button:focus),
+:global(a:focus),
+:global(input:focus),
+:global(textarea:focus),
+:global(select:focus) {
+  outline: 2px solid #0088ff;
+  outline-offset: 2px;
 }
 </style>

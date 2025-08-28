@@ -1,5 +1,5 @@
 <template>
-  <section id="work-experience" class="work-section">
+  <section id="work-experience" class="work-section" aria-labelledby="work-heading">
     <!-- Background decoration -->
     <BackgroundDecoration variant="section" />
 
@@ -15,6 +15,7 @@
           badge-text="My Professional Journey"
           title="Work Experience"
           description="Here are all of my most recent experiences with web development and what I have learned."
+          heading-id="work-heading"
         />
 
         <!-- Work Experience Cards Container -->

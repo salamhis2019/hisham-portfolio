@@ -1,12 +1,12 @@
 <template>
   <GlassCard :variant="variant">
-    <div class="stats-grid">
+    <div class="stats-grid" role="group" aria-label="Statistics">
       <template v-for="(stat, index) in stats" :key="stat.label">
-        <div class="stat-item">
-          <div class="stat-number">{{ stat.value }}</div>
-          <div class="stat-label">{{ stat.label }}</div>
+        <div class="stat-item" role="img" :aria-label="`${stat.value} ${stat.label}`">
+          <div class="stat-number" aria-hidden="true">{{ stat.value }}</div>
+          <div class="stat-label" aria-hidden="true">{{ stat.label }}</div>
         </div>
-        <div v-if="index < stats.length - 1" class="stat-divider" />
+        <div v-if="index < stats.length - 1" class="stat-divider" aria-hidden="true" />
       </template>
     </div>
   </GlassCard>

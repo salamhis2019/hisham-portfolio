@@ -1,5 +1,5 @@
 <template>
-  <section id="intro-content" class="intro-content" aria-labelledby="intro-header">
+  <section id="intro-content" class="intro-content" aria-labelledby="intro-heading">
     <!-- Animated Background Elements -->
     <BackgroundDecoration variant="intro" />
 
@@ -24,7 +24,7 @@
             <span class="greeting-text">Hello, I'm</span>
           </div>
 
-          <h1 class="section-header" role="heading">
+          <h1 id="intro-heading" class="section-header">
             <span class="name-wrapper">
               <span class="name">{{ name }}</span>
             </span>

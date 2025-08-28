@@ -2,7 +2,7 @@
   <div class="side-nav">
     <nav
       role="navigation"
-      aria-label="Nav bar"
+      aria-label="Main navigation"
       class="nav-items-container"
       :class="showMenu ? 'open-menu' : 'closed-menu'"
     >

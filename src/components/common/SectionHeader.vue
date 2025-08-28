@@ -9,7 +9,7 @@
       </div>
 
       <!-- Main Title -->
-      <h2 v-if="title" class="section-header">
+      <h2 v-if="title" :id="headingId" class="section-header">
         {{ title }}
       </h2>
 
@@ -40,6 +40,7 @@ interface Props {
   description?: string;
   showDivider?: boolean;
   textAlign?: 'left' | 'center' | 'right';
+  headingId?: string;
 }
 
 /** Props */
@@ -51,6 +52,7 @@ withDefaults(defineProps<Props>(), {
   description: undefined,
   showDivider: true,
   textAlign: 'center',
+  headingId: undefined,
 });
 </script>
 
