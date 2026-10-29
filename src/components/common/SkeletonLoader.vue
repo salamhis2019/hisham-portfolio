@@ -2,7 +2,6 @@
   <div class="skeleton-loader" :class="variant">
     <!-- Section Header Skeleton -->
     <div v-if="showHeader" class="skeleton-header">
-      <div class="skeleton-badge" />
       <div class="skeleton-title" />
       <div class="skeleton-description" />
     </div>
@@ -89,30 +88,13 @@ withDefaults(defineProps<Props>(), {
 <style lang="scss" scoped>
 .skeleton-loader {
   width: 100%;
-  padding: 4rem 0;
 
   .skeleton-header {
-    text-align: center;
-    margin-bottom: 3rem;
-
-    .skeleton-badge {
-      width: 200px;
-      height: 32px;
-      background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0.1) 25%,
-        rgba(255, 255, 255, 0.2) 50%,
-        rgba(255, 255, 255, 0.1) 75%
-      );
-      background-size: 200% 100%;
-      animation: shimmer 2s infinite;
-      border-radius: 16px;
-      margin: 0 auto 1rem;
-    }
+    margin-bottom: 2rem;
 
     .skeleton-title {
-      width: 300px;
-      height: 48px;
+      width: 260px;
+      height: 36px;
       background: linear-gradient(
         90deg,
         rgba(255, 255, 255, 0.1) 25%,
@@ -122,7 +104,7 @@ withDefaults(defineProps<Props>(), {
       background-size: 200% 100%;
       animation: shimmer 2s infinite;
       border-radius: 8px;
-      margin: 0 auto 1rem;
+      margin: 0 0 0.75rem;
     }
 
     .skeleton-description {
@@ -137,14 +119,12 @@ withDefaults(defineProps<Props>(), {
       background-size: 200% 100%;
       animation: shimmer 2s infinite;
       border-radius: 4px;
-      margin: 0 auto;
+      margin: 0;
     }
   }
 
   .skeleton-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 2rem;
+    margin: 0;
   }
 
   // About Me Skeleton Styles
@@ -152,21 +132,18 @@ withDefaults(defineProps<Props>(), {
     .skeleton-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      gap: 1.25rem;
 
       @media (max-width: 1024px) {
         grid-template-columns: 1fr;
-        gap: 2rem;
       }
     }
 
     .skeleton-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      padding: 2rem;
-      margin-bottom: 2rem;
+      background: #121214;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
 
       .skeleton-card-header {
         display: flex;
@@ -233,7 +210,7 @@ withDefaults(defineProps<Props>(), {
     .skeleton-skills {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1.25rem;
     }
 
     .skeleton-badges {
@@ -262,15 +239,14 @@ withDefaults(defineProps<Props>(), {
     .skeleton-work {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1.25rem;
     }
 
     .skeleton-work-card {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      padding: 2rem;
+      background: #121214;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 1.5rem;
 
       .skeleton-work-header {
         display: flex;
@@ -373,20 +349,9 @@ withDefaults(defineProps<Props>(), {
 /* Responsive Design */
 @media (max-width: 768px) {
   .skeleton-loader {
-    padding: 2rem 0;
-
-    .skeleton-content {
-      padding: 0 1rem;
-    }
-
     .skeleton-header {
-      .skeleton-badge {
-        width: 150px;
-      }
-
       .skeleton-title {
         width: 200px;
-        height: 36px;
       }
 
       .skeleton-description {

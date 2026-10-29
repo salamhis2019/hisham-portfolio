@@ -62,7 +62,7 @@ defineProps<Props>();
   h3 {
     margin: 0;
     color: white;
-    font-family: 'Source Sans Pro';
+    font-family: var(--font-primary);
     font-size: 2rem;
   }
 
@@ -72,7 +72,7 @@ defineProps<Props>();
     gap: 1rem;
     margin-top: 2rem;
     padding: 0;
-    font-family: 'Source Code Pro';
+    font-family: var(--font-primary);
 
     .skill {
       list-style-type: none;
@@ -88,7 +88,7 @@ defineProps<Props>();
     padding: 0;
     margin-bottom: 2rem;
     font-size: 1.2rem;
-    font-family: 'Source Sans Pro';
+    font-family: var(--font-primary);
     font-weight: 600;
     color: rgba(255, 255, 255, 0.739);
 

@@ -177,18 +177,8 @@ onUnmounted(() => {
     }
 
     .section-wrapper {
-      min-height: 100vh;
       position: relative;
-
-      // Ensure sections are properly spaced and detectable
-      &:not(:last-child) {
-        margin-bottom: 0;
-      }
-
-      // Add scroll margin for better navigation
       scroll-margin-top: 0;
-
-      // Ensure sections take up appropriate space
       display: flex;
       flex-direction: column;
 
@@ -201,22 +191,6 @@ onUnmounted(() => {
       // Ensure sections can receive focus but don't show focus by default
       &:focus:not(:focus-visible) {
         outline: none;
-      }
-
-      &#intro-content {
-        // Intro section should be full height
-        min-height: 100vh;
-      }
-
-      &#about-me {
-        // About section should have enough space
-        min-height: 100vh;
-      }
-
-      &#work-experience {
-        // Work section should accommodate content and be easily detectable
-        min-height: 100vh;
-        padding-bottom: 2rem;
       }
     }
   }

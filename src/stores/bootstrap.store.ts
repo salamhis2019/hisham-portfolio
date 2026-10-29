@@ -7,9 +7,6 @@ import type { WorkExperience } from '@/types/jobs.types';
 import { AboutMeInfo } from '@/types/about-me.types';
 import type { Project } from '@/types/projects.types';
 import type { BootstrapState } from '@/types/store.types';
-import { db } from '@/firebase';
-import { collection, getDocs } from 'firebase/firestore';
-import { FIREBASE_COLLECTIONS } from '@/constants/FireBase.const';
 
 /**
  * Todo: create swift app to integrate with firebase instead of using mock json
@@ -21,8 +18,7 @@ export const useBootstrapStore = defineStore('bootstrap', (): BootstrapState => 
   const workExperiences = ref<WorkExperience[]>([]);
   const aboutMeInfo = ref<AboutMeInfo>({
     bio: [],
-    technicalSkills: [],
-    softSkills: [],
+    skills: [],
   });
   const projects = ref<Project[]>([]);
   const isLoadingAboutMe = ref<boolean>(false);
@@ -34,21 +30,10 @@ export const useBootstrapStore = defineStore('bootstrap', (): BootstrapState => 
   async function getWorkExperiences(): Promise<void> {
     isLoadingWorkExperiences.value = true;
     try {
-      const workExperienceCollectionRef = await getDocs(
-        collection(db, FIREBASE_COLLECTIONS.WORK_EXPERIENCE),
-      );
-
-      if (workExperienceCollectionRef.empty) {
-        // Use mock data if no Firebase data is available
-        workExperiences.value = WorkExperiencesMock;
-      } else {
-        workExperienceCollectionRef.forEach(doc => {
-          workExperiences.value = doc.data().jobs;
-        });
-      }
+      // For now, use local data so the site reflects the latest résumé. In the future, this could fetch from Firebase
+      workExperiences.value = WorkExperiencesMock;
     } catch (error) {
-      console.error('Error fetching work experiences from Firebase, using mock data: ', error);
-      // Fallback to mock data on error
+      console.error('Error fetching work experiences, using mock data: ', error);
       workExperiences.value = WorkExperiencesMock;
     } finally {
       isLoadingWorkExperiences.value = false;
