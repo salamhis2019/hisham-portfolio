@@ -113,18 +113,6 @@ h5[tabindex]:focus-visible {
   margin: -8px -12px;
 }
 
-/* Focus styles for individual stat items */
-.stat-item:focus-visible {
-  outline: var(--focus-outline-width) solid var(--focus-color);
-  outline-offset: var(--focus-outline-offset);
-  background-color: rgba(0, 136, 255, 0.1);
-  border-radius: 8px;
-  padding: 8px 12px;
-  margin: -8px -12px;
-  transform: scale(1.05);
-  transition: all 0.2s ease;
-}
-
 /* Focus styles for section descriptions */
 .section-description:focus-visible {
   outline: var(--focus-outline-width) solid var(--focus-color);
@@ -137,6 +125,7 @@ h5[tabindex]:focus-visible {
 
 /* Ensure text has sufficient contrast */
 body {
+  font-family: var(--font-primary);
   color: var(--color-white);
   background-color: var(--color-black);
 }

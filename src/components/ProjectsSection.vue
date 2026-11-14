@@ -62,12 +62,12 @@ onMounted((): void => {
 
     .section-header {
       font-size: 3rem;
-      font-family: 'Source Code Pro';
+      font-family: var(--font-primary);
       color: var(--color-white);
 
       .period {
         font-size: 5rem;
-        font-family: 'Oswald';
+        font-family: var(--font-primary);
         background: -webkit-linear-gradient(#004cff, #ff0080);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -75,7 +75,7 @@ onMounted((): void => {
     }
 
     .description {
-      font-family: 'Source Sans Pro';
+      font-family: var(--font-primary);
       font-size: 1.2rem;
       color: var(--color-white);
     }

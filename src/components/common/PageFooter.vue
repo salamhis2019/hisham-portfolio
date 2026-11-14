@@ -6,7 +6,7 @@
         <!-- Creator Section -->
         <div class="creator-section">
           <h3 class="creator-name">Hisham Salameh</h3>
-          <p class="creator-title">UI Engineer & UX Designer</p>
+          <p class="creator-title">Full Stack Web Engineer</p>
         </div>
 
         <!-- Built With Section -->
@@ -80,30 +80,29 @@ const scrollToTop = () => {
 
 .footer-wrapper {
   width: 100%;
-  background: #1a1a1a;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 3rem 0 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2rem 0 1.25rem;
 
   .footer-content {
-    max-width: 1400px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 2rem;
 
     .footer-main {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 3rem;
-      margin-bottom: 3rem;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
 
       .creator-section {
         .creator-name {
-          @include text-heading(var(--font-size-3xl));
-          margin: 0 0 0.5rem 0;
+          @include text-heading(var(--font-size-lg));
+          margin: 0 0 0.25rem 0;
         }
 
         .creator-title {
-          @include text-body(var(--font-size-lg));
-          color: rgba(255, 255, 255, 0.7);
+          @include text-body(var(--font-size-sm));
+          color: rgba(255, 255, 255, 0.6);
           margin: 0;
         }
       }
@@ -113,7 +112,7 @@ const scrollToTop = () => {
         .section-title {
           @include text-label();
           color: rgba(255, 255, 255, 0.9);
-          margin: 0 0 1rem 0;
+          margin: 0 0 0.75rem 0;
         }
       }
 
@@ -133,7 +132,7 @@ const scrollToTop = () => {
             gap: 0.75rem;
             color: rgba(255, 255, 255, 0.8);
             font-size: var(--font-size-sm);
-            transition: color 0.3s ease;
+            transition: color 0.15s ease;
 
             &:hover {
               color: rgba(255, 255, 255, 1);
@@ -173,12 +172,11 @@ const scrollToTop = () => {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
             font-size: var(--font-size-sm);
-            transition: all 0.3s ease;
+            transition: color 0.15s ease;
             flex: 1;
 
             &:hover {
               color: rgba(255, 255, 255, 1);
-              transform: translateX(5px);
             }
 
             &.linkedin:hover {
@@ -207,7 +205,7 @@ const scrollToTop = () => {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 2rem;
+      padding-top: 1.25rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       flex-wrap: wrap;
       gap: 1rem;
@@ -227,7 +225,7 @@ const scrollToTop = () => {
         .location {
           @include text-base();
           color: rgba(255, 255, 255, 0.5);
-          font-size: var(--font-size-xs);
+          font-size: var(--font-size-sm);
           margin: 0;
         }
       }
@@ -236,22 +234,20 @@ const scrollToTop = () => {
         @include text-base();
         background: rgba(255, 255, 255, 0.1);
         border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 25px;
+        border-radius: 6px;
         padding: 0.5rem 1rem;
         color: rgba(255, 255, 255, 0.8);
         cursor: pointer;
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        font-size: var(--font-size-xs);
+        font-size: var(--font-size-sm);
         font-weight: var(--font-weight-medium);
-        transition: all 0.3s ease;
+        transition: background 0.15s ease, color 0.15s ease;
 
         &:hover {
           background: rgba(255, 255, 255, 0.15);
-          border-color: rgba(255, 255, 255, 0.3);
           color: rgba(255, 255, 255, 1);
-          transform: translateY(-2px);
         }
 
         .arrow-icon {
@@ -266,7 +262,7 @@ const scrollToTop = () => {
 /* Responsive Design */
 @media (max-width: 768px) {
   .footer-wrapper {
-    padding: 2rem 0 1rem;
+    padding: 1.5rem 0 1rem;
 
     .footer-content {
       padding: 0 1rem;
@@ -274,14 +270,14 @@ const scrollToTop = () => {
 
     .footer-main {
       grid-template-columns: 1fr;
-      gap: 2rem;
-      margin-bottom: 2rem;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .footer-bottom {
       flex-direction: column;
       align-items: flex-start;
-      gap: 1.5rem;
+      gap: 1rem;
 
       .footer-info {
         order: 2;
@@ -297,12 +293,6 @@ const scrollToTop = () => {
 
 @media (max-width: 480px) {
   .footer-wrapper {
-    .footer-main {
-      .creator-section .creator-name {
-        font-size: var(--font-size-2xl);
-      }
-    }
-
     .footer-bottom {
       text-align: center;
       align-items: center;

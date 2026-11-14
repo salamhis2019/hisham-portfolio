@@ -13,10 +13,4 @@ export const TECH_STACK: TechStackItem[] = [
     icon: require('@/assets/typescript-icon.svg'),
     alt: 'TypeScript',
   },
-  {
-    id: 'vite',
-    name: 'Vite',
-    icon: require('@/assets/vitejs-logo.svg'),
-    alt: 'Vite',
-  },
 ];

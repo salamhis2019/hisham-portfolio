@@ -2,11 +2,7 @@
   <div class="glass-card" :class="cardClass" :tabindex="tabindex">
     <!-- Card Header -->
     <div v-if="showHeader" class="card-header">
-      <div v-if="icon" class="header-icon">
-        <div class="icon-circle" :class="iconVariant">
-          <MaterialIcon :name="icon" size="lg" class="icon" />
-        </div>
-      </div>
+      <MaterialIcon v-if="icon" :name="icon" size="md" class="header-icon" :class="iconVariant" />
       <h3 v-if="title" class="card-title">{{ title }}</h3>
       <div v-if="showCount && count !== undefined" class="skill-count">{{ count }}</div>
     </div>
@@ -30,7 +26,7 @@ interface Props {
   iconVariant?: 'default' | 'tech' | 'soft';
   showCount?: boolean;
   count?: number;
-  variant?: 'bio' | 'skills' | 'stats';
+  variant?: 'bio' | 'skills';
   tabindex?: string | number;
 }
 
@@ -63,101 +59,51 @@ const cardClass = computed(() => {
 
 <style lang="scss" scoped>
 .glass-card {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 24px;
-  padding: 2rem;
-  transform: translateY(30px);
-  opacity: 0;
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.8s ease;
-  }
-
-  &.animate-in {
-    transform: translateY(0);
-    opacity: 1;
-  }
+  background: #121214;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 1.5rem;
 
   .card-header {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
 
     .header-icon {
-      .icon-circle {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-        border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.6);
 
-        &.tech {
-          background: linear-gradient(135deg, rgba(0, 136, 255, 0.2), rgba(0, 136, 255, 0.1));
-          border-color: rgba(0, 136, 255, 0.3);
-        }
+      &.tech {
+        color: #0088ff;
+      }
 
-        &.soft {
-          background: linear-gradient(135deg, rgba(255, 0, 128, 0.2), rgba(255, 0, 128, 0.1));
-          border-color: rgba(255, 0, 128, 0.3);
-        }
-
-        .icon {
-          // MaterialIcon component handles sizing and color
-        }
+      &.soft {
+        color: #ff0080;
       }
     }
 
     .card-title {
-      font-size: 1.5rem;
-      font-weight: 700;
+      font-size: var(--font-size-lg);
+      font-weight: 600;
       color: #ffffff;
       margin: 0;
       flex: 1;
-      font-family: 'Helvetica Neue', 'Arial', sans-serif;
+      font-family: var(--font-primary);
     }
 
     .skill-count {
-      background: rgba(255, 255, 255, 0.1);
-      color: rgba(255, 255, 255, 0.8);
-      padding: 0.25rem 0.75rem;
-      border-radius: 12px;
-      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: var(--font-size-sm);
       font-weight: 600;
-      font-family: 'Helvetica Neue', 'Arial', sans-serif;
+      font-family: var(--font-primary);
     }
-  }
-
-  .card-content {
-    position: relative;
-    z-index: 2;
-  }
-
-  // Variant-specific styles
-  &.stats-card {
-    text-align: center;
   }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .glass-card {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 }
 </style>

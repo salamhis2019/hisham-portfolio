@@ -97,7 +97,7 @@ watch(
       li {
         list-style-type: none;
         margin: 0 1rem;
-        font-family: 'Source Sans Pro';
+        font-family: var(--font-primary);
         transition: 0.2s ease;
       }
 
